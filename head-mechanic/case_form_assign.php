@@ -6,12 +6,13 @@ if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'assign') {
     $stmtCase_Detail = $condb->prepare("SELECT *
                                         FROM tbl_case AS c
                                         LEFT JOIN tbl_member AS emp ON c.ref_m_id = emp.m_id
-                                        LEFT JOIN tbl_member AS mec ON c.ref_mec_id = mec.m_id
+                                     
                                         LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
                                         LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
                                         LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
                                         LEFT JOIN tbl_building AS bd ON c.ref_building_id = bd.building_id
-                                        WHERE c.case_id = :case_id ");
+                                        WHERE c.case_id = :case_id");
+
 
     $stmtCase_Detail->bindParam(':case_id', $case_id, PDO::PARAM_INT);
     $stmtCase_Detail->execute();
@@ -64,11 +65,11 @@ if (isset($_GET['no'])) {
                                     <p>
                                         <a href="case.php" class="btn btn-primary">
                                             NEW <span class="badge">5</span></a>
-                                        <a href="case.php?p=doing" class="btn btn-warning">
+                                        <a href="case.php?act=doing" class="btn btn-warning">
                                             Assigned <span class="badge">16</span></a>
-                                        <a href="case.php?p=close" class="btn btn-success">
+                                        <a href="case.php?act=success" class="btn btn-success">
                                             Success <span class="badge">179</span></a>
-                                        <a href="case.php?p=all" class="btn btn-danger">
+                                        <a href="case.php?act=all" class="btn btn-danger">
                                             AllJob <span class="badge">200</span></a>
                                     </p>
                                     <div class="card">

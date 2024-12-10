@@ -60,6 +60,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                     <div class="card">
 
                         <!-- /.card-header -->
+                         <form action="update_status" method="POST">
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
 
@@ -96,16 +97,17 @@ $rsCaseList = $queryCaseList->fetchAll();
                                             <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
 
                                             <td>
-                                                <?php if ($row['m_level'] == 'mechanic'): ?>
-                                                    <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                        <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
-                                                    <?php else: ?>
-                                                        -
-                                                    <?php endif; ?>
-                                                <?php else: ?>
-                                                    -
-                                                <?php endif; ?>
-                                            </td>
+    <?php if ($row['ref_status_id'] != 1): ?> <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+        <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+            <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
+        <?php else: ?>
+            ข้อมูลช่างไม่สมบูรณ์
+        <?php endif; ?>
+    <?php else: ?>
+        - <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+    <?php endif; ?>
+</td>
+
 
 
 
@@ -122,10 +124,12 @@ $rsCaseList = $queryCaseList->fetchAll();
                                         </tr>
                                     <?php } ?>
                                 </tbody>
-
+                               
                             </table>
+                            
                         </div>
                         <!-- /.card-body -->
+                        </form>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -141,30 +145,31 @@ $rsCaseList = $queryCaseList->fetchAll();
 
 <?php
 if (isset($_POST['update_status'])) {
-    // รับค่าจากฟอร์ม
     $case_id = $_POST['case_id'];
     $status_id = $_POST['status_id']; // สถานะใหม่
     $ref_mec_id = $_POST['m_id']; // ช่างที่รับผิดชอบงาน
 
-    // อัปเดตสถานะในตาราง tbl_case
-    $updateCase = $condb->prepare("UPDATE tbl_case SET ref_status_id = :status_id WHERE case_id = :case_id");
-    $updateCase->bindParam(':status_id', $status_id, PDO::PARAM_INT);
-    $updateCase->bindParam(':case_id', $case_id, PDO::PARAM_INT);
-    $updateCase->execute();
+    try {
+        $condb->beginTransaction();
 
-    // อัปเดตสถานะในตาราง tbl_employee (เชื่อมโยงกับเคส)
-    // เชื่อมโยง ref_case_id ไปยัง tbl_employee
-    $updateEmployee = $condb->prepare("UPDATE tbl_employee SET status_id = :status_id, ref_mec_id = :ref_mec_id WHERE ref_case_id = :case_id");
-    $updateEmployee->bindParam(':status_id', $status_id, PDO::PARAM_INT);
-    $updateEmployee->bindParam(':ref_mec_id', $ref_mec_id, PDO::PARAM_INT); // แก้เป็น ref_mec_id
-    $updateEmployee->bindParam(':case_id', $case_id, PDO::PARAM_INT);
-    $updateEmployee->execute();
+        // อัปเดตสถานะในตาราง tbl_case
+        $updateCase = $condb->prepare("UPDATE tbl_case SET ref_status_id = :status_id WHERE case_id = :case_id");
+        $updateCase->bindParam(':status_id', $status_id, PDO::PARAM_INT);
+        $updateCase->bindParam(':case_id', $case_id, PDO::PARAM_INT);
+        $updateCase->execute();
 
-    // ตรวจสอบผลลัพธ์
-    if ($updateCase && $updateEmployee) {
-        echo "สถานะถูกอัปเดตเรียบร้อยแล้ว!";
-    } else {
-        echo "เกิดข้อผิดพลาดในการอัปเดตสถานะ";
+        // อัปเดตสถานะในตาราง tbl_member สำหรับพนักงาน
+        $updateEmployeeStatus = $condb->prepare("UPDATE tbl_case SET ref_status_id = :status_id WHERE ref_m_id = :staff_id");
+        $updateEmployeeStatus->bindParam(':status_id', $status_id, PDO::PARAM_INT);
+        $updateEmployeeStatus->bindParam(':staff_id', $_SESSION['staff_id'], PDO::PARAM_INT);
+        $updateEmployeeStatus->execute();
+
+        $condb->commit();
+
+        echo "<script>alert('สถานะถูกอัปเดตเรียบร้อยแล้ว!');</script>";
+    } catch (PDOException $e) {
+        $condb->rollBack();
+        echo "<script>alert('เกิดข้อผิดพลาดในการอัปเดตสถานะ: " . $e->getMessage() . "');</script>";
     }
 }
 ?>

@@ -8,7 +8,7 @@ $queryCaseList = $condb->prepare("SELECT *
                                   LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
                                   LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
                                   LEFT JOIN tbl_building AS bd ON c.ref_building_id = bd.building_id WHERE c.ref_status_id = 1
-                                  
+                                --   WHERE c.ref_status_id IN (3, 4) เปิดทีหลัง
                                   ");
 
 $queryCaseList->execute();
@@ -45,7 +45,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                             NEW <span class="badge">5</span></a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
                                             Assigned <span class="badge">16</span></a>
-                                        <a href="case.php?act=close" class="btn btn-success">
+                                        <a href="case.php?act=success" class="btn btn-success">
                                             Success <span class="badge">179</span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
                                             AllJob <span class="badge">200</span></a>
@@ -64,7 +64,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                         <th class="text-center">รายละเอียด</th>
                                                         <th width="8%" class="text-center">สถานะ</th>
 
-                                                        <th width="8%" class="text-center">Assign</th>
+                                                        <th width="8%" class="text-center">ดูงาน</th>
 
                                                     </tr>
                                                 </thead>
@@ -90,8 +90,8 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                             <td align="center"><?= htmlspecialchars($row['status_name']); ?>
                                                             </td>
                                                             <td align="center">
-                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=assign&no=<?= $i - 1; ?>"
-                                                                    class="btn btn-info btn-sm">Assign</a>
+                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=openjob&no=<?= $i - 1; ?>"
+                                                                    class="btn btn-info btn-sm">Open</a>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

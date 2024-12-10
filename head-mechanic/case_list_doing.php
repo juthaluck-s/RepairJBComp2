@@ -46,7 +46,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                             NEW <span class="badge">5</span></a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
                                             Assigned <span class="badge">16</span></a>
-                                        <a href="case.php?act=close" class="btn btn-success">
+                                        <a href="case.php?act=success" class="btn btn-success">
                                             Success <span class="badge">179</span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
                                             AllJob <span class="badge">200</span></a>
@@ -65,7 +65,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                         <th class="text-center">รายละเอียด</th>
                                                         <th width="8%" class="text-center">สถานะ</th>
 
-                                                        <th width="8%" class="text-center">Assign</th>
+                                                        <th width="15%" class="text-center">ช่างที่รับผิดชอบ</th>
 
                                                     </tr>
                                                 </thead>
@@ -90,9 +90,9 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                             </td>
                                                             <td align="center"><?= htmlspecialchars($row['status_name']); ?>
                                                             </td>
-                                                            <td align="center">
-                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=assign&no=<?= $i - 1; ?>"
-                                                                    class="btn btn-info btn-sm">Assign</a>
+                                                            <td><?= $row['firstname'] . ' ' . $row['lastname']; ?><br>
+                                                            เบอร์โทร :
+                                                            <?= $row['m_tel']; ?> <br> Email : <?= $row['m_email']; ?>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>
