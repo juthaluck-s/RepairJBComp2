@@ -8,6 +8,11 @@ $queryPosition = $condb->prepare("SELECT * FROM `tbl_position`");
 $queryPosition->execute();
 $rsPosition = $queryPosition->fetchAll();
 
+$queryLevel = $condb->prepare("SELECT * FROM `tbl_level`");
+$queryLevel->execute();
+$rsLevel = $queryLevel->fetchAll();
+
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -47,16 +52,18 @@ $rsPosition = $queryPosition->fetchAll();
                                     <div class="form-group row">
                                         <label class="col-sm-2">สิทธิ์การใช้งาน</label>
                                         <div class="col-sm-2">
-                                            <select name="m_level" class="form-control" required>
+                                            <select name="ref_level_id" class="form-control" required>
                                                 <option value="">กรุณาเลือก</option>
-                                                <option value="admin">admin</option>
-                                                <option value="head-mechanic">head mechanic</option>
-                                                <option value="mechanic">mechanic</option>
-                                                <option value="employee">employee</option>
+                                                <?php foreach ($rsLevel as $rowlev): ?>
+                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
+                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
+                                                    </option>
+                                                <?php endforeach; ?>
 
                                             </select>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">Username</label>
@@ -183,7 +190,7 @@ if (isset($_POST['username']) && isset($_POST['firstname']) && isset($_POST['las
 
         // รับค่าจากฟอร์ม
         $member_id = $_POST['member_id'];
-        $m_level = $_POST['m_level'];
+        $ref_level_id = $_POST['ref_level_id'];
         $username = $_POST['username'];
         $password = sha1($_POST['password']);
         $title_name = $_POST['title_name'];
@@ -219,12 +226,12 @@ if (isset($_POST['username']) && isset($_POST['firstname']) && isset($_POST['las
         } else {
             //echo 'ไม่มี Username ซ้ำ';
             $stmtInsertMember = $condb->prepare("INSERT INTO tbl_member 
-            (member_id, m_level,username, password, title_name, firstname, lastname, ref_department_id, ref_position_id, m_tel, m_email)
-            VALUES (:member_id, :m_level,:username, '$password', :title_name, :firstname, :lastname, :ref_department_id, :ref_position_id, :m_tel, :m_email )");
+            (member_id, ref_level_id,username, password, title_name, firstname, lastname, ref_department_id, ref_position_id, m_tel, m_email)
+            VALUES (:member_id, :ref_level_id,:username, '$password', :title_name, :firstname, :lastname, :ref_department_id, :ref_position_id, :m_tel, :m_email )");
 
             //bindParam
             $stmtInsertMember->bindParam(':member_id', $member_id, PDO::PARAM_STR);
-            $stmtInsertMember->bindParam(':m_level', $m_level, PDO::PARAM_STR);
+            $stmtInsertMember->bindParam(':ref_level_id', $ref_level_id, PDO::PARAM_INT);
             $stmtInsertMember->bindParam(':username', $username, PDO::PARAM_STR);
             $stmtInsertMember->bindParam(':title_name', $title_name, PDO::PARAM_STR);
             $stmtInsertMember->bindParam(':firstname', $firstname, PDO::PARAM_STR);

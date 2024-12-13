@@ -7,14 +7,30 @@ if (empty($_SESSION['m_level']) && empty($_SESSION['staff_id'])) {
     header('Location: ../logout.php');
 }
 
-// //เช็กว่าเป็น staff หรือไม่
-if (isset($_SESSION['m_level']) && isset($_SESSION['staff_id']) && $_SESSION['m_level'] != 'staff') {
+// //เช็กว่าเป็น admin หรือไม่
+if (isset($_SESSION['m_level']) && isset($_SESSION['staff_id']) && $_SESSION['m_level'] != 'mechanic') {
     header('Location: ../logout.php');
 }
 
 require_once '../config/condb.php';
-?>
 
+//คิวรี่ข้อมูลคน login
+$memberDetail = $condb->prepare("SELECT * FROM tbl_member WHERE m_id=:m_id");
+//bindParam
+$memberDetail->bindParam(':m_id', $_SESSION['staff_id'], PDO::PARAM_INT);
+$memberDetail->execute();
+$memberData = $memberDetail->fetch(PDO::FETCH_ASSOC);
+
+// คิวรี่ข้อมูลแผนก
+$queryDepartment = $condb->prepare("SELECT * FROM `tbl_department`");
+$queryDepartment->execute();
+$rsDepartment = $queryDepartment->fetchAll();
+
+// คิวรี่ข้อมูลตำแหน่ง
+$queryPosition = $condb->prepare("SELECT * FROM `tbl_position`");
+$queryPosition->execute();
+$rsPosition = $queryPosition->fetchAll();
+?>
 
 
 <!DOCTYPE html>
@@ -48,6 +64,10 @@ require_once '../config/condb.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+
 
 
 </head>
@@ -55,7 +75,7 @@ require_once '../config/condb.php';
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
         <!-- Preloader กด F5 จะมีตัว A ขึ้นมา -->
-        <div class="preloader flex-column justify-content-center align-items-center">
+        <!-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="../assets/dist/img/Logo JB Comp2.png" alt="JBCompLogo" height="200"
                 width="200">
-        </div>
+        </div> -->

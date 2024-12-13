@@ -3,12 +3,12 @@
 session_start();
 
 //ถ้าไม่มีการล็อกอิน
-if (empty($_SESSION['m_level']) && empty($_SESSION['staff_id'])) {
+if (empty($_SESSION['ref_level_id']) && empty($_SESSION['staff_id'])) {
     header('Location: ../logout.php');
 }
 
 // //เช็กว่าเป็น admin หรือไม่
-if (isset($_SESSION['m_level']) && isset($_SESSION['staff_id']) && $_SESSION['m_level'] != 'mechanic') {
+if (isset($_SESSION['ref_level_id']) && isset($_SESSION['staff_id']) && $_SESSION['ref_level_id'] != '3') {
     header('Location: ../logout.php');
 }
 
@@ -30,6 +30,13 @@ $rsDepartment = $queryDepartment->fetchAll();
 $queryPosition = $condb->prepare("SELECT * FROM `tbl_position`");
 $queryPosition->execute();
 $rsPosition = $queryPosition->fetchAll();
+
+
+
+$queryLevel = $condb->prepare("SELECT * FROM `tbl_level`");
+$queryLevel->execute();
+$rsLevel = $queryLevel->fetchAll();
+
 ?>
 
 

@@ -1,13 +1,9 @@
 <?php
-$queryMemberCase_Add = $condb->prepare("SELECT * FROM `tbl_member`");
-$queryMemberCase_Add->execute();
-$rsMemberCase_Add = $queryMemberCase_Add->fetchAll();
-
-//คิวรี่ข้อมูลอาคาร
+// คิวรี่ข้อมูลประเภทสินค้า
 $queryBuildingCase = $condb->prepare("SELECT * FROM `tbl_building`");
 $queryBuildingCase->execute();
 $rsBuildingCase = $queryBuildingCase->fetchAll();
-//คิวรี่ข้อมูลอุปกรณ์
+
 $queryEquipmentCase = $condb->prepare("SELECT * FROM `tbl_equipment`");
 $queryEquipmentCase->execute();
 $rsEquipmentCase = $queryEquipmentCase->fetchAll();
@@ -38,15 +34,6 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
                             <!-- form start -->
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="card-body">
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">รหัสพนักงาน : </label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="ref_m_id" class="form-control"
-                                                value="<?php echo $memberData['member_id'];
-                                                        $_SESSION['staff_id']; ?>" readonly>
-                                        </div>
-                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">ตึก/อาคาร</label>
@@ -141,7 +128,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ref_equipment_id = $_POST['ref_equipment_id'];
         $case_floor = $_POST['case_floor'];
         $case_room = $_POST['case_room'];
-        $ref_status_id = 1;
 
         // ตัวแปรสำหรับวันที่และการตั้งชื่อไฟล์
         $date1 = date("Ymd_His");
@@ -166,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         // SQL Insert
-        $stmtInSertCase = $condb->prepare("INSERT INTO tbl_case (ref_building_id, case_detail, case_floor, ref_equipment_id, case_img, case_room, ref_m_id, ref_status_id) VALUES (:ref_building_id, :case_detail, :case_floor, :ref_equipment_id, :case_img, :case_room, :ref_m_id ,:ref_status_id)");
+        $stmtInSertCase = $condb->prepare("INSERT INTO tbl_case (ref_building_id, case_detail, case_floor, ref_equipment_id, case_img, case_room) VALUES (:ref_building_id, :case_detail, :case_floor, :ref_equipment_id, :case_img, :case_room)");
 
         $stmtInSertCase->bindParam(':ref_building_id', $ref_building_id, PDO::PARAM_INT);
         $stmtInSertCase->bindParam(':case_detail', $case_detail, PDO::PARAM_STR);
@@ -174,8 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmtInSertCase->bindParam(':ref_equipment_id', $ref_equipment_id, PDO::PARAM_INT);
         $stmtInSertCase->bindParam(':case_img', $newname, PDO::PARAM_STR);
         $stmtInSertCase->bindParam(':case_room', $case_room, PDO::PARAM_STR);
-        $stmtInSertCase->bindParam(':ref_m_id', $_SESSION['staff_id'], PDO::PARAM_INT);
-        $stmtInSertCase->bindParam(':ref_status_id', $ref_status_id, PDO::PARAM_INT);
 
         $result = $stmtInSertCase->execute();
 

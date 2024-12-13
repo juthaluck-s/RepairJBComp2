@@ -1,0 +1,3 @@
+ดูข้อมูลจาก ref_level_id = 3 (mechanic) 
+ใน tbl_member กำหนดให้เมื่อ ref_level_id มีค่า = 3 จะต้องมีข้อมูลใน mec_id ใน tbl_mechanic อัตโนมัติ 
+เมื่อหัวหน้าช่างเลือกให้ mec_id คนไหนทำงานจะไปขึ้นใน tbl_case เก็บข้อมูล id จาก mec_id แล้วนำข้อมูลไปลงที่ตาราง ref_mec_id

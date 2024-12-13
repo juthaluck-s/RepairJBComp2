@@ -11,7 +11,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['acti
     $password = sha1($_POST['password']); // เก็บรหัสผ่านในรูปแบบ sha1
 
     // ตรวจสอบ username และ password ในฐานข้อมูล
-    $stmtLogin = $condb->prepare("SELECT m_id, m_level FROM tbl_member WHERE username = :username AND password = :password");
+    $stmtLogin = $condb->prepare("SELECT m_id, ref_level_id FROM tbl_member WHERE username = :username AND password = :password");
 
     // bind parameter
     $stmtLogin->bindParam(':username', $username, PDO::PARAM_STR);
@@ -25,22 +25,22 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['acti
 
         // สร้างตัวแปร session
         $_SESSION['staff_id'] = $row['m_id'];
-        $_SESSION['m_level'] = $row['m_level'];
+        $_SESSION['ref_level_id'] = $row['ref_level_id'];
 
         // ปิดการเชื่อมต่อฐานข้อมูล
         $condb = null;
 
         // ตรวจสอบสิทธิ์การใช้งานของผู้ใช้
-        if ($_SESSION['m_level'] == 'admin') {
+        if ($_SESSION['ref_level_id'] == '1') {
             header('Location: admin/'); // ไปที่หน้าของ admin
             exit();
-        } else if ($_SESSION['m_level'] == 'head-mechanic') {
+        } else if ($_SESSION['ref_level_id'] == '2') {
             header('Location: head-mechanic/case.php'); // ไปที่หน้าของ head-mechanic
             exit();
-        } else if ($_SESSION['m_level'] == 'mechanic') {
+        } else if ($_SESSION['ref_level_id'] == '3') {
             header('Location: mechanic/case.php'); // ไปที่หน้าของ mechanic
             exit();
-        } else if ($_SESSION['m_level'] == 'employee') {
+        } else if ($_SESSION['ref_level_id'] == '4') {
             header('Location: employee/case.php'); // ไปที่หน้าของ employee
             exit();
         }

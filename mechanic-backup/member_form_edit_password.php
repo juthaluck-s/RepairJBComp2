@@ -1,3 +1,19 @@
+<?php
+if (isset($_GET['m_id']) && $_GET['act'] == 'editPwd') {
+
+    //sigle row query แสดงแค่ 1 รายการ เหมาะกับหน้าฟอร์มแก้ไข
+    $stmtMemberDetail = $condb->prepare("SELECT * FROM tbl_member WHERE m_id=?");
+    $stmtMemberDetail->execute([$_GET['m_id']]);
+    $memberData = $stmtMemberDetail->fetch(PDO::FETCH_ASSOC);
+
+    //ถ้าคิวรี่ผิดพลาดให้หยุดการทำงาน
+    if ($stmtMemberDetail->rowCount() != 1) {
+        exit();
+    }
+} //isset
+?>
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -5,7 +21,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>ฟอร์มแก้ไขรหัสผ่าน</h1>
+                    <h1>แก้ไขรหัสผ่าน</h1>
                 </div>
 
             </div>
@@ -28,16 +44,16 @@
                                         <label class="col-sm-2">Username</label>
                                         <div class="col-sm-4">
                                             <input type="username" name="username" class="form-control"
-                                                value="<?php echo $MemberData['username']; ?>" disabled>
+                                                value="<?php echo $memberData['username']; ?>" disabled>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">ชื่อ-สกุล</label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="name" class="form-control" required
+                                            <input type="text" name="firstname" class="form-control" required
                                                 placeholder="ชื่อ"
-                                                value="<?php echo $MemberData['title_name'] . $MemberData['name'] . ' ' . $MemberData['surname']; ?>"
+                                                value="<?php echo $memberData['title_name'] . $memberData['firstname'] . ' ' . $memberData['lastname']; ?>"
                                                 disabled>
                                         </div>
                                     </div>
@@ -61,8 +77,9 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2"></label>
                                         <div class="col-sm-4">
+                                            <input type="hidden" name="m_id" value="<?php echo $memberData['m_id']; ?>">
                                             <button type="submit" class="btn btn-primary">แก้ไขรหัสผ่าน</button>
-                                            <a href="member.php" class="btn btn-danger">ยกเลิก</a>
+                                            <a href="case.php" class="btn btn-danger">ยกเลิก</a>
                                         </div>
 
                                     </div>
@@ -83,7 +100,7 @@
 
 
 <?php
-if (isset($_SESSION['staff_id']) && isset($_POST['NewPassword']) && isset($_POST['ConfirmPassword'])) {
+if (isset($_POST['id']) && isset($_POST['NewPassword']) && isset($_POST['ConfirmPassword'])) {
     //trigger exception in a "try" block
     try {
         //ประกาศตัวแปรรับค่าจากฟอร์ม
@@ -101,7 +118,7 @@ if (isset($_SESSION['staff_id']) && isset($_POST['NewPassword']) && isset($_POST
         text: "กรุณากรอกรหัสผ่านใหม่อีกครั้ง",
         type: "error"
         }, function() {
-        window.location = "member.php?act=password' . $id . '&act=editPwd"; //หน้าที่ต้องการให้กระโดดไป
+        window.location = "member.php?id=' . $id . '&act=password"; //หน้าที่ต้องการให้กระโดดไป
         });
         }, 1000);
         </script>';
@@ -113,7 +130,7 @@ if (isset($_SESSION['staff_id']) && isset($_POST['NewPassword']) && isset($_POST
             $stmtUpdate = $condb->prepare("UPDATE  tbl_member SET password='$password' WHERE id=:id");
 
             //bindParam
-            $stmtUpdate->bindParam(':id', $_SESSION['staff_id'], PDO::PARAM_INT);
+            $stmtUpdate->bindParam(':id', $id, PDO::PARAM_INT);
 
             $result = $stmtUpdate->execute();
 
@@ -136,7 +153,7 @@ if (isset($_SESSION['staff_id']) && isset($_POST['NewPassword']) && isset($_POST
         title: "เกิดข้อผิดพลาด",
         type: "error"
         }, function() {
-        window.location = "member.php?act=password"; //หน้าที่ต้องการให้กระโดดไป
+        window.location = member.php?id=' . $id . '&act=password"; //หน้าที่ต้องการให้กระโดดไป
         });
         }, 1000);
         </script>';

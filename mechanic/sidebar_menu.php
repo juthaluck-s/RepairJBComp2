@@ -11,12 +11,12 @@ try {
     if ($MemberData) {
         $firstname = htmlspecialchars($MemberData['firstname']);
         $lastname = htmlspecialchars($MemberData['lastname']);
-        $m_level = htmlspecialchars($MemberData['m_level']);
+        $ref_level_id = htmlspecialchars($MemberData['ref_level_id']);
     } else {
         // หากไม่พบข้อมูลในฐานข้อมูล
         $firstname = "Unknown";
         $lastname = "User";
-        $m_level = "guest";
+        $ref_level_id = "guest";
     }
 } catch (PDOException $e) {
     // จัดการข้อผิดพลาดในการเชื่อมต่อหรือ Query ฐานข้อมูล
@@ -50,35 +50,34 @@ try {
                     <?= htmlspecialchars($firstname . ' ' . $lastname); ?>
                 </a>
                 <a href="#" class="d-block m-level">สิทธิ์ใช้งาน :
-                    <?php if ($m_level): ?>
-                        <?php if ($m_level == 'admin'): ?>
-                            <button class="btn btn-danger btn-custom-small">Admin</button>
-                        <?php elseif ($m_level == 'head-mechanic'): ?>
-                            <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
-                        <?php elseif ($m_level == 'mechanic'): ?>
-                            <button class="btn btn-info btn-custom-small">Mechanic</button>
-                        <?php else: ?>
-                            <button class="btn btn-success btn-custom-small">Employee</button>
-                        <?php endif; ?>
+                    <?php if ($ref_level_id): ?>
+                    <?php if ($ref_level_id == '1'): ?>
+                    <button class="btn btn-danger btn-custom-small">Admin</button>
+                    <?php elseif ($ref_level_id == '2'): ?>
+                    <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
+                    <?php elseif ($ref_level_id == '3'): ?>
+                    <button class="btn btn-info btn-custom-small">Mechanic</button>
+                    <?php elseif ($ref_level_id == '4'): ?>
+                    <button class="btn btn-success btn-custom-small">Employee</button>
+                    <?php endif; ?>
                     <?php else: ?>
-                        <button class="btn btn-secondary btn-custom-small">Unknown</button>
+                    <button class="btn btn-secondary btn-custom-small">Unknown</button>
                     <?php endif; ?>
                 </a>
 
-
             </div>
             <style>
-                .m-level {
-                    margin-top: 2px;
-                    font-size: 13px;
-                }
+            .m-level {
+                margin-top: 2px;
+                font-size: 13px;
+            }
 
-                .btn-custom-small {
-                    padding: 0px 3px;
-                    /* ปรับขนาด padding ให้เล็ก */
-                    font-size: 11px;
-                    /* ปรับขนาดตัวอักษร */
-                }
+            .btn-custom-small {
+                padding: 0px 3px;
+                /* ปรับขนาด padding ให้เล็ก */
+                font-size: 11px;
+                /* ปรับขนาดตัวอักษร */
+            }
             </style>
         </div>
 

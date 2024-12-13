@@ -1,8 +1,9 @@
 <?php
-$queryMember = $condb->prepare("SELECT m.m_id, m.member_id, m.m_level, m.username, m.password, m.title_name, m.firstname, m.lastname, m.m_tel, m.m_email, dpm.department_name, pst.position_name
+$queryMember = $condb->prepare("SELECT *
 FROM tbl_member AS m
 INNER JOIN tbl_department AS dpm ON m.ref_department_id = dpm.department_id
 INNER JOIN tbl_position AS pst ON m.ref_position_id = pst.position_id
+INNER JOIN tbl_level AS lev ON m.ref_level_id = lev.level_id
 ");
 $queryMember->execute();
 $rsMember = $queryMember->fetchAll();
@@ -82,7 +83,7 @@ $rsMember = $queryMember->fetchAll();
 
                                             <td align="center"><?= $row['member_id']; ?></td>
 
-                                            <td align="center"><?= $row['m_level']; ?></td>
+                                            <td align="center"><?= $row['level_name']; ?></td>
 
                                             <td>
                                                 <?=

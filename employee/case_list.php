@@ -60,75 +60,77 @@ $rsCaseList = $queryCaseList->fetchAll();
                     <div class="card">
 
                         <!-- /.card-header -->
-                         <form action="update_status" method="POST">
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped table-sm">
+                        <form action="update_status" method="POST">
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped table-sm">
 
-                                <thead>
-                                    <tr class="table-info">
-                                        <th width="5%" class="text-center">No.</th>
+                                    <thead>
+                                        <tr class="table-info">
+                                            <th width="5%" class="text-center">No.</th>
 
-                                        <th width="5%" class="text-center">รูปภาพ</th>
-                                        <th width="10%" class="text-center">อุปกรณ์</th>
-                                        <th class="text-center">รายละเอียด</th>
-                                        <th width="8%" class="text-center">สถานะ</th>
-                                        <th width="12%" class="text-center">ช่างที่รับผิดชอบงาน</th>
-                                        <th width="8%" class="text-center">ประเมินผล</th>
-
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-
-                                    <?php
-                                    $i = 1;
-                                    ?>
-
-                                    <?php foreach ($rsCaseList as $row) { ?>
-
-                                        <tr>
-                                            <td align="center"> <?php echo $i++ ?></td>
-
-                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
-                                            </td>
-                                            <td><?= $row['equipment_name']; ?></td>
-                                            <td><?= $row['case_detail'] . '' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] ?>
-                                            </td>
-                                            <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
-
-                                            <td>
-    <?php if ($row['ref_status_id'] != 1): ?> <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
-        <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-            <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
-        <?php else: ?>
-            ข้อมูลช่างไม่สมบูรณ์
-        <?php endif; ?>
-    <?php else: ?>
-        - <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
-    <?php endif; ?>
-</td>
-
-
-
-
-                                            <td align="center">
-                                                <?php if ($row['status_name'] === 'รอประเมินผล'): ?>
-                                                    <a href="case.php?id=<?= $row['assessment_name']; ?>&act=assessment"
-                                                        class="btn btn-info btn-sm">ประเมิน</a>
-                                                <?php else: ?>
-                                                    -
-                                                <?php endif; ?>
-                                            </td>
-
+                                            <th width="5%" class="text-center">รูปภาพ</th>
+                                            <th width="10%" class="text-center">อุปกรณ์</th>
+                                            <th class="text-center">รายละเอียด</th>
+                                            <th width="8%" class="text-center">สถานะ</th>
+                                            <th width="12%" class="text-center">ช่างที่รับผิดชอบงาน</th>
+                                            <th width="8%" class="text-center">ประเมินผล</th>
 
                                         </tr>
-                                    <?php } ?>
-                                </tbody>
-                               
-                            </table>
-                            
-                        </div>
-                        <!-- /.card-body -->
+                                    </thead>
+
+                                    <tbody>
+
+                                        <?php
+                                        $i = 1;
+                                        ?>
+
+                                        <?php foreach ($rsCaseList as $row) { ?>
+
+                                            <tr>
+                                                <td align="center"> <?php echo $i++ ?></td>
+
+                                                <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
+                                                </td>
+                                                <td><?= $row['equipment_name']; ?></td>
+                                                <td><?= $row['case_detail'] . '' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] ?>
+                                                </td>
+                                                <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
+
+                                                <td>
+                                                    <?php if ($row['ref_status_id'] != 1): ?>
+                                                        <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+                                                        <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+                                                            <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
+                                                        <?php else: ?>
+                                                            ข้อมูลช่างไม่สมบูรณ์
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        -
+                                                        <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+                                                    <?php endif; ?>
+                                                </td>
+
+
+
+
+                                                <td align="center">
+                                                    <?php if ($row['status_name'] === 'รอประเมินผล'): ?>
+                                                        <a href="case.php?id=<?= $row['assessment_name']; ?>&act=assessment"
+                                                            class="btn btn-info btn-sm">ประเมิน</a>
+                                                    <?php else: ?>
+                                                        -
+                                                    <?php endif; ?>
+                                                </td>
+
+
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            <!-- /.card-body -->
                         </form>
                     </div>
                     <!-- /.card -->

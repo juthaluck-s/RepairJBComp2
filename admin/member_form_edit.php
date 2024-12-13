@@ -18,6 +18,10 @@ $queryPosition = $condb->prepare("SELECT * FROM `tbl_position`");
 $queryPosition->execute();
 $rsPosition = $queryPosition->fetchAll();
 
+$queryLevel = $condb->prepare("SELECT * FROM `tbl_level`");
+$queryLevel->execute();
+$rsLevel = $queryLevel->fetchAll();
+
 ?>
 
 
@@ -56,22 +60,24 @@ $rsPosition = $queryPosition->fetchAll();
                                     </div>
 
 
-
                                     <div class="form-group row">
                                         <label class="col-sm-2">สิทธิ์การใช้งาน</label>
                                         <div class="col-sm-2">
-                                            <select name="m_level" class="form-control" required>
-                                                <option value="<?php echo $rowMemdetail['m_level']; ?>">
-                                                    <?php echo $rowMemdetail['m_level']; ?> </option>
+                                            <select name="ref_level_id" class="form-control" required>
                                                 <option disabled>กรุณาเลือกใหม่</option>
-                                                <option value="admin">admin</option>
-                                                <option value="head-mechanic">head Mechanic</option>
-                                                <option value="mechanic">mechanic</option>
-                                                <option value="employee">employee</option>
 
+                                                <?php foreach ($rsLevel as $rowlev): ?>
+
+                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
+                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
+
+
+
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">Username</label>
@@ -190,7 +196,7 @@ if (isset($_POST['m_id']) && isset($_POST['firstname']) && isset($_POST['lastnam
         //ประกาศตัวแปรรับค่าจากฟอร์ม
         $m_id = $_POST['m_id'];
         $member_id = $_POST['member_id'];
-        $m_level = $_POST['m_level'];
+        $ref_level_id = $_POST['ref_level_id'];
         $username = $_POST['username'];
         $title_name = $_POST['title_name'];
         $firstname = $_POST['firstname'];
@@ -201,13 +207,13 @@ if (isset($_POST['m_id']) && isset($_POST['firstname']) && isset($_POST['lastnam
         $m_email = $_POST['m_email'];
 
         //sql update
-        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET m_id=:m_id, member_id=:member_id, m_level=:m_level ,title_name=:title_name,firstname=:firstname, lastname=:lastname, ref_department_id=:ref_department_id, ref_position_id=:ref_position_id, m_tel=:m_tel, m_email=:m_email
+        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET m_id=:m_id, member_id=:member_id, ref_level_id=:ref_level_id ,title_name=:title_name,firstname=:firstname, lastname=:lastname, ref_department_id=:ref_department_id, ref_position_id=:ref_position_id, m_tel=:m_tel, m_email=:m_email
      WHERE m_id=:m_id");
 
         //bindParam
         $stmtUpdate->bindParam(':m_id', $m_id, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':member_id', $member_id, PDO::PARAM_STR);
-        $stmtUpdate->bindParam(':m_level', $m_level, PDO::PARAM_STR);
+        $stmtUpdate->bindParam(':ref_level_id', $ref_level_id, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':username', $username, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':title_name', $title_name, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':firstname', $firstname, PDO::PARAM_STR);
