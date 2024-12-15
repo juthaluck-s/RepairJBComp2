@@ -6,7 +6,6 @@ if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'assign') {
 	$stmtCase_Detail = $condb->prepare("SELECT *
 										FROM tbl_case AS c
 										LEFT JOIN tbl_member AS emp ON c.ref_m_id = emp.m_id
-									 
 										LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
 										LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
 										LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
@@ -118,48 +117,19 @@ if (isset($_GET['no'])) {
 											</table>
 
 											<?php
-											// Query ช่าง Mechanic
-											$querySelectMechanic = "
-    SELECT 
-        m.m_id, 
-        m.firstname, 
-        m.lastname, 
-        m.m_tel, 
-        m.m_email, 
-        dpm.department_name, 
-        pst.position_name, 
-        mec.mec_doing, 
-        mec.mec_close
-    FROM tbl_member AS m
+// Query ช่าง Mechanic โดยใช้ข้อมูลจาก tbl_mechanic มากกว่า
+$querySelectMechanic = " SELECT *
+    FROM tbl_mechanic AS mec
+    INNER JOIN tbl_member AS m ON mec.mec_id = m.m_id
     INNER JOIN tbl_department AS dpm ON m.ref_department_id = dpm.department_id
     INNER JOIN tbl_position AS pst ON m.ref_position_id = pst.position_id
-    INNER JOIN tbl_mechanic AS mec ON m.m_id = mec.mec_id
     WHERE m.ref_level_id = 3
     ORDER BY mec.mec_doing ASC"; // จัดลำดับจากงานที่กำลังทำ
 
-											$result = $condb->query($querySelectMechanic);
+$result = $condb->query($querySelectMechanic);
+?>
 
-											// ตรวจสอบการ Assign
-											if (isset($_POST['m_id']) && isset($_GET['id'])) {
-												$mec_id = $_POST['m_id'];
-												$case_id = $_GET['id']; // รับค่า case_id จาก URL
 
-												$queryAssign = $condb->prepare("
-        UPDATE tbl_case 
-        SET ref_mec_id = :mec_id 
-        WHERE case_id = :case_id
-    ");
-												$queryAssign->bindParam(':mec_id', $mec_id, PDO::PARAM_INT);
-												$queryAssign->bindParam(':case_id', $case_id, PDO::PARAM_INT);
-
-												if ($queryAssign->execute()) {
-													echo "<div class='alert alert-success'>บันทึกการ Assign งานสำเร็จ!</div>";
-												} else {
-													echo "<div class='alert alert-danger'>เกิดข้อผิดพลาดในการบันทึกการ Assign งาน</div>";
-												}
-											}
-
-											?>
 
 											<form method="post"
 												action="assign_db.php?id=<?= isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>"
@@ -187,14 +157,14 @@ if (isset($_GET['no'])) {
 													?>
 															<tr>
 																<td style="text-align: center; vertical-align: middle;">
-																	<input type="radio" name="m_id" required
-																		value="<?= htmlspecialchars($row['m_id']); ?>">
+																	<input type="radio" name="mec_id" required
+																		value="<?= htmlspecialchars($row['mec_id']); ?>">
 																	<span>เลือก</span>
 																</td>
 																<td>
-																	<?= htmlspecialchars($row['firstname']) . ' ' . htmlspecialchars($row['lastname']); ?><br>
-																	เบอร์โทร : <?= htmlspecialchars($row['m_tel']); ?> <br>
-																	Email : <?= htmlspecialchars($row['m_email']); ?><br>
+																	<?=  htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>
+																	เบอร์โทร : <?= htmlspecialchars($row['mec_tel']); ?> <br>
+																	Email : <?= htmlspecialchars($row['mec_email']); ?><br>
 																	แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
 																	ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
 																</td>

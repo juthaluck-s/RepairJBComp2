@@ -1,15 +1,14 @@
 <?php
 
 // คิวรีรายการกรณีทั้งหมด
-$queryCaseList = $condb->prepare("SELECT c.case_id, c.case_detail, c.case_floor, c.case_room, c.case_img, c.dateSave,
-                                  eqm.equipment_name, stt.status_name, asm.assessment_name, bd.building_name,
-                                  m.title_name, m.firstname, m.lastname, m.m_tel, m.m_email
+$queryCaseList = $condb->prepare("SELECT *
                                   FROM tbl_case AS c
-                                  LEFT JOIN tbl_member AS m ON c.ref_m_id = m.m_id
-                                  LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
-                                  LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
-                                  LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
-                                  LEFT JOIN tbl_building AS bd ON c.ref_building_id = bd.building_id WHERE c.ref_status_id = 2
+                                LEFT JOIN tbl_member AS m ON c.ref_m_id = m.m_id 
+                                LEFT JOIN tbl_member AS mec ON c.ref_mec_id = mec.m_id 
+                                LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
+                                LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
+                                LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
+                                LEFT JOIN tbl_building AS bd ON c.ref_building_id = bd.building_id WHERE c.ref_status_id = 2
                                   ");
 
 $queryCaseList->execute();

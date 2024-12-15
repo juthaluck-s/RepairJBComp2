@@ -33,20 +33,21 @@
                                     </div>
 
 
+                                    
                                     <div class="form-group row">
-                                        <label class="col-sm-2">สิทธิ์การใช้งาน</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_level_id" class="form-control" disabled>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsLevel as $rowlev): ?>
-                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
-                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            </select>
-                                        </div>
-                                    </div>
+    <label class="col-sm-2">สิทธิ์การใช้งาน</label>
+    <div class="col-sm-2">
+        <select name="ref_level_id" class="form-control" disabled>
+            <option disabled>กรุณาเลือกใหม่</option>
+            <?php foreach ($rsLevel as $rowlev): ?>
+                <option value="<?= htmlspecialchars($rowlev['level_id']); ?>" 
+                    <?= $rowlev['level_id'] == $memberData['ref_level_id'] ? 'selected' : ''; ?>>
+                    <?= htmlspecialchars($rowlev['level_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
 
 
                                     <div class="form-group row">

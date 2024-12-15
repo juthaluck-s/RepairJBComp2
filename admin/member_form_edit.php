@@ -51,6 +51,8 @@ $rsLevel = $queryLevel->fetchAll();
                             <form action="" method="post">
                                 <div class="card-body">
 
+                              
+
                                     <div class="form-group row">
                                         <label class="col-sm-2">รหัสพนักงาน</label>
                                         <div class="col-sm-4">
@@ -61,29 +63,26 @@ $rsLevel = $queryLevel->fetchAll();
 
 
                                     <div class="form-group row">
-                                        <label class="col-sm-2">สิทธิ์การใช้งาน</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_level_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-
-                                                <?php foreach ($rsLevel as $rowlev): ?>
-
-                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
-                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
+    <label class="col-sm-2">สิทธิ์การใช้งาน</label>
+    <div class="col-sm-2">
+        <select name="ref_level_id" class="form-control" required>
+            <option disabled>กรุณาเลือกใหม่</option>
+            <?php foreach ($rsLevel as $rowlev): ?>
+                <option value="<?= htmlspecialchars($rowlev['level_id']); ?>" 
+                    <?= $rowlev['level_id'] == $rowMemdetail['ref_level_id'] ? 'selected' : ''; ?>>
+                    <?= htmlspecialchars($rowlev['level_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
 
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">Username</label>
                                         <div class="col-sm-4">
                                             <input type="username" name="username" class="form-control"
-                                                value="<?php echo $rowMemdetail['username']; ?>" disabled>
+                                                value="<?php echo $rowMemdetail['username']; ?>" readonly>
                                         </div>
                                     </div>
 
@@ -117,33 +116,39 @@ $rsLevel = $queryLevel->fetchAll();
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">แผนก</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_department_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsDepartment as $rowdpm): ?>
-                                                    <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>">
-                                                        <?= htmlspecialchars($rowdpm['department_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
+
 
                                     <div class="form-group row">
-                                        <label class="col-sm-2">ตำแหน่ง</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_position_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsPosition as $rowpst): ?>
-                                                    <option value="<?= htmlspecialchars($rowpst['position_id']); ?>">
-                                                        <?= htmlspecialchars($rowpst['position_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
+    <label class="col-sm-2">แผนก</label>
+    <div class="col-sm-2">
+        <select name="ref_department_id" class="form-control" required>
+            <option disabled>กรุณาเลือกใหม่</option>
+            <?php foreach ($rsDepartment as $rowdpm): ?>
+                <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>"
+                    <?= $rowdpm['department_id'] == $rowMemdetail['ref_department_id'] ? 'selected' : ''; ?>>
+                    <?= htmlspecialchars($rowdpm['department_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+
+
+
+                                   <div class="form-group row">
+    <label class="col-sm-2">ตำแหน่ง</label>
+    <div class="col-sm-2">
+        <select name="ref_position_id" class="form-control" required>
+            <option disabled>กรุณาเลือกใหม่</option>
+            <?php foreach ($rsPosition as $rowpst): ?>
+                <option value="<?= htmlspecialchars($rowpst['position_id']); ?>"
+                    <?= $rowpst['position_id'] == $rowMemdetail['ref_position_id'] ? 'selected' : ''; ?>>
+                    <?= htmlspecialchars($rowpst['position_name']); ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">เบอร์โทร</label>
@@ -190,31 +195,33 @@ $rsLevel = $queryLevel->fetchAll();
 
 <?php
 if (isset($_POST['m_id']) && isset($_POST['firstname']) && isset($_POST['lastname'])) {
-    //trigger exception in a "try" block
     try {
-
-        //ประกาศตัวแปรรับค่าจากฟอร์ม
-        $m_id = $_POST['m_id'];
-        $member_id = $_POST['member_id'];
+        // รับค่าจากฟอร์ม
+        $m_id = $_POST['m_id']; // คีย์หลัก
         $ref_level_id = $_POST['ref_level_id'];
-        $username = $_POST['username'];
         $title_name = $_POST['title_name'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
+        $firstname = trim($_POST['firstname']);
+        $lastname = trim($_POST['lastname']);
         $ref_department_id = $_POST['ref_department_id'];
         $ref_position_id = $_POST['ref_position_id'];
         $m_tel = $_POST['m_tel'];
         $m_email = $_POST['m_email'];
 
-        //sql update
-        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET m_id=:m_id, member_id=:member_id, ref_level_id=:ref_level_id ,title_name=:title_name,firstname=:firstname, lastname=:lastname, ref_department_id=:ref_department_id, ref_position_id=:ref_position_id, m_tel=:m_tel, m_email=:m_email
-     WHERE m_id=:m_id");
+        // สร้างคำสั่ง SQL
+        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET 
+            ref_level_id = :ref_level_id,
+            title_name = :title_name,
+            firstname = :firstname,
+            lastname = :lastname,
+            ref_department_id = :ref_department_id,
+            ref_position_id = :ref_position_id,
+            m_tel = :m_tel,
+            m_email = :m_email
+        WHERE m_id = :m_id");
 
-        //bindParam
+        // Bind ตัวแปรกับ placeholder
         $stmtUpdate->bindParam(':m_id', $m_id, PDO::PARAM_INT);
-        $stmtUpdate->bindParam(':member_id', $member_id, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':ref_level_id', $ref_level_id, PDO::PARAM_INT);
-        $stmtUpdate->bindParam(':username', $username, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':title_name', $title_name, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':firstname', $firstname, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':lastname', $lastname, PDO::PARAM_STR);
@@ -222,37 +229,19 @@ if (isset($_POST['m_id']) && isset($_POST['firstname']) && isset($_POST['lastnam
         $stmtUpdate->bindParam(':ref_position_id', $ref_position_id, PDO::PARAM_INT);
         $stmtUpdate->bindParam(':m_tel', $m_tel, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':m_email', $m_email, PDO::PARAM_STR);
-        $result = $stmtUpdate->execute();
 
-        $condb = null;
-        if ($result) {
-            echo '<script>
-        setTimeout(function() {
-        swal({
-        title: "แก้ไขข้อมูลสำเร็จ",
-        type: "success"
-        }, function() {
-        window.location = "member.php"; //หน้าที่ต้องการให้กระโดดไป
-        });
-        }, 1000);
-        </script>';
+        // Execute
+        if ($stmtUpdate->execute()) {
+            header("Location: member.php");
+            exit;
+        } else {
+            echo '<p>เกิดข้อผิดพลาดในการอัปเดตข้อมูล.</p>';
         }
-    } //try
-    //catch exception
-    catch (Exception $e) {
-        //echo 'Message: ' .$e->getMessage();
-        echo '<script>
-                             setTimeout(function() {
-                              swal({
-                                  title: "เกิดข้อผิดพลาด",
-                                  type: "error"
-                              }, function() {
-                                  window.location = "member.php"; //หน้าที่ต้องการให้กระโดดไป
-                              });
-                            }, 1000);
-                        </script>';
-    } //catch
+    } catch (PDOException $e) {
+        echo '<p>เกิดข้อผิดพลาด: ' . htmlspecialchars($e->getMessage()) . '</p>';
+    }
 }
+
 ?>
 
 <!-- window.location = "member.php?id=' . $id . '&act=edit"; //หน้าที่ต้องการให้กระโดดไป (เมื่อแก้ไขข้อมูลเสร็จแล้ว จะยังอยู่หน้าแก้ไขข้อมูลโดยไม่เด้งไปที่หน้าตาราง member.php)-->

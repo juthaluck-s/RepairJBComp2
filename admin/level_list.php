@@ -45,16 +45,16 @@ $rslevel = $querylevel->fetchAll();
                                 <tbody>
                                     <?php
                                     $i = 1; //start number
-                                    foreach ($rslevel as $row) { ?>
+                                    foreach ($rslevel as $rowlev) { ?>
                                         <tr>
                                             <td align="center"> <?php echo $i++ ?> </td>
-                                            <td><?= $row['level_name']; ?></td>
+                                            <td><?= $rowlev['level_name']; ?></td>
                                             <td align="center">
-                                                <a href="level.php?id=<?= $row['level_id']; ?>&act=edit"
+                                                <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=edit"
                                                     class="btn btn-warning btn-sm">แก้ไข</a>
                                             </td>
                                             <td align="center">
-                                                <a href="level.php?id=<?= $row['level_id']; ?>&act=delete"
+                                                <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=delete"
                                                     class="btn btn-danger btn-sm"
                                                     onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
                                             </td>

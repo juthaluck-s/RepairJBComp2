@@ -105,7 +105,19 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                             ข้อมูลช่างไม่สมบูรณ์
                                                         <?php endif; ?>
                                                     <?php else: ?>
-                                                        -
+                                                        <style>
+                                                            .center-text {
+                                                                display: flex;
+                                                                /* ใช้ flexbox เพื่อจัดกึ่งกลาง */
+                                                                justify-content: center;
+                                                                /* จัดกึ่งกลางแนวนอน */
+                                                                align-items: center;
+                                                                /* จัดกึ่งกลางแนวตั้ง */
+                                                                height: 100%;
+                                                                /* ใช้เพื่อให้แนวตั้งอยู่ตรงกลางในกรณีที่ parent มีความสูง */
+                                                            }
+                                                        </style>
+                                                        <div class="center-text">-</div>
                                                         <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
                                                     <?php endif; ?>
                                                 </td>

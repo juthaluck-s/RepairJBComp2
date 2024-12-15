@@ -1,35 +1,23 @@
 <?php
+// ดึง m_id ของผู้ใช้งานจาก session หรือระบบการยืนยันตัวตน
+// ตัวอย่างสมมุติว่าได้ m_id จาก session
+$m_id = $_SESSION['staff_id'];  // ตรวจสอบว่า session ได้ตั้งค่า m_id หรือยัง
 
 $queryCaseList = $condb->prepare("SELECT *
 FROM tbl_case AS c
 LEFT JOIN tbl_member AS m ON c.ref_m_id = m.m_id
-LEFT JOIN tbl_member AS mec ON c.ref_mec_id = m.m_id
+LEFT JOIN tbl_mechanic AS mec ON c.ref_mec_id = mec.mec_id
+LEFT JOIN tbl_head_mechanic AS hmec ON c.ref_head_mechanic_id = hmec.head_mechanic_id
 LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
 LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
 LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
 LEFT JOIN tbl_building AS bd ON c.ref_building_id = bd.building_id
+WHERE c.ref_mec_id = :m_id");  // เงื่อนไขเพื่อเลือกเฉพาะข้อมูลที่มอบหมายให้ผู้ใช้งาน
 
-");
-
+$queryCaseList->bindParam(':m_id', $m_id, PDO::PARAM_INT);
 $queryCaseList->execute();
 $rsCaseList = $queryCaseList->fetchAll();
 
-// function getMembersByLevel($condb, $level)
-// {
-// 	$queryMemberlevel = $condb->prepare("SELECT m_id, firstname, lastname, m_level FROM tbl_member WHERE m_level = :level");
-// 	$queryMemberlevel->bindParam(':level', $level, PDO::PARAM_STR);
-// 	$queryMemberlevel->execute();
-// 	return $queryMemberlevel->fetchAll(PDO::FETCH_ASSOC);
-// }
-// $admins = getMembersByLevel($condb, 'admin');
-// $headmechanics = getMembersByLevel($condb, 'head-mechanic');
-// $mechanics = getMembersByLevel($condb, 'mechanic');
-// $employees = getMembersByLevel($condb, 'employee');
-
-// print_r($admins);
-// print_r($headmechanics);
-// print_r($mechanics);
-// print_r($employees);
 
 
 
@@ -73,8 +61,9 @@ $rsCaseList = $queryCaseList->fetchAll();
 										<th class="text-center">รายละเอียด</th>
 										<th width="8%" class="text-center">สถานะ</th>
 										<th width="12%" class="text-center">ผู้มอบหมายงาน</th>
-										<th width="8%" class="text-center">Y/M/D<br>(ที่แจ้งซ่อม)</th>
-										<th width="8%" class="text-center">ผลประเมินผล</th>
+										<th width="8%" class="text-center">Y/M/D</th>
+										<th width="8%" class="text-center">ส่งงาน</th>
+										<th width="10%" class="text-center">ผลประเมิน</th>
 
 									</tr>
 								</thead>
@@ -95,7 +84,7 @@ $rsCaseList = $queryCaseList->fetchAll();
 
 
 
-											<td> <?= $row['case_detail']; ?><br>
+											<td> <?= $row['case_detail']; ?>
 												สถานที่ : <?= $row['building_name']; ?> ชั้น
 												<?= $row['case_floor']; ?> ห้อง
 												<?= $row['case_room']; ?><br>
@@ -104,11 +93,15 @@ $rsCaseList = $queryCaseList->fetchAll();
 												Email : <?= $row['m_email']; ?><br></td>
 											<td align="center"><?= $row['status_name']; ?></td>
 											<td>
-												<?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . ' <br>' . 'เบอร์โทร: ' . $row['m_tel'] . '<br>' . 'Email: ' . $row['m_email'] ?>
+												<?= $row['head_mechanic_title_name'] . ' ' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . ' <br>' . 'เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>' . 'Email: ' . $row['head_mechanic_email'] ?>
 											</td>
 
 
 											<td align="center"><?= $row['dateSave']; ?></a></td>
+
+											<td align="center"><a
+													href="case.php?id=<?= $row['case_id']; ?>&act=openjob&no=<?= $i - 1; ?>"
+													class="btn btn-success btn-sm">ส่งงาน</a></td>
 
 											<td align="center"><a
 													href="case.php?id=<?= $row['assessment_name']; ?>&act=assessment"

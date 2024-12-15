@@ -5,8 +5,8 @@ include 'sidebar_menu.php';
 $act = (isset($_GET['act']) ? $_GET['act'] : '');
 
 //สร้างเงื่อนไขในการเรียกใช้ไฟล์
-if ($act == 'add') {
-    include 'case_form_add.php';
+if ($act == 'openjob') {
+    include 'case_form_open_job.php';
 } else if ($act == 'delete') {
     include 'case_delete.php';
 } else if ($act == 'edit') {
