@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2024 at 08:55 AM
+-- Generation Time: Dec 16, 2024 at 10:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -38,7 +38,7 @@ CREATE TABLE `tbl_assessment` (
 --
 
 INSERT INTO `tbl_assessment` (`assessment_id`, `assessment_name`, `assessment_count`) VALUES
-(1, 'ดีมาก', 0),
+(1, 'ดีมาก', 3),
 (2, 'ดี', 0),
 (3, 'ปานกลาง', 0),
 (4, 'พอใช้', 0),
@@ -98,10 +98,17 @@ CREATE TABLE `tbl_case` (
 --
 
 INSERT INTO `tbl_case` (`case_id`, `ref_equipment_id`, `case_detail`, `case_floor`, `case_room`, `case_img`, `ref_status_id`, `ref_m_id`, `ref_assessment_id`, `ref_building_id`, `dateSave`, `ref_head_mechanic_id`, `ref_mec_id`, `case_update_log`, `case_update`) VALUES
-(10, 3, '<p>456786786</p>', '1', '114', '64520371320241215_081135.jpg', 1, 2, 0, 4, '2024-12-15 07:11:35', 0, 0, '', '2024-12-15 07:11:35'),
-(11, 3, '<p>367642565</p>', '6', '367', '29707989420241215_081149.jpg', 3, 2, 0, 7, '2024-12-15 07:11:49', 13, 15, 'ef;lmsd;mc;ams;lgmasgdad', '2024-12-16 07:55:00'),
-(12, 1, '<p>12312312</p>', '224', '123', '187030884820241216_085323.jpg', 1, 2, 0, 5, '2024-12-16 07:53:23', 0, 0, '', '2024-12-16 07:53:23'),
-(13, 3, '<p>1231231</p>', '123132', '1231', '134866331920241216_085332.jpg', 2, 2, 0, 5, '2024-12-16 07:53:32', 13, 15, '', '2024-12-16 07:53:32');
+(10, 3, '<p>456786786</p>', '1', '114', '64520371320241215_081135.jpg', 3, 2, 0, 4, '2024-12-15 07:11:35', 13, 15, 'mdghmdud', '2024-12-16 08:36:12'),
+(11, 3, '<p>367642565</p>', '6', '367', '29707989420241215_081149.jpg', 4, 2, 1, 7, '2024-12-15 07:11:49', 13, 15, 'ef;lmsd;mc;ams;lgmasgdad', '2024-12-16 07:55:00'),
+(12, 1, '<p>12312312</p>', '224', '123', '187030884820241216_085323.jpg', 3, 2, 0, 5, '2024-12-16 07:53:23', 13, 15, 'ndyihdgfhfg', '2024-12-16 08:35:59'),
+(13, 3, '<p>1231231</p>', '123132', '1231', '134866331920241216_085332.jpg', 3, 2, 0, 5, '2024-12-16 07:53:32', 13, 15, 'ฟหกฟหแปผแผ', '2024-12-16 08:18:12'),
+(15, 1, '<p>45645645</p>', '3', '334', '77504477620241216_091309.png', 4, 2, 1, 7, '2024-12-16 08:13:09', 13, 15, 'dasdasvadhaehdfh', '2024-12-16 08:35:54'),
+(17, 3, '<p>1237378373</p>', '4', '147', '111651685620241216_094720.png', 2, 2, 0, 4, '2024-12-16 08:47:20', 13, 15, '', '2024-12-16 08:47:20'),
+(19, 2, '<p>222</p>', '4', '447', '178283481020241216_094844.png', 2, 2, 0, 8, '2024-12-16 08:48:44', 13, 15, '', '2024-12-16 08:48:44'),
+(24, 4, '<p>45646456</p>', '2', '224', '6179897920241216_100331.png', 1, 3, 0, 5, '2024-12-16 09:03:31', 0, 0, '', '2024-12-16 09:03:31'),
+(25, 4, '<p>78</p>', '5', '854', '63037996320241216_100347.jpg', 1, 3, 0, 0, '2024-12-16 09:03:47', 0, 0, '', '2024-12-16 09:03:47'),
+(26, 2, '<p>12354</p>', '4', '445', '101582156620241216_100554.png', 1, 3, 0, 8, '2024-12-16 09:05:54', 0, 0, '', '2024-12-16 09:05:54'),
+(27, 2, '<p>546546546</p>', '667', '67678', '201679058920241216_100607.jpg', 1, 3, 0, 0, '2024-12-16 09:06:07', 0, 0, '', '2024-12-16 09:06:07');
 
 -- --------------------------------------------------------
 
@@ -230,18 +237,19 @@ CREATE TABLE `tbl_mechanic` (
   `mec_lastname` varchar(100) NOT NULL,
   `mec_tel` varchar(20) NOT NULL,
   `mec_email` varchar(100) NOT NULL,
-  `mec_doing` int(11) NOT NULL,
-  `mec_close` int(11) NOT NULL
+  `mec_doing` int(11) NOT NULL COMMENT 'งานที่ได้รับมอบหมาย(กำลังทำ)',
+  `mec_close` int(11) NOT NULL COMMENT 'งานที่ปิดแล้ว',
+  `mec_all_job` int(11) NOT NULL COMMENT 'งานทั้งหมดที่ได้รับมอบหมาย รวมกับปิด'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_mechanic`
 --
 
-INSERT INTO `tbl_mechanic` (`mec_id`, `mec_title_name`, `mec_firstname`, `mec_lastname`, `mec_tel`, `mec_email`, `mec_doing`, `mec_close`) VALUES
-(15, 'นาย', 'mec01', 'mec01', '0865215483', 'mec01@test.com', 0, 0),
-(16, 'นาง', 'mec02', 'mec02', '0865215482', 'mec02@test.com', 0, 0),
-(17, 'นาย', 'mec03', 'mec03', '0865215482', 'mec03@test.com', 0, 0);
+INSERT INTO `tbl_mechanic` (`mec_id`, `mec_title_name`, `mec_firstname`, `mec_lastname`, `mec_tel`, `mec_email`, `mec_doing`, `mec_close`, `mec_all_job`) VALUES
+(15, 'นาย', 'mec01', 'mec01', '0865215483', 'mec01@test.com', 0, 0, 0),
+(16, 'นาง', 'mec02', 'mec02', '0865215482', 'mec02@test.com', 0, 0, 0),
+(17, 'นาย', 'mec03', 'mec03', '0865215482', 'mec03@test.com', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -444,7 +452,7 @@ INSERT INTO `tbl_status` (`status_id`, `status_name`) VALUES
 (1, 'รอดำเนินการ'),
 (2, 'กำลังซ่อม'),
 (3, 'รอประเมินผล'),
-(5, 'ปิดงาน');
+(4, 'ปิดงาน');
 
 -- --------------------------------------------------------
 
@@ -564,7 +572,7 @@ ALTER TABLE `tbl_assessment`
 -- AUTO_INCREMENT for table `tbl_case`
 --
 ALTER TABLE `tbl_case`
-  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_counter`
