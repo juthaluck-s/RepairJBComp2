@@ -86,56 +86,63 @@ $rsCaseList = $queryCaseList->fetchAll();
 
                                         <?php foreach ($rsCaseList as $row) { ?>
 
-                                            <tr>
-                                                <td align="center"> <?php echo $i++ ?></td>
+                                        <tr>
+                                            <td align="center"> <?php echo $i++ ?></td>
 
-                                                <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
-                                                </td>
-                                                <td><?= $row['equipment_name']; ?></td>
-                                                <td><?= $row['case_detail'] . '' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] ?>
-                                                </td>
-                                                <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
+                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
+                                            </td>
+                                            <td><?= $row['equipment_name']; ?></td>
+                                            <td><?= $row['case_detail'] . '' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] ?>
+                                            </td>
+                                            <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
 
-                                                <td>
-                                                    <?php if ($row['ref_status_id'] != 1): ?>
-                                                        <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
-                                                        <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
-                                                        <?php else: ?>
-                                                            ข้อมูลช่างไม่สมบูรณ์
-                                                        <?php endif; ?>
-                                                    <?php else: ?>
-                                                        <style>
-                                                            .center-text {
-                                                                display: flex;
-                                                                /* ใช้ flexbox เพื่อจัดกึ่งกลาง */
-                                                                justify-content: center;
-                                                                /* จัดกึ่งกลางแนวนอน */
-                                                                align-items: center;
-                                                                /* จัดกึ่งกลางแนวตั้ง */
-                                                                height: 100%;
-                                                                /* ใช้เพื่อให้แนวตั้งอยู่ตรงกลางในกรณีที่ parent มีความสูง */
-                                                            }
-                                                        </style>
-                                                        <div class="center-text">-</div>
-                                                        <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
-                                                    <?php endif; ?>
-                                                </td>
-
-
+                                            <td>
+                                                <?php if ($row['ref_status_id'] != 1): ?>
+                                                <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+                                                <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+                                                <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร: ' . $row['m_tel'] . '<br>Email: ' . $row['m_email']; ?>
+                                                <?php else: ?>
+                                                ข้อมูลช่างไม่สมบูรณ์
+                                                <?php endif; ?>
+                                                <?php else: ?>
+                                                <style>
+                                                .center-text {
+                                                    display: flex;
+                                                    /* ใช้ flexbox เพื่อจัดกึ่งกลาง */
+                                                    justify-content: center;
+                                                    /* จัดกึ่งกลางแนวนอน */
+                                                    align-items: center;
+                                                    /* จัดกึ่งกลางแนวตั้ง */
+                                                    height: 100%;
+                                                    /* ใช้เพื่อให้แนวตั้งอยู่ตรงกลางในกรณีที่ parent มีความสูง */
+                                                }
+                                                </style>
+                                                <div class="center-text">-</div>
+                                                <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+                                                <?php endif; ?>
+                                            </td>
 
 
-                                                <td align="center">
-                                                    <?php if ($row['status_name'] === 'รอประเมินผล'): ?>
-                                                        <a href="case.php?id=<?= $row['assessment_name']; ?>&act=assessment"
-                                                            class="btn btn-info btn-sm">ประเมิน</a>
-                                                    <?php else: ?>
-                                                        -
-                                                    <?php endif; ?>
-                                                </td>
 
 
-                                            </tr>
+                                            <td align="center">
+                                                <?php if ($row['ref_status_id'] == 3): ?>
+                                                <!-- ถ้าสถานะเป็น 3 จะแสดงปุ่ม "ประเมิน" -->
+                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=assessment&no=<?= $i - 1; ?>"
+                                                    class="btn btn-info btn-sm">ประเมิน</a>
+                                                <?php elseif ($row['ref_status_id'] == 4): ?>
+                                                <!-- ถ้าสถานะเป็น 4 จะแสดงปุ่ม "Open" -->
+                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
+                                                    class="btn btn-success btn-sm">Open</a>
+                                                <?php else: ?>
+                                                <!-- ถ้าสถานะเป็น 1 หรือ 2 จะแสดงเครื่องหมาย "-" -->
+                                                -
+                                                <?php endif; ?>
+                                            </td>
+
+
+
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
 

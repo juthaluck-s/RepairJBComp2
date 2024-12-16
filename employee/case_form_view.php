@@ -1,5 +1,5 @@
 <?php
-if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'openjob') {
+if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'view') {
     $case_id = $_GET['id'];  // รับค่า case_id ที่ส่งมาจาก URL
 
     // คิวรีเพื่อดึงข้อมูลจาก tbl_case ที่ตรงกับ case_id
@@ -7,7 +7,7 @@ if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'openjob') {
                                         FROM tbl_case AS c
                                         LEFT JOIN tbl_member AS emp ON c.ref_m_id = emp.m_id
                                         INNER JOIN tbl_department AS dpm ON emp.ref_department_id = dpm.department_id
-                                    INNER JOIN tbl_position AS pst ON emp.ref_position_id = pst.position_id
+                                        INNER JOIN tbl_position AS pst ON emp.ref_position_id = pst.position_id
                                         LEFT JOIN tbl_head_mechanic AS hmec ON c.ref_head_mechanic_id = hmec.head_mechanic_id
                                         LEFT JOIN tbl_mechanic AS mec ON c.ref_mec_id = mec.mec_id
                                         LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
@@ -36,6 +36,10 @@ if (isset($_GET['no'])) {
     $no = $_GET['no'];
 }
 
+// Fetching assessment data from the database
+$stmtAssessment = $condb->prepare("SELECT * FROM tbl_assessment");
+$stmtAssessment->execute();
+$rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -48,7 +52,7 @@ if (isset($_GET['no'])) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>แบบฟอร์มส่งงานแจ้งซ่อมคอมพิวเตอร์/อุปกรณ์</h1>
+                    <h1>รายการส่งงานแจ้งซ่อมคอมพิวเตอร์/อุปกรณ์</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -118,10 +122,15 @@ if (isset($_GET['no'])) {
 
                                                                 <textarea name="case_update_log" required
                                                                     class="form-control" rows="4" cols="50"
-                                                                    style="background-color:#d4e8e8;"></textarea>
+                                                                    style="background-color:#d4e8e8; text-align: left;"
+                                                                    readonly>
+                                                                <?= $rsCase_open['case_update_log']; ?></textarea>
                                                                 <br>
-                                                                <button type="submit" name="submit"
-                                                                    class="btn btn-primary">บันทึกส่งงาน</button>
+                                                                ว/ด/ป ที่ส่งงาน:
+                                                                <?= date('d/m/Y H:i:s', strtotime($rsCase_open['case_update'])); ?><br>
+                                                                <font color="green">ผลประเมิน :
+                                                                    <?= $rsCase_open['assessment_name']; ?></font>
+
                                                 </form>
 
 
@@ -129,9 +138,14 @@ if (isset($_GET['no'])) {
                                                 </tr>
                                                 </tbody>
                                             </table>
+
+
+
                                         </div>
                                         <!-- /.card-body -->
                                     </div>
+
+
                                     <!-- /.card -->
                                 </div>
                                 <!-- /.col -->
@@ -148,46 +162,53 @@ if (isset($_GET['no'])) {
 </div>
 <!-- content-wrapper -->
 
+
+
 <?php
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit']) && isset($_POST['assessment_id'])) {
     try {
-        // ตรวจสอบการเชื่อมต่อฐานข้อมูล
-        $case_id = $_GET['id']; // รับ `case_id` จาก URL
-        $case_update_log = $_POST['case_update_log'];
+        // รับค่า assessment_id ที่เลือก
+        $assessment_id = $_POST['assessment_id'];
+        $case_id = $_GET['id']; // รับ case_id จาก URL
 
-        // อัปเดตข้อมูลใน tbl_case
-        $stmtCaseupdatelog = $condb->prepare("
+        // เชื่อมต่อกับฐานข้อมูลและอัปเดตข้อมูลใน tbl_case
+        $stmtUpdateAsm = $condb->prepare("
             UPDATE tbl_case
-            SET case_update_log = :case_update_log,
-                case_update = NOW(),
-                ref_status_id = 3 -- เปลี่ยนสถานะเป็นรอประเมินผล
+            SET ref_assessment_id = :assessment_id,
+                ref_status_id = 4  -- เปลี่ยนสถานะเป็น 'ปิดงาน'
             WHERE case_id = :case_id
         ");
+        $stmtUpdateAsm->bindParam(':assessment_id', $assessment_id, PDO::PARAM_INT);
+        $stmtUpdateAsm->bindParam(':case_id', $case_id, PDO::PARAM_INT);
+        $stmtUpdateAsm->execute();
 
-        $stmtCaseupdatelog->bindParam(':case_update_log', $case_update_log, PDO::PARAM_STR);
-        $stmtCaseupdatelog->bindParam(':case_id', $case_id, PDO::PARAM_INT);
-        $result = $stmtCaseupdatelog->execute();
+        // อัปเดตค่าการประเมินใน tbl_assessment
+        $stmtUpdateAsmCount = $condb->prepare("
+            UPDATE tbl_assessment
+            SET assessment_count = assessment_count + 1
+            WHERE assessment_id = :assessment_id
+        ");
+        $stmtUpdateAsmCount->bindParam(':assessment_id', $assessment_id, PDO::PARAM_INT);
+        $stmtUpdateAsmCount->execute();
 
-        if ($result) {
-            echo '<script>
-                    setTimeout(function() {
-                        swal({
-                            title: "ส่งงานสำเร็จ!",
-                            type: "success"
-                        }, function() {
-                            window.location = "case.php";
-                        });
-                    }, 1000);
-                </script>';
-        }
+        // แสดง alert ว่าส่งผลประเมินสำเร็จ
+        echo '<script>
+                setTimeout(function() {
+                    swal({
+                        title: "ส่งผลประเมินสำเร็จ!",
+                        type: "success"
+                    }, function() {
+                        window.location = "case.php";  // เปลี่ยนหน้าไปที่หน้า case
+                    });
+                }, 1000);
+            </script>';
     } catch (Exception $e) {
+        // Handling exceptions
         echo '<script>
                 setTimeout(function() {
                     swal({
                         title: "เกิดข้อผิดพลาด!",
-                        text: "ไม่สามารถบันทึกข้อมูลได้",
+                        text: "ไม่สามารถบันทึกข้อมูลได้: ' . $e->getMessage() . '",
                         type: "error"
                     }, function() {
                         window.location = "case.php";
@@ -196,3 +217,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             </script>';
     }
 }
+
+?>

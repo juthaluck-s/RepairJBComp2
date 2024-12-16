@@ -3,7 +3,9 @@
 // คิวรีรายการกรณีทั้งหมด
 $queryCaseList = $condb->prepare("SELECT *
                                   FROM tbl_case AS c
-                                  LEFT JOIN tbl_member AS m ON c.ref_m_id = m.m_id
+                                  LEFT JOIN tbl_member AS emp ON c.ref_m_id = emp.m_id
+                                  INNER JOIN tbl_department AS dpm ON emp.ref_department_id = dpm.department_id
+                                    INNER JOIN tbl_position AS pst ON emp.ref_position_id = pst.position_id
                                   LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
                                   LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
                                   LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
@@ -45,7 +47,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                             NEW <span class="badge">5</span></a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
                                             Assigned <span class="badge">16</span></a>
-                                        <a href="case.php?act=close" class="btn btn-success">
+                                        <a href="case.php?act=success" class="btn btn-success">
                                             Success <span class="badge">179</span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
                                             AllJob <span class="badge">200</span></a>
@@ -85,7 +87,10 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                                     width="70px"></td>
                                                             <td align="center"><?= $row['equipment_name']; ?></td>
                                                             <td>
-                                                                <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
+                                                                <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+
+                                                                    '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] .
+                                                                    '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
                                                             </td>
                                                             <td align="center"><?= htmlspecialchars($row['status_name']); ?>
                                                             </td>

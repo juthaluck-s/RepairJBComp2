@@ -7,12 +7,8 @@ $act = (isset($_GET['act']) ? $_GET['act'] : '');
 //สร้างเงื่อนไขในการเรียกใช้ไฟล์
 if ($act == 'openjob') {
     include 'case_form_open_job.php';
-} else if ($act == 'delete') {
-    include 'case_delete.php';
-} else if ($act == 'edit') {
-    include 'case_form_assessment.php';
-} else if ($act == 'image') {
-    include 'case_form_upload_image.php';
+} else if ($act == 'view') {
+    include 'case_form_view.php';
 } else {
     include 'case_list.php';
 }
