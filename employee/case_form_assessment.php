@@ -146,16 +146,16 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                         <table width="20%" border="1" align="center" cellpadding="0"
                                                             cellspacing="0" class="table table-bordered table-hover">
                                                             <?php foreach ($rsAssessment as $rsAsm) { ?>
-                                                            <tr>
-                                                                <td height="30" align="center">
-                                                                    <input type="radio" name="assessment_id"
-                                                                        value="<?= $rsAsm['assessment_id']; ?>"
-                                                                        required />
-                                                                </td>
-                                                                <td height="30">
-                                                                    <?= $rsAsm['assessment_name']; ?>
-                                                                </td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td height="30" align="center">
+                                                                        <input type="radio" name="assessment_id"
+                                                                            value="<?= $rsAsm['assessment_id']; ?>"
+                                                                            required />
+                                                                    </td>
+                                                                    <td height="30">
+                                                                        <?= $rsAsm['assessment_name']; ?>
+                                                                    </td>
+                                                                </tr>
                                                             <?php } ?>
                                                         </table>
 
@@ -219,6 +219,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit']) && isset($_
         ");
         $stmtUpdateAsmCount->bindParam(':assessment_id', $assessment_id, PDO::PARAM_INT);
         $stmtUpdateAsmCount->execute();
+
+        $stmtGetMecId = $condb->prepare("SELECT ref_mec_id FROM tbl_case WHERE case_id = :case_id");
+        $stmtGetMecId->bindParam(':case_id', $case_id, PDO::PARAM_INT);
+        $stmtGetMecId->execute();
+        $rsGetMecId = $stmtGetMecId->fetch(PDO::FETCH_ASSOC);
+
+        if ($rsGetMecId && isset($rsGetMecId['ref_mec_id'])) {
+            $mec_id = $rsGetMecId['ref_mec_id'];
+
+            // อัปเดต mec_close เพิ่ม +1
+            $stmtUpdateMecClose = $condb->prepare("
+                UPDATE tbl_mechanic 
+                SET mec_close = mec_close + 1,
+               mec_doing = mec_doing - 1
+                WHERE mec_id = :mec_id
+            ");
+            $stmtUpdateMecClose->bindParam(':mec_id', $mec_id, PDO::PARAM_INT);
+            $stmtUpdateMecClose->execute();
+        }
+
 
         // แสดง alert ว่าส่งผลประเมินสำเร็จ
         echo '<script>

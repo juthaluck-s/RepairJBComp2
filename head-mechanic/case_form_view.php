@@ -127,7 +127,11 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                                 <?= $rsCase_open['case_update_log']; ?></textarea>
                                                                 <br>
                                                                 ว/ด/ป ที่ส่งงาน:
-                                                                <?= date('d/m/Y H:i:s', strtotime($rsCase_open['case_update'])); ?><br>
+                                                                <?= !empty($rsCase_open['case_update'])
+                                                                    ? date('d/m/Y H:i:s', strtotime($rsCase_open['case_update']))
+                                                                    : '-'; ?>
+                                                                <br>
+
                                                                 <font color="green">ผลประเมิน :
                                                                     <?= $rsCase_open['assessment_name']; ?></font>
 

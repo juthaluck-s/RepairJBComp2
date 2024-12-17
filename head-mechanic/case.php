@@ -13,6 +13,8 @@ if ($act == 'view') {
     include 'case_list_success.php';
 } else if ($act == 'assign') {
     include 'case_form_assign.php';
+} else if ($act == 'all') {
+    include 'case_list_all.php';
 } else {
     include 'case_list.php';
 }

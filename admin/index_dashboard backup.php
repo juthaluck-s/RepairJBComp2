@@ -1,9 +1,10 @@
 <?php
 
-//จำนวนงานแจ้งซ่อมทั้งหมด
-$stmtCountCase = $condb->prepare("SELECT COUNT(*) as totalCase FROM tbl_case");
-$stmtCountCase->execute();
-$rowCase = $stmtCountCase->fetch(PDO::FETCH_ASSOC);
+
+//จำนวนผู้เข้าชมเว็บไซต์ทั้งหมด
+$stmtCountCounter = $condb->prepare("SELECT COUNT(*) as totalView FROM tbl_counter");
+$stmtCountCounter->execute();
+$rowC = $stmtCountCounter->fetch(PDO::FETCH_ASSOC);
 
 //จำนวนสมาชิก
 $stmtCountMember = $condb->prepare("SELECT COUNT(*) as totalMember FROM tbl_member");
@@ -122,39 +123,71 @@ $report_data_year = implode(",", $report_data_year);
 
                             <!-- Small boxes (Stat box) -->
                             <div class="row">
-                                <div class="col-lg-6 col-6">
+                                <div class="col-lg-3 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-info">
                                         <div class="inner">
-                                            <h3><?= $rowCase['totalCase']; ?></h3>
+                                            <h3><?= $rowC['totalView']; ?></h3>
 
-                                            <p>จำนวนงานแจ้งซ่อมทั้งหมด</p>
+                                            <p>เข้าชมเว็บไซต์</p>
 
                                         </div>
                                         <div class="icon">
-                                            <i class="nav-icon fas fa-screwdriver-wrench"></i>
+                                            <i class="ion ion-connection-bars"></i>
                                         </div>
-                                        <!-- <a href="#" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a> -->
+                                        <a href="#" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 <!-- ./col -->
-                                <div class="col-lg-6 col-6">
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-success">
+                                        <div class="inner">
+                                            <h3><?= $rowM['totalMember']; ?></h3>
+
+                                            <p>สมาชิก</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-person-stalker"></i>
+                                        </div>
+                                        <a href="member.php" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-3 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-warning">
                                         <div class="inner">
                                             <h3><?= $rowM['totalMember']; ?></h3>
 
-                                            <p>จำนวนพนักงานทั้งหมด</p>
+                                            <p>ผู้ดูแลระบบ</p>
                                         </div>
                                         <div class="icon">
-                                            <i class="ion ion-person-stalker"></i>
+                                            <i class="ion ion-person-add"></i>
                                         </div>
-                                        <!-- <a href="member.php" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a> -->
+                                        <a href="admin.php" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
+                                <!-- ./col -->
+                                <div class="col-lg-3 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-danger">
+                                        <div class="inner">
+                                            <h3><?= $rowP['totalProduct']; ?></h3>
 
+                                            <p>สินค้า</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="ion ion-pie-graph"></i>
+                                        </div>
+                                        <a href="product.php" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
                             </div>
 
                             <!-- /.row -->
@@ -175,7 +208,7 @@ $report_data_year = implode(",", $report_data_year);
                                                 text: 'จำนวนการเข้าชมเว็บไซต์แยกตามวัน'
                                             },
                                             subtitle: {
-                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                                text: 'รวมทั้งสิ้น <?= $rowC['totalView']; ?> ครั้ง '
                                             },
                                             accessibility: {
                                                 announceNewData: {
@@ -234,7 +267,7 @@ $report_data_year = implode(",", $report_data_year);
                                                 text: 'จำนวนการเข้าชมเว็บไซต์แยกตามเดือน'
                                             },
                                             subtitle: {
-                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                                text: 'รวมทั้งสิ้น <?= $rowC['totalView']; ?> ครั้ง '
                                             },
                                             accessibility: {
                                                 announceNewData: {
@@ -293,7 +326,7 @@ $report_data_year = implode(",", $report_data_year);
                                                 text: 'จำนวนการเข้าชมเว็บไซต์แยกตามปี'
                                             },
                                             subtitle: {
-                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                                text: 'รวมทั้งสิ้น <?= $rowC['totalView']; ?> ครั้ง '
                                             },
                                             accessibility: {
                                                 announceNewData: {

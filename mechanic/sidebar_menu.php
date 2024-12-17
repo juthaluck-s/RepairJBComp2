@@ -97,10 +97,10 @@ try {
                 </li>
 
                 <li class="nav-item">
-                    <a href="report.php" class="nav-link">
+                    <a href="report.php?act=report" class="nav-link">
                         <i class="nav-icon fas fa-screwdriver-wrench"></i>
                         <p>
-                            รายงานแจ้งซ่อม
+                            รายงานการทำงาน
                         </p>
                     </a>
                 </li>

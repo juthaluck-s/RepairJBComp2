@@ -44,13 +44,13 @@ $rsCaseList = $queryCaseList->fetchAll();
                                 <div class="box-body">
                                     <p>
                                         <a href="case.php" class="btn btn-primary">
-                                            NEW <span class="badge">5</span></a>
+                                            NEW <span class="badge"></span></a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
-                                            Assigned <span class="badge">16</span></a>
+                                            Assigned <span class="badge"></span></a>
                                         <a href="case.php?act=success" class="btn btn-success">
-                                            Success <span class="badge">179</span></a>
+                                            Success <span class="badge"></span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
-                                            AllJob <span class="badge">200</span></a>
+                                            AllJob <span class="badge"></span></a>
                                     </p>
                                     <div class="card">
 

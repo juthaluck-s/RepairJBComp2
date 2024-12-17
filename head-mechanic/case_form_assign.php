@@ -7,7 +7,7 @@ if (isset($_GET['id']) && isset($_GET['act']) && $_GET['act'] == 'assign') {
 										FROM tbl_case AS c
 										LEFT JOIN tbl_member AS emp ON c.ref_m_id = emp.m_id
 										INNER JOIN tbl_department AS dpm ON emp.ref_department_id = dpm.department_id
-                                    INNER JOIN tbl_position AS pst ON emp.ref_position_id = pst.position_id
+                                        INNER JOIN tbl_position AS pst ON emp.ref_position_id = pst.position_id
 										LEFT JOIN tbl_equipment AS eqm ON c.ref_equipment_id = eqm.equipment_id
 										LEFT JOIN tbl_status AS stt ON c.ref_status_id = stt.status_id
 										LEFT JOIN tbl_assessment AS asm ON c.ref_assessment_id = asm.assessment_id
@@ -123,12 +123,12 @@ if (isset($_GET['no'])) {
                                             <?php
                                             // Query ช่าง Mechanic โดยใช้ข้อมูลจาก tbl_mechanic มากกว่า
                                             $querySelectMechanic = " SELECT *
-											FROM tbl_mechanic AS mec
-											INNER JOIN tbl_member AS m ON mec.mec_id = m.m_id
+											FROM tbl_member AS m
+											INNER JOIN tbl_mechanic AS mec ON mec.mec_id = m.m_id
 											INNER JOIN tbl_department AS dpm ON m.ref_department_id = dpm.department_id
 											INNER JOIN tbl_position AS pst ON m.ref_position_id = pst.position_id
 											WHERE m.ref_level_id = 3
-											ORDER BY mec.mec_doing ASC"; // จัดลำดับจากงานที่กำลังทำ
+											ORDER BY mec.mec_id ASC"; // จัดลำดับจากงานที่กำลังทำ
 
                                             $result = $condb->query($querySelectMechanic);
                                             ?>
@@ -172,35 +172,14 @@ if (isset($_GET['no'])) {
                                                                     แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
                                                                     ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
                                                                 </td>
+
                                                                 <td align="center">
-                                                                    <?php
-                                                                    // คิวรีเพื่อนับจำนวนเคสที่สถานะ = 2 (กำลังทำงาน) สำหรับ mec_id
-                                                                    $stmtMecDoing = $condb->prepare("
-            SELECT COUNT(*) AS mec_doing
-            FROM tbl_case
-            WHERE ref_mec_id = :mec_id AND ref_status_id = 2
-        ");
-                                                                    $stmtMecDoing->bindParam(':mec_id', $row['mec_id'], PDO::PARAM_INT);
-                                                                    $stmtMecDoing->execute();
-                                                                    $mecDoing = $stmtMecDoing->fetch(PDO::FETCH_ASSOC);
-                                                                    echo htmlspecialchars($mecDoing['mec_doing']);
-                                                                    ?>
-                                                                </td>
-                                                                <td align="center">
-                                                                    <?php
-                                                                    // คิวรีเพื่อนับจำนวนเคสที่สถานะ = 4 (ปิดงาน) สำหรับ mec_id
-                                                                    $stmtMecClose = $condb->prepare("
-            SELECT COUNT(*) AS mec_close
-            FROM tbl_case
-            WHERE ref_mec_id = :mec_id AND ref_status_id = 4
-        ");
-                                                                    $stmtMecClose->bindParam(':mec_id', $row['mec_id'], PDO::PARAM_INT);
-                                                                    $stmtMecClose->execute();
-                                                                    $mecClose = $stmtMecClose->fetch(PDO::FETCH_ASSOC);
-                                                                    echo htmlspecialchars($mecClose['mec_close']);
-                                                                    ?>
+                                                                    <?= htmlspecialchars($row['mec_doing']) ?>
                                                                 </td>
 
+                                                                <td align="center">
+                                                                    <?= htmlspecialchars($row['mec_close']) ?>
+                                                                </td>
 
                                                             </tr>
                                                     <?php

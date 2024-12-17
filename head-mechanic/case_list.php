@@ -44,13 +44,13 @@ $rsCaseList = $queryCaseList->fetchAll();
                                 <div class="box-body">
                                     <p>
                                         <a href="case.php" class="btn btn-primary">
-                                            NEW <span class="badge">5</span></a>
+                                            NEW <span class="badge"></span></a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
-                                            Assigned <span class="badge">16</span></a>
+                                            Assigned <span class="badge"></span></a>
                                         <a href="case.php?act=success" class="btn btn-success">
-                                            Success <span class="badge">179</span></a>
+                                            Success <span class="badge"></span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
-                                            AllJob <span class="badge">200</span></a>
+                                            AllJob <span class="badge"></span></a>
                                     </p>
                                     <div class="card">
 
@@ -80,25 +80,25 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                     <?php $i = 1; // เริ่มต้นลำดับที่ 1 
                                                     ?>
                                                     <?php foreach ($rsCaseList as $row) { ?>
-                                                        <tr>
-                                                            <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
+                                                    <tr>
+                                                        <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
                                                                                 ?></td>
-                                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
-                                                                    width="70px"></td>
-                                                            <td align="center"><?= $row['equipment_name']; ?></td>
-                                                            <td>
-                                                                <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                        <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
+                                                                width="70px"></td>
+                                                        <td align="center"><?= $row['equipment_name']; ?></td>
+                                                        <td>
+                                                            <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
 
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] .
                                                                     '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
-                                                            </td>
-                                                            <td align="center"><?= htmlspecialchars($row['status_name']); ?>
-                                                            </td>
-                                                            <td align="center">
-                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=assign&no=<?= $i - 1; ?>"
-                                                                    class="btn btn-info btn-sm">Assign</a>
-                                                            </td>
-                                                        </tr>
+                                                        </td>
+                                                        <td align="center"><?= htmlspecialchars($row['status_name']); ?>
+                                                        </td>
+                                                        <td align="center">
+                                                            <a href="case.php?id=<?= $row['case_id']; ?>&act=assign&no=<?= $i - 1; ?>"
+                                                                class="btn btn-info btn-sm">Assign</a>
+                                                        </td>
+                                                    </tr>
                                                     <?php } ?>
 
                                                 </tbody>

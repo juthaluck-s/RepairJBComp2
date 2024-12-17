@@ -42,7 +42,8 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
                                     <div class="form-group row">
                                         <label class="col-sm-2">รหัสพนักงาน : </label>
                                         <div class="col-sm-4">
-                                            <input type="text" name="ref_m_id" class="form-control" value="<?php echo $memberData['member_id'];
+                                            <input type="text" name="ref_m_id" class="form-control"
+                                                value="<?php echo $memberData['member_id'];
                                                                                                             $_SESSION['staff_id']; ?>" readonly>
                                         </div>
                                     </div>
@@ -53,8 +54,8 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
                                             <select name="ref_building_id" class="form-control" required>
                                                 <option value="">กรุณาเลือก</option>
                                                 <?php foreach ($rsBuildingCase as $row) { ?>
-                                                    <option value="<?php echo $row['building_id']; ?>">
-                                                        <?php echo $row['building_name']; ?></option>
+                                                <option value="<?php echo $row['building_id']; ?>">
+                                                    <?php echo $row['building_name']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -82,8 +83,8 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
                                             <select name="ref_equipment_id" class="form-control" required>
                                                 <option value="">กรุณาเลือก</option>
                                                 <?php foreach ($rsEquipmentCase as $row) { ?>
-                                                    <option value="<?php echo $row['equipment_id']; ?>">
-                                                        <?php echo $row['equipment_name']; ?></option>
+                                                <option value="<?php echo $row['equipment_id']; ?>">
+                                                    <?php echo $row['equipment_name']; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -165,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         // SQL Insert
-        $stmtInSertCase = $condb->prepare("INSERT INTO tbl_case (ref_building_id, case_detail, case_floor, ref_equipment_id, case_img, case_room, ref_m_id, ref_status_id) VALUES (:ref_building_id, :case_detail, :case_floor, :ref_equipment_id, :case_img, :case_room, :ref_m_id ,:ref_status_id)");
+        $stmtInSertCase = $condb->prepare("INSERT INTO tbl_case (ref_building_id, case_detail, case_floor, ref_equipment_id, case_img, case_room, ref_m_id, ref_status_id, dateSave) VALUES (:ref_building_id, :case_detail, :case_floor, :ref_equipment_id, :case_img, :case_room, :ref_m_id ,:ref_status_id,NOW())");
 
         $stmtInSertCase->bindParam(':ref_building_id', $ref_building_id, PDO::PARAM_INT);
         $stmtInSertCase->bindParam(':case_detail', $case_detail, PDO::PARAM_STR);
@@ -178,6 +179,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $result = $stmtInSertCase->execute();
 
+
+
+        $condb = null;
         if ($result) {
             echo '<script>
                     setTimeout(function() {
