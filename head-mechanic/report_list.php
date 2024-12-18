@@ -1,3 +1,27 @@
+<?php
+// เชื่อมต่อฐานข้อมูล
+$stmtCountStatus = $condb->prepare("SELECT status_name, status_count FROM tbl_status");
+$stmtCountStatus->execute();
+$resultCountStatus = $stmtCountStatus->fetchAll(PDO::FETCH_ASSOC);
+
+// เตรียมข้อมูลสำหรับ Highcharts
+$report_data_month = [];
+$total_cases = 0;
+
+foreach ($resultCountStatus as $row) {
+    $report_data_month[] = [
+        "name" => $row['status_name'],
+        "y" => (int)$row['status_count']
+    ];
+    $total_cases += $row['status_count'];
+}
+
+// แปลงข้อมูลเป็น JSON
+$report_data_month = json_encode($report_data_month, JSON_UNESCAPED_UNICODE);
+?>
+
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,6 +46,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="box-body">
+
+
+
+
                                 <h4> รายงานภาพรวม </h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>

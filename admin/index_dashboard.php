@@ -10,22 +10,18 @@ $stmtCountMember = $condb->prepare("SELECT COUNT(*) as totalMember FROM tbl_memb
 $stmtCountMember->execute();
 $rowM = $stmtCountMember->fetch(PDO::FETCH_ASSOC);
 
-//จำนวนสินค้า
-$stmtCountProduct = $condb->prepare("SELECT COUNT(*) as totalProduct FROM tbl_product");
-$stmtCountProduct->execute();
-$rowP = $stmtCountProduct->fetch(PDO::FETCH_ASSOC);
 
 //จำนวนผู้เข้าชมเว็บไซต์แยกตามวัน
-$queryViewByDay = $condb->prepare("SELECT DATE_FORMAT(c_date,'%d/%m/%Y') as datesave, COUNT(*) as total
-FROM tbl_counter
-GROUP BY DATE_FORMAT(c_date,'%Y-%m-%d')
-ORDER BY DATE_FORMAT(c_date,'%Y-%m-%d') DESC");
-$queryViewByDay->execute();
-$rsVd = $queryViewByDay->fetchAll();
+$queryCaseByDay = $condb->prepare("SELECT DATE_FORMAT(dateSave,'%d/%m/%Y') as datesave, COUNT(*) as totalCaseday
+FROM tbl_case
+GROUP BY DATE_FORMAT(dateSave,'%Y-%m-%d')
+ORDER BY DATE_FORMAT(dateSave,'%Y-%m-%d') DESC");
+$queryCaseByDay->execute();
+$rsCasebyday = $queryCaseByDay->fetchAll();
 
 //นำข้อมูลที่ได้จากคิวรี่มากำหนดรูปแบบข้อมุลให้ถูกโครงสร้างของกราฟที่ใช้ *อ่าน docs เพิ่มเติม
 $report_data = array();
-foreach ($rsVd as $rs) {
+foreach ($rsCasebyday as $rs) {
     /*
 โครงสร้างข้อมูลของกราฟ
 {
@@ -38,7 +34,7 @@ drilldown: "Chrome"
     $report_data[] = '
 {
 name:' . '"' . $rs['datesave'] . '"' . ',' //label
-        . 'y:' . $rs['total'] . //ตัวเลขยอดขาย
+        . 'y:' . $rs['totalCaseday'] . //ตัวเลขยอดขาย
         ','
         . 'drilldown:' . '"' . $rs['datesave'] . '"' . ',' //label ด้านล่าง
         . '}';
@@ -47,16 +43,16 @@ name:' . '"' . $rs['datesave'] . '"' . ',' //label
 $report_data = implode(",", $report_data);
 
 //จำนวนผู้ใช้แยกตามเดือน
-$queryViewByMonth = $condb->prepare("SELECT MONTHNAME(c_date) as monthNames, COUNT(*) as totalByMonth
-FROM tbl_counter
-GROUP BY MONTH(c_date)
-ORDER BY DATE_FORMAT(c_date, '%Y-%m') DESC;");
-$queryViewByMonth->execute();
-$rsVM = $queryViewByMonth->fetchAll();
+$queryCaseByMonth = $condb->prepare("SELECT MONTHNAME(dateSave) as monthNames, COUNT(*) as totalByMonth
+FROM tbl_case
+GROUP BY MONTH(dateSave)
+ORDER BY DATE_FORMAT(dateSave, '%Y-%m') DESC;");
+$queryCaseByMonth->execute();
+$rsCasebymonth = $queryCaseByMonth->fetchAll();
 
 //นำข้อมูลที่ได้จากคิวรี่มากำหนดรูปแบบข้อมุลให้ถูกโครงสร้างของกราฟที่ใช้ *อ่าน docs เพิ่มเติม
 $report_data_month = array();
-foreach ($rsVM as $rs) {
+foreach ($rsCasebymonth as $rs) {
     $report_data_month[] = '
 {
 name:' . '"' . $rs['monthNames'] . '"' . ',' //label
@@ -69,16 +65,16 @@ name:' . '"' . $rs['monthNames'] . '"' . ',' //label
 $report_data_month = implode(",", $report_data_month);
 
 //จำนวนผู้ใช้แยกตามปี
-$queryViewByYear = $condb->prepare("SELECT YEAR(c_date) as years, COUNT(*) as totalByYear
-FROM tbl_counter
-GROUP BY YEAR(c_date)
-ORDER BY YEAR(c_date) DESC;");
-$queryViewByYear->execute();
-$rsVy = $queryViewByYear->fetchAll();
+$queryCaseByYear = $condb->prepare("SELECT YEAR(dateSave) as years, COUNT(*) as totalByYear
+FROM tbl_case
+GROUP BY YEAR(dateSave)
+ORDER BY YEAR(dateSave) DESC;");
+$queryCaseByYear->execute();
+$rsCasebyyear = $queryCaseByYear->fetchAll();
 
 //นำข้อมูลที่ได้จากคิวรี่มากำหนดรูปแบบข้อมุลให้ถูกโครงสร้างของกราฟที่ใช้ *อ่าน docs เพิ่มเติม
 $report_data_year = array();
-foreach ($rsVy as $rs) {
+foreach ($rsCasebyyear as $rs) {
     $report_data_year[] = '
 {
 name:' . '"' . $rs['years'] . '"' . ',' //label
@@ -94,7 +90,19 @@ $report_data_year = implode(",", $report_data_year);
 
 ?>
 
+<style>
+    .highcharts-root {
+        font-family: "Sarabun", serif !important;
+    }
 
+    .highcharts-title {
+        font-family: "Sarabun", serif !important;
+    }
+
+    .highcharts-drilldown-axis-label {
+        font-family: "Sarabun", serif !important;
+    }
+</style>
 
 
 <!-- Content Wrapper. Contains page content -->
@@ -162,7 +170,7 @@ $report_data_year = implode(",", $report_data_year);
                                 <div class="col-sm-12">
                                     <figure class="highcharts-figure">
                                         <div id="container"></div>
-                                        <p class="highcharts-description">.....</p>
+                                        <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
                                         // Create the chart
@@ -172,7 +180,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             title: {
                                                 // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                                text: 'จำนวนการเข้าชมเว็บไซต์แยกตามวัน'
+                                                text: 'จำนวนการแจ้งซ่อมรายวัน'
                                             },
                                             subtitle: {
                                                 text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
@@ -188,7 +196,7 @@ $report_data_year = implode(",", $report_data_year);
                                             yAxis: {
                                                 title: {
                                                     // text: 'จำนวนการประเมินเว็บไซต์'
-                                                    text: 'จำนวนการเข้าชมเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
                                                 }
                                             },
                                             legend: {
@@ -209,7 +217,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             series: [{
                                                 // name: "จำนวนการประเมินเว็บไซต์",
-                                                name: "จำนวนการเข้าชมเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
                                                 colorByPoint: true,
                                                 //เอาข้อมูลมา echo ตรงนี้
                                                 data: [<?= $report_data; ?>]
@@ -221,7 +229,7 @@ $report_data_year = implode(",", $report_data_year);
                                 <div class="col-sm-8">
                                     <figure class="highcharts-figure">
                                         <div id="container2"></div>
-                                        <p class="highcharts-description">....</p>
+                                        <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
                                         // Create the chart
@@ -231,7 +239,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             title: {
                                                 // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                                text: 'จำนวนการเข้าชมเว็บไซต์แยกตามเดือน'
+                                                text: 'จำนวนการแจ้งซ่อมรายเดือน'
                                             },
                                             subtitle: {
                                                 text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
@@ -247,7 +255,7 @@ $report_data_year = implode(",", $report_data_year);
                                             yAxis: {
                                                 title: {
                                                     // text: 'จำนวนการประเมินเว็บไซต์'
-                                                    text: 'จำนวนการเข้าชมเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
                                                 }
                                             },
                                             legend: {
@@ -268,7 +276,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             series: [{
                                                 // name: "จำนวนการประเมินเว็บไซต์",
-                                                name: "จำนวนการเข้าชมเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
                                                 colorByPoint: true,
                                                 //เอาข้อมูลมา echo ตรงนี้
                                                 data: [<?= $report_data_month; ?>]
@@ -280,7 +288,7 @@ $report_data_year = implode(",", $report_data_year);
                                 <div class="col-sm-4">
                                     <figure class="highcharts-figure">
                                         <div id="container3"></div>
-                                        <p class="highcharts-description">.</p>
+                                        <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
                                         // Create the chart
@@ -290,7 +298,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             title: {
                                                 // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                                text: 'จำนวนการเข้าชมเว็บไซต์แยกตามปี'
+                                                text: 'จำนวนการแจ้งซ่อมรายปี'
                                             },
                                             subtitle: {
                                                 text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
@@ -306,7 +314,7 @@ $report_data_year = implode(",", $report_data_year);
                                             yAxis: {
                                                 title: {
                                                     // text: 'จำนวนการประเมินเว็บไซต์'
-                                                    text: 'จำนวนการเข้าชมเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
                                                 }
                                             },
                                             legend: {
@@ -327,7 +335,7 @@ $report_data_year = implode(",", $report_data_year);
                                             },
                                             series: [{
                                                 // name: "จำนวนการประเมินเว็บไซต์",
-                                                name: "จำนวนการเข้าชมเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
                                                 colorByPoint: true,
                                                 //เอาข้อมูลมา echo ตรงนี้
                                                 data: [<?= $report_data_year; ?>]

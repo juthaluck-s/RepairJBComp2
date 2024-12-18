@@ -15,6 +15,22 @@ $queryCaseList = $condb->prepare("SELECT *
 
 $queryCaseList->execute();
 $rsCaseList = $queryCaseList->fetchAll();
+
+$stmtCountNewCases = $condb->prepare("SELECT COUNT(*) as totalNewCases FROM tbl_case WHERE ref_status_id = 1");
+$stmtCountNewCases->execute();
+$rowNewCases = $stmtCountNewCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountAssignedCases = $condb->prepare("SELECT COUNT(*) as totalAssignedCases FROM tbl_case WHERE ref_status_id = 2");
+$stmtCountAssignedCases->execute();
+$rowAssignedCases = $stmtCountAssignedCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountSuccessCases = $condb->prepare("SELECT COUNT(*) as totalSuccessCases FROM tbl_case WHERE ref_status_id IN (3,4)");
+$stmtCountSuccessCases->execute();
+$rowSuccessCases = $stmtCountSuccessCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountAllCases = $condb->prepare("SELECT COUNT(*) as totalAllCases FROM tbl_case WHERE ref_status_id IN (1,2,3,4)");
+$stmtCountAllCases->execute();
+$rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -44,13 +60,16 @@ $rsCaseList = $queryCaseList->fetchAll();
                                 <div class="box-body">
                                     <p>
                                         <a href="case.php" class="btn btn-primary">
-                                            NEW <span class="badge"></span></a>
+                                            NEW <span class="badge"><?= $rowNewCases['totalNewCases']; ?></span>
+                                        </a>
                                         <a href="case.php?act=doing" class="btn btn-warning">
-                                            Assigned <span class="badge"></span></a>
+                                            Assigned<span
+                                                class="badge"><?= $rowAssignedCases['totalAssignedCases']; ?></span></a>
                                         <a href="case.php?act=success" class="btn btn-success">
-                                            Success <span class="badge"></span></a>
+                                            Success <span
+                                                class="badge"><?= $rowSuccessCases['totalSuccessCases']; ?></span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
-                                            AllJob <span class="badge"></span></a>
+                                            AllJob <span class="badge"><?= $rowAllCases['totalAllCases']; ?></span></a>
                                     </p>
                                     <div class="card">
 

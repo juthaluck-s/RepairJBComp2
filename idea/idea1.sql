@@ -176,6 +176,56 @@ END$$
 DELIMITER ;
 
 
+DELIMITER $$
+
+CREATE TRIGGER after_status_count_insert
+AFTER INSERT ON tbl_case
+FOR EACH ROW
+BEGIN
+    UPDATE tbl_status
+    SET status_count = status_count + 1
+    WHERE status_id = NEW.ref_status_id;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER after_status_count_update
+AFTER UPDATE ON tbl_case
+FOR EACH ROW
+BEGIN
+    -- ลดค่าของ ref_status_id เก่า
+    IF OLD.ref_status_id IS NOT NULL THEN
+        UPDATE tbl_status
+        SET status_count = status_count - 1
+        WHERE status_id = OLD.ref_status_id;
+    END IF;
+
+    -- เพิ่มค่าของ ref_status_id ใหม่
+    IF NEW.ref_status_id IS NOT NULL THEN
+        UPDATE tbl_status
+        SET status_count = status_count + 1
+        WHERE status_id = NEW.ref_status_id;
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER after_status_count_delete
+AFTER DELETE ON tbl_case
+FOR EACH ROW
+BEGIN
+    UPDATE tbl_status
+    SET status_count = status_count - 1
+    WHERE status_id = OLD.ref_status_id;
+END$$
+
+DELIMITER ;
+
 --------------------------------------------------------------------
 ลบ Trigger สำหรับการเขียนใหม่
 
