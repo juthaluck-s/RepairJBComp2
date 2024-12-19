@@ -123,8 +123,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                                 <textarea name="case_update_log" required
                                                                     class="form-control" rows="4" cols="50"
                                                                     style="background-color:#d4e8e8; text-align: left;"
-                                                                    readonly>
-                                                                <?= $rsCase_open['case_update_log']; ?></textarea>
+                                                                    readonly><?= $rsCase_open['case_update_log']; ?></textarea>
                                                                 <br>
                                                                 ว/ด/ป ที่ส่งงาน:
                                                                 <?= date('d/m/Y H:i:s', strtotime($rsCase_open['case_update'])); ?><br>

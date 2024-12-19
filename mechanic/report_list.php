@@ -75,7 +75,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>จำนวนงานที่ได้รับมอบหมาย</td>
+                                            <td>จำนวนงานที่ได้รับมอบหมายทั้งหมด</td>
                                             <td align="center"><?= htmlspecialchars($rsMecReport['mec_all_job']) ?>
                                             </td>
                                             <td align="center">งาน</td>
