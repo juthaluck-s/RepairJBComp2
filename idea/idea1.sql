@@ -225,6 +225,66 @@ BEGIN
 END$$
 
 DELIMITER ;
+-----------------------------------------------------------------------
+DELIMITER $$ 
+CREATE TRIGGER `after_update_mechanic` AFTER UPDATE ON `tbl_member` 
+FOR EACH ROW 
+BEGIN
+    -- ตรวจสอบว่าข้อมูลมีการเปลี่ยนแปลงใน ref_level_id หรือข้อมูลสำคัญเท่านั้น
+    IF (OLD.ref_level_id != NEW.ref_level_id OR 
+        OLD.title_name != NEW.title_name OR 
+        OLD.firstname != NEW.firstname OR 
+        OLD.lastname != NEW.lastname OR 
+        OLD.m_tel != NEW.m_tel OR 
+        OLD.m_email != NEW.m_email) THEN
+
+        -- หาก ref_level_id เดิมคือ 3 และใหม่ไม่ใช่ 3 ให้ลบข้อมูลจาก tbl_mechanic
+        IF OLD.ref_level_id = 3 AND NEW.ref_level_id != 3 THEN
+            DELETE FROM tbl_mechanic WHERE mec_id = OLD.m_id;
+        END IF;
+
+        -- หาก ref_level_id ใหม่คือ 3 ให้แทรกหรืออัปเดตข้อมูลใน tbl_mechanic
+        IF NEW.ref_level_id = 3 THEN
+            REPLACE INTO tbl_mechanic (
+                mec_id, mec_title_name, mec_firstname, mec_lastname, mec_tel, mec_email, mec_doing, mec_close, mec_all_job
+            ) VALUES (
+                NEW.m_id, NEW.title_name, NEW.firstname, NEW.lastname, NEW.m_tel, NEW.m_email, 0, 0, 0
+            );
+        END IF;
+    END IF;
+END $$ 
+DELIMITER ;
+
+---------------------------------------------------------------------
+
+DELIMITER $$ 
+CREATE TRIGGER `after_update_head_mechanic` AFTER UPDATE ON `tbl_member` 
+FOR EACH ROW 
+BEGIN
+    -- ตรวจสอบว่าข้อมูลมีการเปลี่ยนแปลงใน ref_level_id หรือข้อมูลสำคัญเท่านั้น
+    IF (OLD.ref_level_id != NEW.ref_level_id OR 
+        OLD.title_name != NEW.title_name OR 
+        OLD.firstname != NEW.firstname OR 
+        OLD.lastname != NEW.lastname OR 
+        OLD.m_tel != NEW.m_tel OR 
+        OLD.m_email != NEW.m_email) THEN
+
+        -- หาก ref_level_id เดิมคือ 2 และใหม่ไม่ใช่ 2 ให้ลบข้อมูลจาก tbl_head_mechanic
+        IF OLD.ref_level_id = 2 AND NEW.ref_level_id != 2 THEN
+            DELETE FROM tbl_head_mechanic WHERE head_mechanic_id = OLD.m_id;
+        END IF;
+
+        -- หาก ref_level_id ใหม่คือ 2 ให้แทรกหรืออัปเดตข้อมูลใน tbl_head_mechanic
+        IF NEW.ref_level_id = 2 THEN
+            REPLACE INTO tbl_head_mechanic (
+                head_mechanic_id, head_mechanic_title_name, head_mechanic_firstname, head_mechanic_lastname, head_mechanic_tel, head_mechanic_email
+            ) VALUES (
+                NEW.m_id, NEW.title_name, NEW.firstname, NEW.lastname, NEW.m_tel, NEW.m_email
+            );
+        END IF;
+    END IF;
+END $$ 
+DELIMITER ;
 
 --------------------------------------------------------------------
 ลบ Trigger สำหรับการเขียนใหม่

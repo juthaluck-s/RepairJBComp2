@@ -40,8 +40,8 @@ try {
         <!-- โปรไฟล์ Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../assets/dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image"
-                    style="margin-top: 10px;">
+                <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image"
+                    style="margin-top: 8px;">
             </div>
 
             <div class="info">
@@ -51,33 +51,33 @@ try {
                 </a>
                 <a href="#" class="d-block m-level">สิทธิ์ใช้งาน :
                     <?php if ($ref_level_id): ?>
-                    <?php if ($ref_level_id == '1'): ?>
-                    <button class="btn btn-danger btn-custom-small">Admin</button>
-                    <?php elseif ($ref_level_id == '2'): ?>
-                    <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
-                    <?php elseif ($ref_level_id == '3'): ?>
-                    <button class="btn btn-info btn-custom-small">Mechanic</button>
-                    <?php elseif ($ref_level_id == '4'): ?>
-                    <button class="btn btn-success btn-custom-small">Employee</button>
-                    <?php endif; ?>
+                        <?php if ($ref_level_id == '1'): ?>
+                            <button class="btn btn-danger btn-custom-small">Admin</button>
+                        <?php elseif ($ref_level_id == '2'): ?>
+                            <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
+                        <?php elseif ($ref_level_id == '3'): ?>
+                            <button class="btn btn-info btn-custom-small">Mechanic</button>
+                        <?php elseif ($ref_level_id == '4'): ?>
+                            <button class="btn btn-success btn-custom-small">Employee</button>
+                        <?php endif; ?>
                     <?php else: ?>
-                    <button class="btn btn-secondary btn-custom-small">Unknown</button>
+                        <button class="btn btn-secondary btn-custom-small">Unknown</button>
                     <?php endif; ?>
                 </a>
 
             </div>
             <style>
-            .m-level {
-                margin-top: 2px;
-                font-size: 13px;
-            }
+                .m-level {
+                    margin-top: 2px;
+                    font-size: 13px;
+                }
 
-            .btn-custom-small {
-                padding: 0px 3px;
-                /* ปรับขนาด padding ให้เล็ก */
-                font-size: 11px;
-                /* ปรับขนาดตัวอักษร */
-            }
+                .btn-custom-small {
+                    padding: 0px 3px;
+                    /* ปรับขนาด padding ให้เล็ก */
+                    font-size: 11px;
+                    /* ปรับขนาดตัวอักษร */
+                }
             </style>
         </div>
 
@@ -109,7 +109,7 @@ try {
 
                 <li class="nav-item">
                     <a href="member.php?act=password" class="nav-link">
-                        <i class="nav-icon far fa-user"></i>
+                        <i class="nav-icon fa-solid fa-key"></i>
                         <p>
                             แก้ไขรหัสผ่าน
                         </p>

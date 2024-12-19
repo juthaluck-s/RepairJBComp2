@@ -49,6 +49,11 @@
 
 <!-- Page specific script -->
 <script>
+    document.getElementById('exampleInputFile').addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || 'Choose file';
+        const label = e.target.nextElementSibling; // Find the label element
+        label.textContent = fileName;
+    });
     $(function() {
         $("#example1").DataTable({
             "responsive": true,

@@ -9,11 +9,6 @@ $queryMember->execute();
 $rsMember = $queryMember->fetchAll();
 
 
-
-// echo '<pre></pre>';
-// $queryMember->debugDumpParams();
-// exit;
-
 ?>
 
 

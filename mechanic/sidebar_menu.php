@@ -40,10 +40,9 @@ try {
         <!-- โปรไฟล์ Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../assets/dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image"
-                    style="margin-top: 10px;">
+                <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image"
+                    style="margin-top: 8px;">
             </div>
-
             <div class="info">
 
                 <a href="#" class="d-block">
@@ -98,7 +97,7 @@ try {
 
                 <li class="nav-item">
                     <a href="report.php?act=report" class="nav-link">
-                        <i class="nav-icon fas fa-screwdriver-wrench"></i>
+                        <i class="nav-icon fa-solid fa-file-lines"></i>
                         <p>
                             รายงานการทำงาน
                         </p>
@@ -118,7 +117,7 @@ try {
 
                 <li class="nav-item">
                     <a href="member.php?act=password" class="nav-link">
-                        <i class="nav-icon far fa-user"></i>
+                        <i class="nav-icon fa-solid fa-key"></i>
                         <p>
                             แก้ไขรหัสผ่าน
                         </p>

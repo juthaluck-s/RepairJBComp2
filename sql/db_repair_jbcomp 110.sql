@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2024 at 10:11 AM
+-- Generation Time: Dec 19, 2024 at 05:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,8 +39,8 @@ CREATE TABLE `tbl_assessment` (
 
 INSERT INTO `tbl_assessment` (`assessment_id`, `assessment_name`, `assessment_count`) VALUES
 (1, 'ดีมาก', 3),
-(2, 'ดี', 0),
-(3, 'ปานกลาง', 0),
+(2, 'ดี', 3),
+(3, 'ปานกลาง', 1),
 (4, 'พอใช้', 0),
 (5, 'แย่', 0);
 
@@ -60,14 +60,14 @@ CREATE TABLE `tbl_building` (
 --
 
 INSERT INTO `tbl_building` (`building_id`, `building_name`) VALUES
-(4, 'อาคาร 1'),
-(5, 'อาคาร 2'),
-(7, 'อาคาร 3'),
-(8, 'อาคาร 4'),
-(0, 'อาคาร 5'),
-(0, 'อาคาร 6'),
-(0, 'อาคาร 7'),
-(0, 'อาคาร 8');
+(1, 'อาคาร 1'),
+(2, 'อาคาร 2'),
+(3, 'อาคาร 3'),
+(4, 'อาคาร 4'),
+(5, 'อาคาร 5'),
+(6, 'อาคาร 6'),
+(7, 'อาคาร 7'),
+(8, 'อาคาร 8');
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `tbl_case` (
   `ref_head_mechanic_id` int(11) NOT NULL,
   `ref_mec_id` int(11) NOT NULL,
   `case_update_log` varchar(250) NOT NULL,
-  `case_update` timestamp NOT NULL DEFAULT current_timestamp()
+  `case_update` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -98,45 +98,56 @@ CREATE TABLE `tbl_case` (
 --
 
 INSERT INTO `tbl_case` (`case_id`, `ref_equipment_id`, `case_detail`, `case_floor`, `case_room`, `case_img`, `ref_status_id`, `ref_m_id`, `ref_assessment_id`, `ref_building_id`, `dateSave`, `ref_head_mechanic_id`, `ref_mec_id`, `case_update_log`, `case_update`) VALUES
-(10, 3, '<p>456786786</p>', '1', '114', '64520371320241215_081135.jpg', 3, 2, 0, 4, '2024-12-15 07:11:35', 13, 15, 'mdghmdud', '2024-12-16 08:36:12'),
-(11, 3, '<p>367642565</p>', '6', '367', '29707989420241215_081149.jpg', 4, 2, 1, 7, '2024-12-15 07:11:49', 13, 15, 'ef;lmsd;mc;ams;lgmasgdad', '2024-12-16 07:55:00'),
-(12, 1, '<p>12312312</p>', '224', '123', '187030884820241216_085323.jpg', 3, 2, 0, 5, '2024-12-16 07:53:23', 13, 15, 'ndyihdgfhfg', '2024-12-16 08:35:59'),
-(13, 3, '<p>1231231</p>', '123132', '1231', '134866331920241216_085332.jpg', 3, 2, 0, 5, '2024-12-16 07:53:32', 13, 15, 'ฟหกฟหแปผแผ', '2024-12-16 08:18:12'),
-(15, 1, '<p>45645645</p>', '3', '334', '77504477620241216_091309.png', 4, 2, 1, 7, '2024-12-16 08:13:09', 13, 15, 'dasdasvadhaehdfh', '2024-12-16 08:35:54'),
-(17, 3, '<p>1237378373</p>', '4', '147', '111651685620241216_094720.png', 2, 2, 0, 4, '2024-12-16 08:47:20', 13, 15, '', '2024-12-16 08:47:20'),
-(19, 2, '<p>222</p>', '4', '447', '178283481020241216_094844.png', 2, 2, 0, 8, '2024-12-16 08:48:44', 13, 15, '', '2024-12-16 08:48:44'),
-(24, 4, '<p>45646456</p>', '2', '224', '6179897920241216_100331.png', 1, 3, 0, 5, '2024-12-16 09:03:31', 0, 0, '', '2024-12-16 09:03:31'),
-(25, 4, '<p>78</p>', '5', '854', '63037996320241216_100347.jpg', 1, 3, 0, 0, '2024-12-16 09:03:47', 0, 0, '', '2024-12-16 09:03:47'),
-(26, 2, '<p>12354</p>', '4', '445', '101582156620241216_100554.png', 1, 3, 0, 8, '2024-12-16 09:05:54', 0, 0, '', '2024-12-16 09:05:54'),
-(27, 2, '<p>546546546</p>', '667', '67678', '201679058920241216_100607.jpg', 1, 3, 0, 0, '2024-12-16 09:06:07', 0, 0, '', '2024-12-16 09:06:07');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_counter`
---
-
-CREATE TABLE `tbl_counter` (
-  `c_id` int(10) NOT NULL,
-  `c_date` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+(1, 3, '<p>454554</p>', '5', '888', '156538651120241217_083850.png', 4, 2, 3, 1, '2024-12-17 07:38:50', 13, 15, '7821245', '2024-12-17 07:40:29'),
+(2, 4, '<p>121121</p>', '4', '455', '89721860920241217_083904.png', 4, 2, 1, 4, '2024-12-17 07:39:04', 13, 15, '1278', '2024-12-17 07:40:23'),
+(3, 1, '<p>546787</p>', '8', '784', '88437374720241217_083918.png', 4, 2, 2, 7, '2024-12-17 07:39:18', 13, 15, '7875', '2024-12-17 07:40:16'),
+(4, 3, '<p>45678</p>', '8', '48', '91727354320241217_083930.jpg', 4, 2, 1, 4, '2024-12-17 07:39:30', 13, 15, '4545', '2024-12-17 07:40:11'),
+(5, 3, '<p>54678</p>', '2', '222', '94902407520241218_091032.png', 1, 2, 0, 2, '2024-12-18 08:10:32', 0, 0, '', NULL),
+(6, 1, '<p>78676</p>', '6', '666', '80968335120241218_091055.jpg', 1, 2, 0, 6, '2024-12-18 08:10:55', 0, 0, '', NULL),
+(7, 4, '<p>4567867</p>', '8', '687', '33382507020241218_091201.png', 1, 2, 0, 6, '2024-12-18 08:12:01', 0, 0, '', NULL),
+(8, 3, '<p>2137</p>', '7', '747', '129795385220241218_091212.jpg', 2, 2, 0, 8, '2024-12-18 08:12:12', 13, 15, '', NULL),
+(9, 2, '<p>3333</p>', '3', '333', '60643282320241218_091230.jpg', 4, 2, 1, 3, '2024-12-18 08:12:30', 13, 15, '1441', '2024-12-18 08:13:28'),
+(10, 1, '<p>45345</p>', '3', '333', '17324661920241218_094903.png', 3, 3, 0, 3, '2024-12-18 08:49:03', 13, 15, '55', '2024-12-19 02:26:59'),
+(11, 3, '<p>5467867</p>', '7', '678', '107737516520241218_094918.png', 4, 3, 2, 6, '2024-12-18 08:49:18', 13, 15, '44', '2024-12-19 02:25:32'),
+(12, 3, '<p>66464</p>', '5', '578', '161068908220241219_032518.jpg', 4, 3, 2, 2, '2024-12-19 02:25:18', 13, 15, '454', '2024-12-19 02:26:53');
 
 --
--- Dumping data for table `tbl_counter`
+-- Triggers `tbl_case`
 --
+DELIMITER $$
+CREATE TRIGGER `after_status_count_delete` AFTER DELETE ON `tbl_case` FOR EACH ROW BEGIN
+    UPDATE tbl_status
+    SET status_count = status_count - 1
+    WHERE status_id = OLD.ref_status_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_status_count_insert` AFTER INSERT ON `tbl_case` FOR EACH ROW BEGIN
+    UPDATE tbl_status
+    SET status_count = status_count + 1
+    WHERE status_id = NEW.ref_status_id;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_status_count_update` AFTER UPDATE ON `tbl_case` FOR EACH ROW BEGIN
+    -- ลดค่าของ ref_status_id เก่า
+    IF OLD.ref_status_id IS NOT NULL THEN
+        UPDATE tbl_status
+        SET status_count = status_count - 1
+        WHERE status_id = OLD.ref_status_id;
+    END IF;
 
-INSERT INTO `tbl_counter` (`c_id`, `c_date`) VALUES
-(12597, '2024-01-01 02:38:48'),
-(12598, '2024-01-01 03:31:42'),
-(12599, '2024-01-01 03:32:33'),
-(12600, '2024-01-01 03:32:44'),
-(12601, '2024-01-01 03:34:42'),
-(12602, '2024-01-01 03:34:47'),
-(12603, '2024-01-01 04:18:40'),
-(12604, '2024-01-01 09:42:38'),
-(12605, '2024-01-02 07:26:21'),
-(12606, '2024-01-02 07:26:41'),
-(12607, '2024-01-02 11:00:59');
+    -- เพิ่มค่าของ ref_status_id ใหม่
+    IF NEW.ref_status_id IS NOT NULL THEN
+        UPDATE tbl_status
+        SET status_count = status_count + 1
+        WHERE status_id = NEW.ref_status_id;
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -247,7 +258,7 @@ CREATE TABLE `tbl_mechanic` (
 --
 
 INSERT INTO `tbl_mechanic` (`mec_id`, `mec_title_name`, `mec_firstname`, `mec_lastname`, `mec_tel`, `mec_email`, `mec_doing`, `mec_close`, `mec_all_job`) VALUES
-(15, 'นาย', 'mec01', 'mec01', '0865215483', 'mec01@test.com', 0, 0, 0),
+(15, 'นาย', 'mec01', 'mec01', '0865215483', 'mec01@test.com', 2, 7, 9),
 (16, 'นาง', 'mec02', 'mec02', '0865215482', 'mec02@test.com', 0, 0, 0),
 (17, 'นาย', 'mec03', 'mec03', '0865215482', 'mec03@test.com', 0, 0, 0);
 
@@ -399,81 +410,24 @@ INSERT INTO `tbl_position` (`position_id`, `position_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product`
---
-
-CREATE TABLE `tbl_product` (
-  `id` int(11) NOT NULL,
-  `ref_type_id` int(11) NOT NULL COMMENT 'tbl_type type_id',
-  `product_name` varchar(200) NOT NULL,
-  `product_detail` text NOT NULL,
-  `product_qty` int(3) NOT NULL,
-  `product_price` int(6) NOT NULL,
-  `product_image` varchar(100) NOT NULL,
-  `dateCreate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_product`
---
-
-INSERT INTO `tbl_product` (`id`, `ref_type_id`, `product_name`, `product_detail`, `product_qty`, `product_price`, `product_image`, `dateCreate`) VALUES
-(7, 2, 'ดเกด', '<p>cvbzdf</p>', 123, 23123, '141944145820241104_113121.png', '2024-11-04 09:43:20'),
-(8, 2, 'เก้าอี้aa', '<ol><li>เก้าอี้</li><li>เก้าอี้เก้าอี้</li><li>เก้าอี้เก้าอี้เก้าอี้</li><li>เก้าอี้เก้าอี้เก้าอี้เก้าอี้</li></ol>', 5, 8000, '208204183320241105_104956.png', '2024-11-05 09:49:28');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_product_image`
---
-
-CREATE TABLE `tbl_product_image` (
-  `no` int(11) NOT NULL,
-  `ref_p_id` int(11) NOT NULL,
-  `product_image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
   `status_id` int(11) NOT NULL,
-  `status_name` varchar(100) NOT NULL COMMENT '	ตำแหน่ง เช่น ผู้จัดการ, พนักงานบัญชี, พนักงานการตลาด, ช่างคอมพิวเตอร์, ช่างไฟฟ้า, พนักงานประชาสัมพันธ์	'
+  `status_name` varchar(100) NOT NULL,
+  `status_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_status`
 --
 
-INSERT INTO `tbl_status` (`status_id`, `status_name`) VALUES
-(1, 'รอดำเนินการ'),
-(2, 'กำลังซ่อม'),
-(3, 'รอประเมินผล'),
-(4, 'ปิดงาน');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_type`
---
-
-CREATE TABLE `tbl_type` (
-  `type_id` int(11) NOT NULL,
-  `type_name` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_type`
---
-
-INSERT INTO `tbl_type` (`type_id`, `type_name`) VALUES
-(0, 'สายไฟ'),
-(0, 'คอมพิวเตอร์'),
-(0, 'สายไฟ'),
-(0, 'คอมพิวเตอร์');
+INSERT INTO `tbl_status` (`status_id`, `status_name`, `status_count`) VALUES
+(1, 'รอดำเนินการ', 3),
+(2, 'กำลังซ่อม', 1),
+(3, 'รอประเมินผล', 1),
+(4, 'ปิดงาน', 7);
 
 --
 -- Indexes for dumped tables
@@ -486,16 +440,16 @@ ALTER TABLE `tbl_assessment`
   ADD PRIMARY KEY (`assessment_id`);
 
 --
+-- Indexes for table `tbl_building`
+--
+ALTER TABLE `tbl_building`
+  ADD PRIMARY KEY (`building_id`);
+
+--
 -- Indexes for table `tbl_case`
 --
 ALTER TABLE `tbl_case`
   ADD PRIMARY KEY (`case_id`);
-
---
--- Indexes for table `tbl_counter`
---
-ALTER TABLE `tbl_counter`
-  ADD PRIMARY KEY (`c_id`);
 
 --
 -- Indexes for table `tbl_department`
@@ -541,18 +495,6 @@ ALTER TABLE `tbl_position`
   ADD PRIMARY KEY (`position_id`);
 
 --
--- Indexes for table `tbl_product`
---
-ALTER TABLE `tbl_product`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_product_image`
---
-ALTER TABLE `tbl_product_image`
-  ADD PRIMARY KEY (`no`);
-
---
 -- Indexes for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
@@ -569,16 +511,16 @@ ALTER TABLE `tbl_assessment`
   MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `tbl_building`
+--
+ALTER TABLE `tbl_building`
+  MODIFY `building_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `tbl_case`
 --
 ALTER TABLE `tbl_case`
-  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
-
---
--- AUTO_INCREMENT for table `tbl_counter`
---
-ALTER TABLE `tbl_counter`
-  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14308;
+  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_department`
@@ -621,18 +563,6 @@ ALTER TABLE `tbl_member`
 --
 ALTER TABLE `tbl_position`
   MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_product`
---
-ALTER TABLE `tbl_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `tbl_product_image`
---
-ALTER TABLE `tbl_product_image`
-  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

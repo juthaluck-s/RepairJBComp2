@@ -34,19 +34,19 @@
 
 
                                     <div class="form-group row">
-    <label class="col-sm-2">สิทธิ์การใช้งาน</label>
-    <div class="col-sm-2">
-        <select name="ref_level_id" class="form-control" disabled>
-            <option disabled>กรุณาเลือกใหม่</option>
-            <?php foreach ($rsLevel as $rowlev): ?>
-                <option value="<?= htmlspecialchars($rowlev['level_id']); ?>" 
-                    <?= $rowlev['level_id'] == $memberData['ref_level_id'] ? 'selected' : ''; ?>>
-                    <?= htmlspecialchars($rowlev['level_name']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-</div>
+                                        <label class="col-sm-2">สิทธิ์การใช้งาน</label>
+                                        <div class="col-sm-2">
+                                            <select name="ref_level_id" class="form-control" disabled>
+                                                <option disabled>กรุณาเลือกใหม่</option>
+                                                <?php foreach ($rsLevel as $rowlev): ?>
+                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>"
+                                                        <?= $rowlev['level_id'] == $memberData['ref_level_id'] ? 'selected' : ''; ?>>
+                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">Username</label>
@@ -86,13 +86,16 @@
                                         </div>
                                     </div>
 
+
+
                                     <div class="form-group row">
                                         <label class="col-sm-2">แผนก</label>
                                         <div class="col-sm-2">
                                             <select name="ref_department_id" class="form-control" disabled>
                                                 <option disabled>กรุณาเลือกใหม่</option>
                                                 <?php foreach ($rsDepartment as $rowdpm): ?>
-                                                    <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>">
+                                                    <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>"
+                                                        <?= $rowdpm['department_id'] == $memberData['ref_department_id'] ? 'selected' : ''; ?>>
                                                         <?= htmlspecialchars($rowdpm['department_name']); ?>
                                                     </option>
                                                 <?php endforeach; ?>
@@ -106,13 +109,15 @@
                                             <select name="ref_position_id" class="form-control" disabled>
                                                 <option disabled>กรุณาเลือกใหม่</option>
                                                 <?php foreach ($rsPosition as $rowpst): ?>
-                                                    <option value="<?= htmlspecialchars($rowpst['position_id']); ?>">
+                                                    <option value="<?= htmlspecialchars($rowpst['position_id']); ?>"
+                                                        <?= $rowpst['position_id'] == $memberData['ref_position_id'] ? 'selected' : ''; ?>>
                                                         <?= htmlspecialchars($rowpst['position_name']); ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group row">
                                         <label class="col-sm-2">เบอร์โทร</label>
@@ -163,31 +168,23 @@ if (isset($_POST['m_id']) && isset($_POST['firstname']) && isset($_POST['lastnam
 
         //ประกาศตัวแปรรับค่าจากฟอร์ม
         $m_id = $_POST['m_id'];
-        $member_id = $_POST['member_id'];
-        $ref_level_id = $_POST['ref_level_id'];
-        $username = $_POST['username'];
         $title_name = $_POST['title_name'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
-        $ref_department_id = $_POST['ref_department_id'];
-        $ref_position_id = $_POST['ref_position_id'];
         $m_tel = $_POST['m_tel'];
         $m_email = $_POST['m_email'];
 
         //sql update
-        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET m_id=:m_id, member_id=:member_id, ref_level_id=:ref_level_id ,title_name=:title_name,firstname=:firstname, lastname=:lastname, ref_department_id=:ref_department_id, ref_position_id=:ref_position_id, m_tel=:m_tel, m_email=:m_email
+        $stmtUpdate = $condb->prepare("UPDATE tbl_member SET m_id=:m_id, title_name=:title_name,firstname=:firstname, lastname=:lastname,  m_tel=:m_tel, m_email=:m_email
      WHERE m_id=:m_id");
 
         //bindParam
         $stmtUpdate->bindParam(':m_id', $m_id, PDO::PARAM_INT);
-        $stmtUpdate->bindParam(':member_id', $member_id, PDO::PARAM_STR);
-        $stmtUpdate->bindParam(':ref_level_id', $ref_level_id, PDO::PARAM_STR);
-        $stmtUpdate->bindParam(':username', $username, PDO::PARAM_STR);
+
         $stmtUpdate->bindParam(':title_name', $title_name, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':firstname', $firstname, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':lastname', $lastname, PDO::PARAM_STR);
-        $stmtUpdate->bindParam(':ref_department_id', $ref_department_id, PDO::PARAM_INT);
-        $stmtUpdate->bindParam(':ref_position_id', $ref_position_id, PDO::PARAM_INT);
+
         $stmtUpdate->bindParam(':m_tel', $m_tel, PDO::PARAM_STR);
         $stmtUpdate->bindParam(':m_email', $m_email, PDO::PARAM_STR);
         $result = $stmtUpdate->execute();

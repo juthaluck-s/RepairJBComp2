@@ -100,11 +100,12 @@ if (isset($_GET['m_id']) && $_GET['act'] == 'editPwd') {
 
 
 <?php
-if (isset($_POST['id']) && isset($_POST['NewPassword']) && isset($_POST['ConfirmPassword'])) {
+if (isset($_POST['m_id']) && isset($_POST['NewPassword']) && isset($_POST['ConfirmPassword'])) {
     //trigger exception in a "try" block
     try {
         //ประกาศตัวแปรรับค่าจากฟอร์ม
-        $id = $_POST['id'];
+        $id = $_POST['m_id'];
+
         $NewPassword = $_POST['NewPassword'];
         $ConfirmPassword = $_POST['ConfirmPassword'];
 
@@ -127,11 +128,12 @@ if (isset($_POST['id']) && isset($_POST['NewPassword']) && isset($_POST['Confirm
             $password = sha1($_POST['NewPassword']);
 
             //sql update
-            $stmtUpdate = $condb->prepare("UPDATE  tbl_member SET password='$password' WHERE id=:id");
+            $stmtUpdate = $condb->prepare("UPDATE  tbl_member SET password=:password WHERE m_id=:id");
+
 
             //bindParam
             $stmtUpdate->bindParam(':id', $id, PDO::PARAM_INT);
-
+            $stmtUpdate->bindParam(':password', $password, PDO::PARAM_STR);
             $result = $stmtUpdate->execute();
 
             $condb = null;
@@ -142,7 +144,7 @@ if (isset($_POST['id']) && isset($_POST['NewPassword']) && isset($_POST['Confirm
         title: "แก้ไขรหัสผ่านสำเร็จ",
         type: "success"
         }, function() {
-        window.location = "index.php"; //หน้าที่ต้องการให้กระโดดไป
+        window.location = "case.php"; //หน้าที่ต้องการให้กระโดดไป
         });
         }, 1000);
         </script>';

@@ -40,8 +40,8 @@ try {
         <!-- โปรไฟล์ Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="../assets/dist/img/avatar4.png" class="img-circle elevation-2" alt="User Image"
-                    style="margin-top: 10px;">
+                <img src="../assets/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image"
+                    style="margin-top: 8px;">
             </div>
 
             <div class="info">
@@ -118,7 +118,7 @@ try {
 
                 <li class="nav-item">
                     <a href="level.php" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fa-solid fa-people-group"></i>
                         <p>
                             จัดการสิทธิ์การใช้งาน
                         </p>
@@ -168,7 +168,7 @@ try {
 
                 <li class="nav-item">
                     <a href="building.php" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fa-solid fa-city"></i>
                         <p>
                             จัดการอาคาร
                         </p>
