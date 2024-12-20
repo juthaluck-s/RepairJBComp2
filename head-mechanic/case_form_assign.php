@@ -80,7 +80,7 @@ if (isset($_GET['no'])) {
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="table-info">
+                                                    <tr class="bg-dark">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -105,7 +105,7 @@ if (isset($_GET['no'])) {
                                                             สถานที่ : <?= $rsCase_Detail['building_name']; ?> ชั้น
                                                             <?= $rsCase_Detail['case_floor']; ?> ห้อง
                                                             <?= $rsCase_Detail['case_room']; ?><br>
-                                                            <?= $rsCase_Detail['title_name'] . ' ' . $rsCase_Detail['firstname'] . ' ' . $rsCase_Detail['lastname']; ?><br>
+                                                            <?= $rsCase_Detail['title_name'] . '' . $rsCase_Detail['firstname'] . ' ' . $rsCase_Detail['lastname']; ?><br>
                                                             แผนก : <?= $rsCase_Detail['department_name']; ?><br>
                                                             ตำแหน่ง : <?= $rsCase_Detail['position_name']; ?><br>
                                                             เบอร์โทร : <?= $rsCase_Detail['m_tel']; ?><br>
@@ -137,20 +137,20 @@ if (isset($_GET['no'])) {
 
                                             <form method="post"
                                                 action="assign_db.php?id=<?= isset($_GET['id']) ? htmlspecialchars($_GET['id']) : ''; ?>"
-                                                class="form-horizontal">
-                                                <h4> :: รายการช่าง :: </h4>
+                                                class="form-horizontal"><br>
+                                                <h4>รายการชื่อช่างทั้งหมด</h4>
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
-                                                        <tr class='danger'>
-                                                            <th width='5%'>
+                                                        <tr class="bg-gray">
+                                                            <th width='1%'>
                                                                 <center>เลือก</center>
                                                             </th>
                                                             <th width='50%'>รายละเอียดช่าง</th>
                                                             <th width='5%'>
-                                                                <center>doing</center>
+                                                                <center>กำลังทำ</center>
                                                             </th>
                                                             <th width='5%'>
-                                                                <center>close</center>
+                                                                <center>ปิดงาน</center>
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -163,7 +163,7 @@ if (isset($_GET['no'])) {
                                                                 <td style="text-align: center; vertical-align: middle;">
                                                                     <input type="radio" name="mec_id" required
                                                                         value="<?= htmlspecialchars($row['mec_id']); ?>">
-                                                                    <span>เลือก</span>
+
                                                                 </td>
                                                                 <td>
                                                                     <?= htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>

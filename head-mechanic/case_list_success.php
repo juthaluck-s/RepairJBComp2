@@ -69,7 +69,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                             Success <span
                                                 class="badge"><?= $rowSuccessCases['totalSuccessCases']; ?></span></a>
                                         <a href="case.php?act=all" class="btn btn-danger">
-                                            AllJob <span class="badge"><?= $rowAllCases['totalAllCases']; ?></span></a>
+                                            All <span class="badge"><?= $rowAllCases['totalAllCases']; ?></span></a>
                                     </p>
                                     <div class="card">
 
@@ -99,23 +99,23 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                     <?php $i = 1; // เริ่มต้นลำดับที่ 1 
                                                     ?>
                                                     <?php foreach ($rsCaseList as $row) { ?>
-                                                        <tr>
-                                                            <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
+                                                    <tr>
+                                                        <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
                                                                                 ?></td>
-                                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
-                                                                    width="70px"></td>
-                                                            <td align="center"><?= $row['equipment_name']; ?></td>
-                                                            <td>
-                                                                <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                        <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
+                                                                width="70px"></td>
+                                                        <td align="center"><?= $row['equipment_name']; ?></td>
+                                                        <td>
+                                                            <?= $row['case_detail'] . '<br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
-                                                            </td>
-                                                            <td align="center"><?= htmlspecialchars($row['status_name']); ?>
-                                                            </td>
-                                                            <td align="center">
-                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
-                                                                    class="btn btn-success btn-sm">Open</a>
-                                                            </td>
-                                                        </tr>
+                                                        </td>
+                                                        <td align="center"><?= htmlspecialchars($row['status_name']); ?>
+                                                        </td>
+                                                        <td align="center">
+                                                            <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
+                                                                class="btn btn-success btn-sm">Open</a>
+                                                        </td>
+                                                    </tr>
                                                     <?php } ?>
 
                                                 </tbody>

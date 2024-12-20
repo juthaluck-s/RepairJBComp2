@@ -17,7 +17,7 @@ $rsstatus = $querystatus->fetchAll();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>รายการสถานะ
+                    <h1>จัดการสถานะ
                         <a href="status.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
                     </h1>
                 </div>
@@ -35,7 +35,7 @@ $rsstatus = $querystatus->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="table-info">
+                                    <tr class="bg-dark">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">สถานะ</th>
                                         <th width="5%" class="text-center">แก้ไข</th>

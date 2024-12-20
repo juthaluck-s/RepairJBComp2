@@ -203,26 +203,44 @@ if (isset($_POST['username']) && isset($_POST['firstname']) && isset($_POST['las
 
         //เช็ก username ซ้ำ
         $stmtMemberDetail = $condb->prepare("SELECT username FROM tbl_member WHERE username=:username");
+        $stmtMember_idDetail = $condb->prepare("SELECT member_id FROM tbl_member WHERE member_id=:member_id");
 
-        //bindParam
+        // Bind Parameters
         $stmtMemberDetail->bindParam(':username', $username, PDO::PARAM_STR);
         $stmtMemberDetail->execute();
         $row = $stmtMemberDetail->fetch(PDO::FETCH_ASSOC);
 
-        //นับจำนวนการคิวรี่ ถ้าได้ 1 คือ username ซ้ำ
+        $stmtMember_idDetail->bindParam(':member_id', $member_id, PDO::PARAM_STR);
+        $stmtMember_idDetail->execute();
+        $rowMem_id = $stmtMember_idDetail->fetch(PDO::FETCH_ASSOC);
+
+        // ตรวจสอบข้อมูลซ้ำ
         if ($stmtMemberDetail->rowCount() == 1) {
-            // echo 'Username ซ้ำ';
+            // Username ซ้ำ
             echo '<script>
-                    setTimeout(function() {
-                        swal({
-                            title: "Username นี้มีอยู่ในระบบแล้ว",
-                            text: "กรุณากรอกข้อมูลใหม่อีกครั้ง",
-                            type: "error"
-                        }, function() {
-                            window.location = "member.php?act=add"; // หน้าที่ต้องการให้กระโดดไป
-                        });
-                    }, 1000);
-                </script>';
+            setTimeout(function() {
+                swal({
+                    title: "Username นี้มีอยู่ในระบบแล้ว",
+                    text: "กรุณากรอกข้อมูลใหม่อีกครั้ง",
+                    type: "error"
+                }, function() {
+                    window.location = "member.php?act=add"; // หน้าที่ต้องการให้กระโดดไป
+                });
+            }, 1000);
+        </script>';
+        } elseif ($stmtMember_idDetail->rowCount() == 1) {
+            // Member ID ซ้ำ
+            echo '<script>
+            setTimeout(function() {
+                swal({
+                    title: "รหัสพนักงานนี้มีอยู่ในระบบแล้ว",
+                    text: "กรุณากรอกข้อมูลใหม่อีกครั้ง",
+                    type: "error"
+                }, function() {
+                    window.location = "member.php?act=add"; // หน้าที่ต้องการให้กระโดดไป
+                });
+            }, 1000);
+        </script>';
         } else {
             //echo 'ไม่มี Username ซ้ำ';
             $stmtInsertMember = $condb->prepare("INSERT INTO tbl_member 

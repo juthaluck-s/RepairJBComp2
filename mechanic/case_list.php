@@ -71,61 +71,61 @@ $rsCaseList = $queryCaseList->fetchAll();
                                 <tbody>
 
                                     <?php
-									$i = 1;
-									?>
+                                    $i = 1;
+                                    ?>
 
                                     <?php foreach ($rsCaseList as $row) { ?>
 
-                                    <tr>
-                                        <td align="center"> <?php echo $i++ ?></td>
-                                        <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
-                                        </td>
-                                        <td><?= $row['equipment_name']; ?></td>
+                                        <tr>
+                                            <td align="center"> <?php echo $i++ ?></td>
+                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
+                                            </td>
+                                            <td><?= $row['equipment_name']; ?></td>
 
 
 
-                                        <td> <?= $row['case_detail']; ?>
-                                            สถานที่ : <?= $row['building_name']; ?> ชั้น
-                                            <?= $row['case_floor']; ?> ห้อง
-                                            <?= $row['case_room']; ?><br>
-                                            <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname']; ?><br>
-                                            เบอร์โทร : <?= $row['m_tel']; ?><br>
-                                            Email : <?= $row['m_email']; ?><br></td>
-                                        <td align="center"><?= $row['status_name']; ?></td>
-                                        <td>
-                                            <?= $row['head_mechanic_title_name'] . ' ' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . ' <br>' . 'เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>' . 'Email: ' . $row['head_mechanic_email'] ?>
-                                        </td>
+                                            <td> <?= $row['case_detail']; ?> <br>
+                                                สถานที่ : <?= $row['building_name']; ?> ชั้น
+                                                <?= $row['case_floor']; ?> ห้อง
+                                                <?= $row['case_room']; ?><br>
+                                                <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname']; ?><br>
+                                                เบอร์โทร : <?= $row['m_tel']; ?><br>
+                                                Email : <?= $row['m_email']; ?><br></td>
+                                            <td align="center"><?= $row['status_name']; ?></td>
+                                            <td>
+                                                <?= $row['head_mechanic_title_name'] . ' ' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . ' <br>' . 'เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>' . 'Email: ' . $row['head_mechanic_email'] ?>
+                                            </td>
 
 
-                                        <td align="center"><?= $row['dateSave']; ?></a></td>
+                                            <td align="center"><?= $row['dateSave']; ?></a></td>
 
-                                        <td align="center">
-                                            <?php if ($row['ref_status_id'] == 2) { // กำลังซ่อม 
-												?>
-                                            <a href="case.php?id=<?= $row['case_id']; ?>&act=openjob&no=<?= $i - 1; ?>"
-                                                class="btn btn-warning btn-sm">ส่งงาน</a>
-                                            <?php } else { ?>
-                                            -
-                                            <?php } ?>
-                                        </td>
+                                            <td align="center">
+                                                <?php if ($row['ref_status_id'] == 2) { // กำลังซ่อม 
+                                                ?>
+                                                    <a href="case.php?id=<?= $row['case_id']; ?>&act=openjob&no=<?= $i - 1; ?>"
+                                                        class="btn btn-warning btn-sm">ส่งงาน</a>
+                                                <?php } else { ?>
+                                                    -
+                                                <?php } ?>
+                                            </td>
 
-                                        <td align="center">
-                                            <?php
-												if ($row['ref_status_id'] == 3) { // รอประเมินผล
-													echo "รอผลประเมิน";
-												} elseif ($row['ref_status_id'] == 4) { // สถานะที่เกี่ยวข้องกับการประเมิน
-													// ใช้ echo แบบถูกต้องเพื่อแสดงลิงก์
-													echo '<a href="case.php?id=' . $row['case_id'] . '&act=view&no=' . ($i - 1) . '" class="btn btn-success btn-sm">Open</a>';
-												} else {
-													echo "-";
-												}
-												?>
-                                        </td>
-
-
+                                            <td align="center">
+                                                <?php
+                                                if ($row['ref_status_id'] == 3) { // รอประเมินผล
+                                                    echo "รอผลประเมิน";
+                                                } elseif ($row['ref_status_id'] == 4) { // สถานะที่เกี่ยวข้องกับการประเมิน
+                                                    // ใช้ echo แบบถูกต้องเพื่อแสดงลิงก์
+                                                    echo '<a href="case.php?id=' . $row['case_id'] . '&act=view&no=' . ($i - 1) . '" class="btn btn-success btn-sm">Open</a>';
+                                                } else {
+                                                    echo "-";
+                                                }
+                                                ?>
+                                            </td>
 
 
-                                    </tr>
+
+
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
 

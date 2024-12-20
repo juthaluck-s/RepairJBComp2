@@ -64,7 +64,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                 <table id="example1" class="table table-bordered table-striped table-sm">
 
                                     <thead>
-                                        <tr class="table-info">
+                                        <tr class="bg-warning">
                                             <th width="5%" class="text-center">No.</th>
 
                                             <th width="5%" class="text-center">รูปภาพ</th>
@@ -91,8 +91,14 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                 <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
                                                 </td>
                                                 <td align="center"><?= $row['equipment_name']; ?></td>
-                                                <td><?= $row['case_detail'] . '' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] ?>
+                                                <td>
+                                                    <?= nl2br(wordwrap($row['case_detail'], 250, "\n", true)) ?> <br>
+                                                    สถานที่ : <?= $row['building_name'] ?> ชั้น <?= $row['case_floor'] ?>
+                                                    ห้อง
+                                                    <?= $row['case_room'] ?>
                                                 </td>
+
+
                                                 <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
 
                                                 <td>

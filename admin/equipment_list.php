@@ -35,7 +35,7 @@ $rsequipment = $queryequipment->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="table-info">
+                                    <tr class="bg-dark">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">ชื่ออุปกรณ์</th>
                                         <th width="5%" class="text-center">แก้ไข</th>

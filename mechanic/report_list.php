@@ -48,7 +48,9 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-                        <h1>รายงานการทำงานของช่าง : <?= htmlspecialchars($rsMecReport['mec_firstname']) ?></h1>
+                        <h1>รายงานการทำงาน :
+                            <?= $rsMecReport['mec_title_name'] . ' ' . $rsMecReport['mec_firstname'] . ' ' . $rsMecReport['mec_lastname']; ?>
+                        </h1>
                     </h1>
                 </div>
             </div>
@@ -75,18 +77,18 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>จำนวนงานที่ได้รับมอบหมายทั้งหมด</td>
+                                            <td>งานที่ได้รับมอบหมายทั้งหมด</td>
                                             <td align="center"><?= htmlspecialchars($rsMecReport['mec_all_job']) ?>
                                             </td>
                                             <td align="center">งาน</td>
                                         </tr>
                                         <tr>
-                                            <td>จำนวนงานที่กำลังทำ</td>
+                                            <td>งานที่กำลังทำ</td>
                                             <td align="center"><?= htmlspecialchars($rsMecReport['mec_doing']) ?>
                                             <td align="center">งาน</td>
                                         </tr>
                                         <tr>
-                                            <td>จำนวนงานที่ทำเสร็จแล้ว</td>
+                                            <td>งานที่ทำเสร็จแล้ว</td>
                                             <td align="center"><?= htmlspecialchars($rsMecReport['mec_close']) ?>
                                             <td align="center">งาน</td>
                                         </tr>
@@ -118,7 +120,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                         </tbody>
                                     </table>
                                 <?php else: ?>
-                                    <p>ไม่มีข้อมูลการประเมินสำหรับช่างนี้</p>
+                                    <p>ไม่มีข้อมูลการประเมิน</p>
                                 <?php endif; ?>
                             </div>
                         </div>
