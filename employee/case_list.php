@@ -63,8 +63,9 @@ $rsCaseList = $queryCaseList->fetchAll();
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped table-sm">
 
+
                                     <thead>
-                                        <tr class="bg-warning">
+                                        <tr class="bg-dark">
                                             <th width="5%" class="text-center">No.</th>
 
                                             <th width="5%" class="text-center">รูปภาพ</th>
@@ -92,8 +93,10 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                 </td>
                                                 <td align="center"><?= $row['equipment_name']; ?></td>
                                                 <td>
-                                                    <?= nl2br(wordwrap($row['case_detail'], 250, "\n", true)) ?> <br>
-                                                    สถานที่ : <?= $row['building_name'] ?> ชั้น <?= $row['case_floor'] ?>
+                                                    <b> <?= nl2br(wordwrap($row['case_detail'], 250, "\n", true)) ?>
+                                                    </b><br>
+                                                    สถานที่ : <?= $row['building_name'] ?> ชั้น
+                                                    <?= $row['case_floor'] ?>
                                                     ห้อง
                                                     <?= $row['case_room'] ?>
                                                 </td>

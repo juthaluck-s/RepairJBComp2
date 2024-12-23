@@ -69,7 +69,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                 <h4>รายงานภาพรวม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
-                                        <tr class="info">
+                                        <tr class="bg-dark">
                                             <th width="80%" class="text-center">รายการ</th>
                                             <th width="10%" class="text-center">จำนวน</th>
                                             <th width="10%" class="text-center">หน่วย</th>
@@ -99,7 +99,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                 <?php if ($assessmentData): ?>
                                     <table class="table table-bordered table-striped ">
                                         <thead>
-                                            <tr class="bg-success">
+                                            <tr class="bg-gray">
                                                 <th width="80%" class="text-center">รายการ</th>
                                                 <th width="10%" class="text-center">จำนวน</th>
                                                 <th width="10%" class="text-center">หน่วย</th>

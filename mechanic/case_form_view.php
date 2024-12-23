@@ -76,7 +76,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="table-info">
+                                                    <tr class="bg-dark">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -99,7 +99,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                             <td align="center"><?= $rsCase_open['equipment_name']; ?>
                                                             </td>
                                                             <td>
-                                                                <?= $rsCase_open['case_detail']; ?><br>
+                                                                <b><?= $rsCase_open['case_detail']; ?></b><br>
                                                                 สถานที่ : <?= $rsCase_open['building_name']; ?> ชั้น
                                                                 <?= $rsCase_open['case_floor']; ?> ห้อง
                                                                 <?= $rsCase_open['case_room']; ?><br>
@@ -122,7 +122,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
 
                                                                 <textarea name="case_update_log" required
                                                                     class="form-control" rows="4" cols="50"
-                                                                    style="background-color:#d4e8e8; text-align: left;"
+                                                                    style="background-color:#dcdcdd; text-align: left;"
                                                                     readonly><?= $rsCase_open['case_update_log']; ?></textarea>
                                                                 <br>
                                                                 ว/ด/ป ที่ส่งงาน:

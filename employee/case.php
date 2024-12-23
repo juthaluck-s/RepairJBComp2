@@ -14,5 +14,4 @@ if ($act == 'add') {
 } else {
     include 'case_list.php';
 }
-
 include 'footer.php';

@@ -54,7 +54,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                             <table id="example1" class="table table-bordered table-striped table-sm">
 
                                 <thead>
-                                    <tr class="table-info">
+                                    <tr class="bg-dark">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="5%" class="text-center">รูปภาพ</th>
                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -84,13 +84,15 @@ $rsCaseList = $queryCaseList->fetchAll();
 
 
 
-                                            <td> <?= $row['case_detail']; ?> <br>
+                                            <td>
+                                                <b> <?= $row['case_detail']; ?> </b><br>
                                                 สถานที่ : <?= $row['building_name']; ?> ชั้น
                                                 <?= $row['case_floor']; ?> ห้อง
                                                 <?= $row['case_room']; ?><br>
                                                 <?= $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname']; ?><br>
                                                 เบอร์โทร : <?= $row['m_tel']; ?><br>
-                                                Email : <?= $row['m_email']; ?><br></td>
+                                                Email : <?= $row['m_email']; ?><br>
+                                            </td>
                                             <td align="center"><?= $row['status_name']; ?></td>
                                             <td>
                                                 <?= $row['head_mechanic_title_name'] . ' ' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . ' <br>' . 'เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>' . 'Email: ' . $row['head_mechanic_email'] ?>

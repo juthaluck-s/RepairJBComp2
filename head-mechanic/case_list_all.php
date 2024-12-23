@@ -33,37 +33,6 @@ $stmtCountAllCases->execute();
 $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
 ?>
 
-
-
-
-<style>
-    .custom-badge {
-        background-color: white;
-        /* สีพื้นหลัง */
-        color: black;
-        /* สีตัวอักษร */
-        border-radius: 50%;
-        /* ทำให้เป็นวงกลม */
-        padding: 5px 10px;
-        /* เพิ่มขนาดภายใน */
-        font-weight: bold;
-        /* ตัวหนา */
-        border: 1px solid black;
-        /* เส้นขอบ */
-        display: inline-block;
-        /* เพื่อให้เป็นวงกลม */
-        text-align: center;
-        /* จัดข้อความให้อยู่ตรงกลาง */
-        min-width: 30px;
-        /* กำหนดความกว้างขั้นต่ำ */
-        height: 30px;
-        /* กำหนดความสูง */
-        line-height: 20px;
-        /* จัดตัวอักษรให้อยู่ตรงกลาง */
-    }
-</style>
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -88,16 +57,16 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                             <div class="col-md-12">
                                 <div class="box-body">
                                     <p>
-                                        <a href="case.php" class="btn btn-primary">
+                                        <a href="case.php" class="btn custom-btn btn-sm">
                                             NEW <span class="badge"><?= $rowNewCases['totalNewCases']; ?></span>
                                         </a>
-                                        <a href="case.php?act=doing" class="btn btn-warning">
-                                            Assigned<span
+                                        <a href="case.php?act=doing" class="btn custom2-btn btn-sm">
+                                            Assigned <span
                                                 class="badge"><?= $rowAssignedCases['totalAssignedCases']; ?></span></a>
-                                        <a href="case.php?act=success" class="btn btn-success">
+                                        <a href="case.php?act=success" class="btn custom3-btn btn-sm">
                                             Success <span
                                                 class="badge"><?= $rowSuccessCases['totalSuccessCases']; ?></span></a>
-                                        <a href="case.php?act=all" class="btn btn-danger">
+                                        <a href="case.php?act=all" class="btn btn-danger btn-sm">
                                             All <span class="badge"><?= $rowAllCases['totalAllCases']; ?></span></a>
                                     </p>
                                     <div class="card">
@@ -107,7 +76,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                             <table id="example1" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="table-info">
+                                                    <tr class="bg-dark">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="5%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -135,7 +104,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                                     width="70px"></td>
                                                             <td align="center"><?= $row['equipment_name']; ?></td>
                                                             <td>
-                                                                <?= $row['case_detail'] . '<br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                                <?= '<b>' . $row['case_detail'] . '</b><br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
                                                             </td>
                                                             <td align="center"><?= htmlspecialchars($row['status_name']); ?>

@@ -1,0 +1,75 @@
+.badge {
+  background-color: snow;
+  /* สีพื้นหลัง */
+  color: #686868e0;
+  /* สีตัวอักษร */
+  border-radius: 40%;
+  /* ทำให้เป็นวงกลม */
+  font-weight: bold;
+  /* ตัวหนา */
+
+  /* ทำให้เป็น inline element ที่จัดเนื้อหาได้ */
+  /* align-items: center; */
+  /* จัดข้อความให้อยู่กลางแนวตั้ง */
+  justify-content: center;
+  /* จัดข้อความให้อยู่กลางแนวนอน */
+  min-width: 20px;
+  /* กำหนดความกว้างขั้นต่ำ */
+  height: 17px;
+  /* กำหนดความสูง */
+  line-height: 1;
+  /* ปรับบรรทัดให้พอดีกับตัวอักษร */
+  cursor: default;
+  /* เปลี่ยนให้คลิกไม่ได้ หากต้องการ */
+}
+
+.custom-btn {
+  background-color: #2f81f5;
+  /* กำหนดสีพื้นหลัง (สีส้ม) */
+  color: white;
+  /* สีข้อความในปุ่ม */
+  border: 1px solid #2f81f5;
+  /* กำหนดขอบปุ่ม */
+}
+
+.custom-btn:hover {
+  background-color: #0057d3;
+  color: white;
+  /* สีพื้นหลังเมื่อเลื่อนเมาส์ (สีแดง) */
+  border-color: #97bdf3;
+  /* สีขอบเมื่อเลื่อนเมาส์ */
+}
+
+.custom2-btn {
+  background-color: #6274eb;
+  /* กำหนดสีพื้นหลัง (สีส้ม) */
+  color: white;
+  /* สีข้อความในปุ่ม */
+  border: 1px solid #6262eb;
+  /* กำหนดขอบปุ่ม */
+}
+
+.custom2-btn:hover {
+  background-color: #3737b5;
+  color: white;
+  /* สีพื้นหลังเมื่อเลื่อนเมาส์ (สีแดง) */
+  border-color: #6262eb;
+  /* สีขอบเมื่อเลื่อนเมาส์ */
+}
+
+.custom3-btn {
+  background-color: #48c193;
+  /* กำหนดสีพื้นหลัง (สีส้ม) */
+  color: white;
+  /* สีข้อความในปุ่ม */
+  border: 1px solid #31ad84;
+  /* กำหนดขอบปุ่ม */
+}
+
+.custom3-btn:hover {
+  background-color: #207659;
+  color: white;
+  /* สีพื้นหลังเมื่อเลื่อนเมาส์ (สีแดง) */
+  border-color: #48c193;
+  /* สีขอบเมื่อเลื่อนเมาส์ */
+}

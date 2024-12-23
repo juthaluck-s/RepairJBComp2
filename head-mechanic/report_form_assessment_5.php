@@ -27,7 +27,7 @@ $rsCaseAsm5 = $queryCaseAsm5->fetchAll();
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>รายงานการแจ้งซ่อมที่ได้ผลประเมินแย่</h1>
+                    <h1>รายงานการแจ้งซ่อมที่ได้ผลประเมินควรปรับปรุง</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->

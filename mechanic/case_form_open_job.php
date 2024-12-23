@@ -72,7 +72,7 @@ if (isset($_GET['no'])) {
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="table-info">
+                                                    <tr class="bg-dark">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -95,7 +95,7 @@ if (isset($_GET['no'])) {
                                                             <td align="center"><?= $rsCase_open['equipment_name']; ?>
                                                             </td>
                                                             <td>
-                                                                <?= $rsCase_open['case_detail']; ?><br>
+                                                                <b><?= $rsCase_open['case_detail']; ?></b><br>
                                                                 สถานที่ : <?= $rsCase_open['building_name']; ?> ชั้น
                                                                 <?= $rsCase_open['case_floor']; ?> ห้อง
                                                                 <?= $rsCase_open['case_room']; ?><br>
@@ -118,7 +118,7 @@ if (isset($_GET['no'])) {
 
                                                                 <textarea name="case_update_log" required
                                                                     class="form-control" rows="4" cols="50"
-                                                                    style="background-color:#d4e8e8;"></textarea>
+                                                                    style="background-color:#dcdcdd;"></textarea>
                                                                 <br>
                                                                 <button type="submit" name="submit"
                                                                     class="btn btn-primary">บันทึกส่งงาน</button>

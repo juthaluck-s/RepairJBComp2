@@ -75,7 +75,8 @@
             "responsive": true,
         });
     });
-
+</script>
+<script>
     // แปลงข้อมูลจาก PHP เป็น JSON สำหรับกราฟสถานะ
     const statusData = <?php echo json_encode($statusData); ?>;
 
@@ -184,8 +185,6 @@
         }
     });
 </script>
-
-
 
 
 

@@ -80,7 +80,8 @@ $rsLevel = $queryLevel->fetchAll();
         rel="stylesheet">
     <link rel="stylesheet" href="../assets/dist/css/more.css">
 
-
+    <!-- buttons -->
+    <link rel="stylesheet" href="../assets/dist/css/buttons.css">
 
 
 

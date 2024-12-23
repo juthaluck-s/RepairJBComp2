@@ -1,260 +1,256 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* font-family:"poppins",sans-serif; */
-    font-family: "Sarabun", system-ui;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family:"poppins",sans-serif; */
+  font-family: "Sarabun", system-ui;
 }
 
 body {
-    background-color: #ffffff;
-    background: linear-gradient(to right, rgb(174, 208, 228), rgb(35, 93, 155));
-    padding: 13vh;
+  background-color: #ffffff;
+  background: linear-gradient(to right, rgb(133, 131, 131), rgb(0, 0, 0));
+  padding: 13vh;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo-container img {
-    width: 25%;
-    height: auto;
+  width: 25%;
+  height: auto;
 }
 
 .logo-container img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .container {
-    background: #fff;
-    width: 500px;
-    padding: 1.5rem;
-    margin: 50px auto;
-    border-radius: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
-    max-width: 90%;
-    /* จำกัดขนาดให้เหมาะสมกับหน้าจอขนาดเล็ก */
+  background: #fff;
+  width: 40rem;
+  padding: 1.5rem;
+  margin: 8vh auto;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+  max-width: 100%;
+  /* จำกัดขนาดให้เหมาะสมกับหน้าจอขนาดเล็ก */
 }
 
 /* สำหรับหน้าจอเล็ก เช่น โทรศัพท์มือถือ */
 @media (max-width: 768px) {
-    .container {
-        width: 90%;
-        padding: 1rem;
-    }
+  .container {
+    width: 90%;
+    padding: 1rem;
+  }
 }
 
 /* สำหรับหน้าจอเล็กมาก เช่น โทรศัพท์ขนาดเล็ก */
 @media (max-width: 480px) {
-    .container {
-        width: 95%;
-        padding: 0.8rem;
-    }
+  .container {
+    width: 95%;
+    padding: 0.8rem;
+  }
 }
 form {
-    margin: 0 2rem;
+  margin: 0 2rem;
 }
 
 .form-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 1.3rem;
-    margin-bottom: 0.4rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.3rem;
+  margin-bottom: 0.4rem;
 }
 
 input {
-    color: inherit;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #757575;
-    padding-left: 1.5rem;
-    font-size: 15px;
+  color: inherit;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  padding-left: 1.5rem;
+  font-size: 15px;
 }
 
 .input-group {
-    padding: 1% 0;
-    position: relative;
-
+  padding: 1% 0;
+  position: relative;
 }
 
 .input-group i {
-    position: absolute;
-    color: black;
+  position: absolute;
+  color: black;
 }
 
 input:focus {
-    background-color: transparent;
-    outline: transparent;
-    border-bottom: 2px solid #022564;
+  background-color: transparent;
+  outline: transparent;
+  border-bottom: 2px solid #022564;
 }
 
 input::placeholder {
-    color: transparent;
+  color: transparent;
 }
 
 label {
-    color: #757575;
-    position: relative;
-    left: 1.2em;
-    top: -1.3em;
-    cursor: auto;
-    transition: 0.3s ease all;
+  color: #757575;
+  position: relative;
+  left: 1.2em;
+  top: -1.3em;
+  cursor: auto;
+  transition: 0.3s ease all;
 }
 
-input:focus~label,
-input:not(:placeholder-shown)~label {
-    top: -3em;
-    color: rgb(6, 77, 145);
-    font-size: 15px;
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+  top: -3em;
+  color: rgb(6, 77, 145);
+  font-size: 15px;
 }
 
 .recover {
-    text-align: right;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-
+  text-align: right;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .recover a {
-    text-decoration: none;
-    color: rgb(0, 97, 189);
+  text-decoration: none;
+  color: rgb(0, 97, 189);
 }
 
 .recover a:hover {
-    color: blue;
-    text-decoration: underline;
+  color: blue;
+  text-decoration: underline;
 }
 
 .btn {
-    font-size: 1.1rem;
-    padding: 8px 0;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    width: 100%;
-    background: rgb(0, 97, 189);
-    color: white;
-    cursor: pointer;
-    transition: 0.9s;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: rgb(66, 66, 66);
+  color: white;
+  cursor: pointer;
+  transition: 0.9s;
 }
 
 .btn:hover {
-    background: #063388;
-    color: rgb(214, 214, 214);
+  background: #0f0f0f;
+  color: rgb(214, 214, 214);
 }
 
 .or {
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    text-align: center;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 .icons {
-    text-align: center;
+  text-align: center;
 }
 
 .icons i {
-    color: rgb(125, 125, 235);
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: 2px solid #dfe9f5;
-    margin: 0 15px;
-    transition: 1s;
+  color: rgb(125, 125, 235);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid #dfe9f5;
+  margin: 0 15px;
+  transition: 1s;
 }
 
 .icons i:hover {
-    background: #07001f;
-    font-size: 1.6rem;
-    border: 2px solid rgb(125, 125, 235);
+  background: #07001f;
+  font-size: 1.6rem;
+  border: 2px solid rgb(125, 125, 235);
 }
 
 .links {
-    display: flex;
-    justify-content: space-around;
-    padding: 0 4rem;
-    margin-top: 0.9rem;
-    font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 4rem;
+  margin-top: 0.9rem;
+  font-weight: bold;
 }
 
 button {
-    color: rgb(0, 97, 189);
-    border: none;
-    background-color: transparent;
-    font-size: 1rem;
-    font-weight: bold;
+  color: rgb(0, 97, 189);
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 button:hover {
-    text-decoration: underline;
-    color: #022564;
+  text-decoration: underline;
+  color: #022564;
 }
 
 .row {
-    display: flex;
-    flex-direction: column;
-    /* เรียงองค์ประกอบในแนวตั้ง */
-    gap: 20px;
-    /* เพิ่มระยะห่างระหว่างองค์ประกอบ */
+  display: flex;
+  flex-direction: column;
+  /* เรียงองค์ประกอบในแนวตั้ง */
+  gap: 20px;
+  /* เพิ่มระยะห่างระหว่างองค์ประกอบ */
 }
 
 /* สไตล์สำหรับ select box */
 .select {
-    width: 100%;
-    /* ความกว้างเต็ม */
-    padding: -100px;
-    /* การเว้นระยะภายใน */
-    padding-top: 10px;
-    font-size: 15px;
-    /* ขนาดตัวอักษรที่สอดคล้องกับ input field อื่น ๆ */
-    border: none;
-    /* ไม่มีเส้นขอบ */
-    border-bottom: 1px solid #757575;
-    /* เส้นขอบล่าง */
-    background-color: transparent;
-    /* พื้นหลังโปร่งใส */
-    color: inherit;
-    /* สีของข้อความตามแม่แบบ */
-    transition: border-bottom 0.3s ease;
-    /* การเปลี่ยนแปลงเส้นขอบล่าง */
+  width: 100%;
+  /* ความกว้างเต็ม */
+  padding: -100px;
+  /* การเว้นระยะภายใน */
+  padding-top: 10px;
+  font-size: 15px;
+  /* ขนาดตัวอักษรที่สอดคล้องกับ input field อื่น ๆ */
+  border: none;
+  /* ไม่มีเส้นขอบ */
+  border-bottom: 1px solid #757575;
+  /* เส้นขอบล่าง */
+  background-color: transparent;
+  /* พื้นหลังโปร่งใส */
+  color: inherit;
+  /* สีของข้อความตามแม่แบบ */
+  transition: border-bottom 0.3s ease;
+  /* การเปลี่ยนแปลงเส้นขอบล่าง */
 }
 
 /* สไตล์เมื่อ select box ถูกเลือก (focus) */
 .select:focus {
-    outline: none;
-    /* ไม่มีกรอบ */
-    border-bottom: 2px solid #022564;
-    /* เส้นขอบล่างหนาขึ้นเมื่อเลือก */
-
+  outline: none;
+  /* ไม่มีกรอบ */
+  border-bottom: 2px solid #022564;
+  /* เส้นขอบล่างหนาขึ้นเมื่อเลือก */
 }
 
 /* สไตล์สำหรับ label */
 .select-label {
-    color: #757575;
-    /* สีของ label */
-    position: relative;
-    margin: -18px;
-    cursor: auto;
-    transition: 0.3s ease all;
-    /* การเปลี่ยนแปลงสีและตำแหน่ง */
+  color: #757575;
+  /* สีของ label */
+  position: relative;
+  margin: -18px;
+  cursor: auto;
+  transition: 0.3s ease all;
+  /* การเปลี่ยนแปลงสีและตำแหน่ง */
 }
 
 /* แสดง label เมื่อ select box ถูกเลือกหรือมีค่าที่เลือกอยู่ */
-.select:focus~.select-label,
-.select:not(:placeholder-shown)~.select-label {
-    top: -3em;
-    /* ย้ายตำแหน่ง label ขึ้นไปด้านบน */
-    color: #757575;
-    /* เปลี่ยนสีของ label */
-    font-size: 15px;
-    /* ขนาดตัวอักษรของ label */
+.select:focus ~ .select-label,
+.select:not(:placeholder-shown) ~ .select-label {
+  top: -3em;
+  /* ย้ายตำแหน่ง label ขึ้นไปด้านบน */
+  color: #757575;
+  /* เปลี่ยนสีของ label */
+  font-size: 15px;
+  /* ขนาดตัวอักษรของ label */
 }

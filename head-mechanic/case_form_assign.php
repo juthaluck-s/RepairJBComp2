@@ -35,6 +35,21 @@ if (isset($_GET['no'])) {
     $no = $_GET['no'];
 }
 
+$stmtCountNewCases = $condb->prepare("SELECT COUNT(*) as totalNewCases FROM tbl_case WHERE ref_status_id = 1");
+$stmtCountNewCases->execute();
+$rowNewCases = $stmtCountNewCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountAssignedCases = $condb->prepare("SELECT COUNT(*) as totalAssignedCases FROM tbl_case WHERE ref_status_id = 2");
+$stmtCountAssignedCases->execute();
+$rowAssignedCases = $stmtCountAssignedCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountSuccessCases = $condb->prepare("SELECT COUNT(*) as totalSuccessCases FROM tbl_case WHERE ref_status_id IN (3,4)");
+$stmtCountSuccessCases->execute();
+$rowSuccessCases = $stmtCountSuccessCases->fetch(PDO::FETCH_ASSOC);
+
+$stmtCountAllCases = $condb->prepare("SELECT COUNT(*) as totalAllCases FROM tbl_case WHERE ref_status_id IN (1,2,3,4)");
+$stmtCountAllCases->execute();
+$rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -63,16 +78,21 @@ if (isset($_GET['no'])) {
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="box-body">
+
                                     <p>
-                                        <a href="case.php" class="btn btn-primary">
-                                            NEW <span class="badge">5</span></a>
-                                        <a href="case.php?act=doing" class="btn btn-warning">
-                                            Assigned <span class="badge">16</span></a>
-                                        <a href="case.php?act=success" class="btn btn-success">
-                                            Success <span class="badge">179</span></a>
-                                        <a href="case.php?act=all" class="btn btn-danger">
-                                            AllJob <span class="badge">200</span></a>
+                                        <a href="case.php" class="btn custom-btn btn-sm">
+                                            NEW <span class="badge"><?= $rowNewCases['totalNewCases']; ?></span>
+                                        </a>
+                                        <a href="case.php?act=doing" class="btn custom2-btn btn-sm">
+                                            Assigned <span
+                                                class="badge"><?= $rowAssignedCases['totalAssignedCases']; ?></span></a>
+                                        <a href="case.php?act=success" class="btn custom3-btn btn-sm">
+                                            Success <span
+                                                class="badge"><?= $rowSuccessCases['totalSuccessCases']; ?></span></a>
+                                        <a href="case.php?act=all" class="btn btn-danger btn-sm">
+                                            All <span class="badge"><?= $rowAllCases['totalAllCases']; ?></span></a>
                                     </p>
+
                                     <div class="card">
 
                                         <!-- /.card-header -->
@@ -101,7 +121,8 @@ if (isset($_GET['no'])) {
                                                                 width="180px"></td>
                                                         <td align="center"><?= $rsCase_Detail['equipment_name']; ?></td>
                                                         <td>
-                                                            <?= $rsCase_Detail['case_detail']; ?><br>
+                                                            <b> <?= $rsCase_Detail['case_detail'];
+                                                                ?></b><br>
                                                             สถานที่ : <?= $rsCase_Detail['building_name']; ?> ชั้น
                                                             <?= $rsCase_Detail['case_floor']; ?> ห้อง
                                                             <?= $rsCase_Detail['case_room']; ?><br>
@@ -159,29 +180,29 @@ if (isset($_GET['no'])) {
                                                     if ($result->rowCount() > 0) {
                                                         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                     ?>
-                                                            <tr>
-                                                                <td style="text-align: center; vertical-align: middle;">
-                                                                    <input type="radio" name="mec_id" required
-                                                                        value="<?= htmlspecialchars($row['mec_id']); ?>">
+                                                    <tr>
+                                                        <td style="text-align: center; vertical-align: middle;">
+                                                            <input type="radio" name="mec_id" required
+                                                                value="<?= htmlspecialchars($row['mec_id']); ?>">
 
-                                                                </td>
-                                                                <td>
-                                                                    <?= htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>
-                                                                    เบอร์โทร : <?= htmlspecialchars($row['mec_tel']); ?> <br>
-                                                                    Email : <?= htmlspecialchars($row['mec_email']); ?><br>
-                                                                    แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
-                                                                    ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
-                                                                </td>
+                                                        </td>
+                                                        <td>
+                                                            <?= htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>
+                                                            เบอร์โทร : <?= htmlspecialchars($row['mec_tel']); ?> <br>
+                                                            Email : <?= htmlspecialchars($row['mec_email']); ?><br>
+                                                            แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
+                                                            ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
+                                                        </td>
 
-                                                                <td align="center">
-                                                                    <?= htmlspecialchars($row['mec_doing']) ?>
-                                                                </td>
+                                                        <td align="center">
+                                                            <?= htmlspecialchars($row['mec_doing']) ?>
+                                                        </td>
 
-                                                                <td align="center">
-                                                                    <?= htmlspecialchars($row['mec_close']) ?>
-                                                                </td>
+                                                        <td align="center">
+                                                            <?= htmlspecialchars($row['mec_close']) ?>
+                                                        </td>
 
-                                                            </tr>
+                                                    </tr>
                                                     <?php
                                                         }
                                                     } else {

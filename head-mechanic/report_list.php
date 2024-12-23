@@ -115,7 +115,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                 <h4>รายงานภาพรวม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
-                                        <tr class="bg-info">
+                                        <tr class="bg-dark">
                                             <th width="70%" class="text-center">รายการ</th>
                                             <th width="10%" class="text-center">จำนวน</th>
                                             <th width="10%" class="text-center">หน่วย</th>
@@ -156,7 +156,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                 <h4>การประเมิน</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
-                                        <tr class="bg-info">
+                                        <tr class="bg-gray">
                                             <th width="70%" class="text-center">รายการ</th>
                                             <th width="10%" class="text-center">จำนวน</th>
                                             <th width="10%" class="text-center">หน่วย</th>
@@ -216,7 +216,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>งานแจ้งซ่อมที่ได้ผลประเมินแย่</td>
+                                            <td>งานแจ้งซ่อมที่ได้ผลประเมินควรปรับปรุง</td>
                                             <td align="center">
                                                 <?= htmlspecialchars($rowCountAssessmentCase_5['totalAssessmentCase_5']) ?>
                                             <td align="center">งาน</td>
