@@ -66,7 +66,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                     <div class="card">
                         <div class="card-body">
                             <div class="box-body">
-                                <h4>รายงานภาพรวม</h4>
+                                <h4>รายงานภาพรวมงานแจ้งซ่อม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr class="bg-dark">
@@ -95,7 +95,7 @@ $assessmentData = $queryAssessmentReport->fetchAll(PDO::FETCH_ASSOC);
                                     </tbody>
                                 </table>
 
-                                <h4>ผลการประเมินงานทั้งหมด</h4>
+                                <h4>รายงานผลการประเมินงานทั้งหมด</h4>
                                 <?php if ($assessmentData): ?>
                                     <table class="table table-bordered table-striped ">
                                         <thead>
