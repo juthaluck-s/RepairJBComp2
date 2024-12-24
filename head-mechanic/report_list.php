@@ -112,7 +112,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-                                <h4>รายงานภาพรวม</h4>
+                                <h4>รายงานภาพรวมงานแจ้งซ่อม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr class="bg-dark">
@@ -153,7 +153,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h4>การประเมิน</h4>
+                                <h4>รายงานการประเมินผลงานแจ้งซ่อม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr class="bg-gray">
