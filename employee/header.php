@@ -60,6 +60,7 @@ $rsLevel = $queryLevel->fetchAll();
     <link rel="stylesheet" href="../assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
 
     <!-- sweet alert -->
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

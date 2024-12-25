@@ -24,10 +24,10 @@
 
 <!-- Page specific script -->
 <script>
-    $(function() {
-        // Summernote
-        $('#summernote').summernote()
-    })
+$(function() {
+    // Summernote
+    $('#summernote').summernote()
+})
 </script>
 
 <!-- AdminLTE App -->
@@ -50,35 +50,35 @@
 <!-- Page specific script -->
 
 <script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": true,
-            "autoWidth": false,
-            // aaSorting ใช้สำหรับเรียงลำดับจากมากไปหาน้อย ถ้าไม่อยากให้เรียงมากไปหาน้อยให้เอา 2 บรรทัดนี้ออก 
-            "aaSorting": [
-                [0, "desc"]
-            ],
-            // "buttons": ["excel", "pdf", "print",
-            //     "colvis"
-            // ]
-            // "copy", "csv", "excel", "pdf", "print", "colvis"
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": true,
+        "autoWidth": false,
+        // aaSorting ใช้สำหรับเรียงลำดับจากมากไปหาน้อย ถ้าไม่อยากให้เรียงมากไปหาน้อยให้เอา 2 บรรทัดนี้ออก 
+        "aaSorting": [
+            [0, "desc"]
+        ],
+        "buttons": ["excel", "print",
+            "colvis"
+        ]
+        // "copy", "csv", "excel", "pdf", "print", "colvis"
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
     });
-    document.getElementById('exampleInputFile').addEventListener('change', function(e) {
-        const fileName = e.target.files[0]?.name || 'Choose file';
-        const label = e.target.nextElementSibling; // Find the label element
-        label.textContent = fileName;
-    });
+});
+document.getElementById('exampleInputFile').addEventListener('change', function(e) {
+    const fileName = e.target.files[0]?.name || 'Choose file';
+    const label = e.target.nextElementSibling; // Find the label element
+    label.textContent = fileName;
+});
 </script>
 
 

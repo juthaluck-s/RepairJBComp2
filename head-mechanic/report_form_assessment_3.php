@@ -51,7 +51,7 @@ $rsCaseAsm3 = $queryCaseAsm3->fetchAll();
                                             <table id="example1" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="table-info">
+                                                    <tr class="bg-dark">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="5%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>

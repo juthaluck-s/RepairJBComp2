@@ -58,9 +58,9 @@
             "aaSorting": [
                 [0, "desc"]
             ],
-            // "buttons": ["excel", "pdf", "print",
-            //     "colvis"
-            // ]
+            "buttons": ["excel", "print",
+                "colvis"
+            ]
             // "copy", "csv", "excel", "pdf", "print", "colvis"
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({

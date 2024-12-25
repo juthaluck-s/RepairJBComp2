@@ -1,3 +1,4 @@
+<!-- Footer Section (Commented Out) -->
 <!-- <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
     All rights reserved.
@@ -11,6 +12,7 @@
     <!-- Control sidebar content goes here -->
 </aside>
 <!-- /.control-sidebar -->
+
 </div>
 <!-- ./wrapper -->
 
@@ -22,12 +24,10 @@
 <!-- Summernote -->
 <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
 
-<!-- Page specific script -->
+<!-- PDFMake with custom font encoding -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script>
-    $(function() {
-        // Summernote
-        $('#summernote').summernote()
-    })
+    // Define the font in Base64 (replace these placeholders with actual Base64 encoded data)
 </script>
 
 <!-- AdminLTE App -->
@@ -35,7 +35,7 @@
 <!-- AdminLTE dashboard -->
 <script src="../assets/dist/js/pages/dashboard.js"></script>
 
-<!-- DataTables  & ../assets/plugins -->
+<!-- DataTables & Plugins -->
 <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -47,22 +47,30 @@
 <script src="../assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="../assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
-<!-- Page specific script -->
+
+<!-- Page-specific script for DataTable initialization -->
 <script>
     $(function() {
+        // Initialize the main DataTable
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": true,
             "autoWidth": false,
-            // aaSorting ใช้สำหรับเรียงลำดับจากมากไปหาน้อย ถ้าไม่อยากให้เรียงมากไปหาน้อยให้เอา 2 บรรทัดนี้ออก 
             "aaSorting": [
                 [0, "desc"]
             ],
-            "buttons": ["excel", "print",
+            "buttons": ["excel", "pdf", "print",
                 "colvis"
             ]
-            // "copy", "csv", "excel", "pdf", "print", "colvis"
+            // "copy",
+            // "csv",
+            // "excel",
+            // "pdf",
+            // "print",
+            // "colvis"
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        // Initialize another DataTable for example2
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
@@ -70,8 +78,15 @@
             "ordering": true,
             "info": true,
             "autoWidth": false,
-            "responsive": true,
+            "responsive": true
         });
+    });
+
+    // Handle file input changes
+    document.getElementById('exampleInputFile').addEventListener('change', function(e) {
+        const fileName = e.target.files[0]?.name || 'Choose file';
+        const label = e.target.nextElementSibling; // Find the label element
+        label.textContent = fileName; // Update the label with the selected file name
     });
 </script>
 </body>
