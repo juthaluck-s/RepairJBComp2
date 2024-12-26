@@ -7,6 +7,9 @@
 }
 
 body {
+  /* background-image: url("../img/login4.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
   background-color: #ffffff;
   background: linear-gradient(to right, rgb(133, 131, 131), rgb(0, 0, 0));
   padding: 13vh;
@@ -32,8 +35,10 @@ body {
 
 .container {
   background: #fff;
-  width: 40rem;
-  padding: 1.5rem;
+  /* width: 40rem;
+  padding: 1.5rem; */
+  width: 80vh;
+  padding: 3vh;
   margin: 8vh auto;
   border-radius: 10px;
   box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
