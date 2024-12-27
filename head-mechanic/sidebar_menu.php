@@ -30,7 +30,7 @@ try {
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="case.php" class="brand-link">
         <img src="../assets/dist/img/Logo Jb Comp3(BG).png" alt="JBCompLogo" class="brand-image img-circle ">
         <span class="brand-text font-weight-light">Repair JB Comp</span>
     </a>
