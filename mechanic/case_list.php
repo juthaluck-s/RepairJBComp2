@@ -54,7 +54,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                             <table id="example1" class="table table-bordered table-striped table-sm">
 
                                 <thead>
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="5%" class="text-center">รูปภาพ</th>
                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -101,23 +101,23 @@ $rsCaseList = $queryCaseList->fetchAll();
 
                                             <td align="center"><?= $row['dateSave']; ?></a></td>
 
-                                            <td align="center">
+                                            <td align="center" style=" vertical-align: middle;">
                                                 <?php if ($row['ref_status_id'] == 2) { // กำลังซ่อม 
                                                 ?>
                                                     <a href="case.php?id=<?= $row['case_id']; ?>&act=openjob&no=<?= $i - 1; ?>"
-                                                        class="btn btn-warning btn-sm">ส่งงาน</a>
+                                                        class="btn-edit1 btn-sm">ส่งงาน</a>
                                                 <?php } else { ?>
                                                     -
                                                 <?php } ?>
                                             </td>
 
-                                            <td align="center">
+                                            <td align="center" style=" vertical-align: middle;">
                                                 <?php
                                                 if ($row['ref_status_id'] == 3) { // รอประเมินผล
                                                     echo "รอผลประเมิน";
                                                 } elseif ($row['ref_status_id'] == 4) { // สถานะที่เกี่ยวข้องกับการประเมิน
                                                     // ใช้ echo แบบถูกต้องเพื่อแสดงลิงก์
-                                                    echo '<a href="case.php?id=' . $row['case_id'] . '&act=view&no=' . ($i - 1) . '" class="btn btn-success btn-sm">Open</a>';
+                                                    echo '<a href="case.php?id=' . $row['case_id'] . '&act=view&no=' . ($i - 1) . '" class="btn-edit5 btn-sm">Open</a>';
                                                 } else {
                                                     echo "-";
                                                 }

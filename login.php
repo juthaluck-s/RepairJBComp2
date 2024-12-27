@@ -83,7 +83,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['acti
         <div class="logo-container">
             <img src="assets/dist/img/Logo JB Comp2.png" alt="Logo">
         </div>
-        <h1 class="form-title">Log in</h1>
+        <!-- <h1 class="form-title">Log in</h1> -->
 
         <form method="post" action="">
 

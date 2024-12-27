@@ -51,7 +51,7 @@ $rsCaseAsm2 = $queryCaseAsm2->fetchAll();
                                             <table id="example1" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="bg-dark">
+                                                    <tr class="bg-edit">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="5%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -79,18 +79,19 @@ $rsCaseAsm2 = $queryCaseAsm2->fetchAll();
                                                                 width="70px"></td>
                                                         <td align="center"><?= $row['equipment_name']; ?></td>
                                                         <td>
-                                                            <?= $row['case_detail'] . 'สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                            <?= $row['case_detail'] . '<br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
                                                         </td>
-                                                        <td align="center"><?= htmlspecialchars($row['status_name']); ?>
+                                                        <td align="center" style=" vertical-align: middle;">
+                                                            <?= htmlspecialchars($row['status_name']); ?>
                                                         </td>
                                                         </td>
-                                                        <td align="center">
+                                                        <td align="center" style=" vertical-align: middle;">
                                                             <?= htmlspecialchars($row['assessment_name']); ?>
                                                         </td>
-                                                        <td align="center">
+                                                        <td align="center" style=" vertical-align: middle;">
                                                             <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
-                                                                class="btn btn-success btn-sm">Open</a>
+                                                                class="btn-edit5 btn-success btn-sm">Open</a>
                                                         </td>
                                                     </tr>
                                                     <?php } ?>

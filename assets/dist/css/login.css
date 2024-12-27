@@ -7,11 +7,11 @@
 }
 
 body {
-  /* background-image: url("../img/login4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
-  background-color: #ffffff;
-  background: linear-gradient(to right, rgb(133, 131, 131), rgb(0, 0, 0));
+  background-image: url("../img/login3.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+  /* background-color: #ffffff;
+  background: linear-gradient(to right, rgb(133, 131, 131), rgb(0, 0, 0)); */
   padding: 13vh;
 }
 
@@ -34,14 +34,14 @@ body {
 }
 
 .container {
-  background: #fff;
+  background: #ffffffa3;
   /* width: 40rem;
   padding: 1.5rem; */
   width: 80vh;
   padding: 3vh;
-  margin: 8vh auto;
+  margin: 10vh auto;
   border-radius: 10px;
-  box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+  box-shadow: 0 20px 35px rgb(38 72 81);
   max-width: 100%;
   /* จำกัดขนาดให้เหมาะสมกับหน้าจอขนาดเล็ก */
 }
@@ -142,15 +142,15 @@ input:not(:placeholder-shown) ~ label {
   outline: none;
   border: none;
   width: 100%;
-  background: rgb(66, 66, 66);
+  background: rgb(39 73 82);
   color: white;
   cursor: pointer;
   transition: 0.9s;
 }
 
 .btn:hover {
-  background: #0f0f0f;
-  color: rgb(214, 214, 214);
+  background: rgb(23, 43, 49);
+  color: rgb(255, 255, 255);
 }
 
 .or {

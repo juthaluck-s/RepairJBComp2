@@ -18,7 +18,7 @@ $rsdepartment = $querydepartment->fetchAll();
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>จัดการข้อมูลแผนก
-                        <a href="department.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
+                        <a href="department.php?act=add" class="btn-edit4 btn-lg">เพิ่มข้อมูล</a>
                     </h1>
                 </div>
             </div>
@@ -35,7 +35,7 @@ $rsdepartment = $querydepartment->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">แผนก</th>
                                         <th width="5%" class="text-center">แก้ไข</th>
@@ -46,19 +46,19 @@ $rsdepartment = $querydepartment->fetchAll();
                                     <?php
                                     $i = 1; //start number
                                     foreach ($rsdepartment as $row) { ?>
-                                        <tr>
-                                            <td align="center"> <?php echo $i++ ?> </td>
-                                            <td><?= $row['department_name']; ?></td>
-                                            <td align="center">
-                                                <a href="department.php?id=<?= $row['department_id']; ?>&act=edit"
-                                                    class="btn btn-warning btn-sm">แก้ไข</a>
-                                            </td>
-                                            <td align="center">
-                                                <a href="department.php?id=<?= $row['department_id']; ?>&act=delete"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td align="center"> <?php echo $i++ ?> </td>
+                                        <td><?= $row['department_name']; ?></td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="department.php?id=<?= $row['department_id']; ?>&act=edit"
+                                                class="btn-edit1 btn-sm">แก้ไข</a>
+                                        </td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="department.php?id=<?= $row['department_id']; ?>&act=delete"
+                                                class="btn-edit3 btn-sm"
+                                                onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
+                                        </td>
+                                    </tr>
                                     <?php } ?>
 
                                 </tbody>

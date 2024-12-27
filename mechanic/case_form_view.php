@@ -76,7 +76,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="bg-dark">
+                                                    <tr class="bg-edit">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>

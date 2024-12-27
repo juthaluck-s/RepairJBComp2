@@ -72,7 +72,7 @@ if (isset($_GET['no'])) {
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="bg-dark">
+                                                    <tr class="bg-edit">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -121,7 +121,7 @@ if (isset($_GET['no'])) {
                                                                     style="background-color:#dcdcdd;"></textarea>
                                                                 <br>
                                                                 <button type="submit" name="submit"
-                                                                    class="btn btn-primary">บันทึกส่งงาน</button>
+                                                                    class="btn-edit6 btn ">บันทึกส่งงาน</button>
                                                 </form>
 
 

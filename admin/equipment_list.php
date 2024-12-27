@@ -18,7 +18,7 @@ $rsequipment = $queryequipment->fetchAll();
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>จัดการรายการอุปกรณ์ทั้งหมด
-                        <a href="equipment.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
+                        <a href="equipment.php?act=add" class="btn-edit4 btn-lg">เพิ่มข้อมูล</a>
                     </h1>
                 </div>
             </div>
@@ -35,7 +35,7 @@ $rsequipment = $queryequipment->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">ชื่ออุปกรณ์</th>
                                         <th width="5%" class="text-center">แก้ไข</th>
@@ -46,19 +46,19 @@ $rsequipment = $queryequipment->fetchAll();
                                     <?php
                                     $i = 1; //start number
                                     foreach ($rsequipment as $row) { ?>
-                                        <tr>
-                                            <td align="center"> <?php echo $i++ ?> </td>
-                                            <td><?= $row['equipment_name']; ?></td>
-                                            <td align="center">
-                                                <a href="equipment.php?id=<?= $row['equipment_id']; ?>&act=edit"
-                                                    class="btn btn-warning btn-sm">แก้ไข</a>
-                                            </td>
-                                            <td align="center">
-                                                <a href="equipment.php?id=<?= $row['equipment_id']; ?>&act=delete"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td align="center"> <?php echo $i++ ?> </td>
+                                        <td><?= $row['equipment_name']; ?></td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="equipment.php?id=<?= $row['equipment_id']; ?>&act=edit"
+                                                class="btn-edit1 btn-sm">แก้ไข</a>
+                                        </td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="equipment.php?id=<?= $row['equipment_id']; ?>&act=delete"
+                                                class="btn-edit3 btn-sm"
+                                                onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
+                                        </td>
+                                    </tr>
                                     <?php } ?>
 
                                 </tbody>

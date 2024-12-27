@@ -1,0 +1,70 @@
+.bg-edit {
+  background-color: #293e5e;
+  color: #fff;
+}
+
+.bg-edit2 {
+  background-color: #324b74;
+  color: #fff;
+}
+
+.btn-edit1 {
+  background-color: #f7d439;
+  color: #363636;
+  vertical-align: middle;
+}
+
+.btn-edit1:hover {
+  background-color: #dbb300;
+  color: #000000;
+}
+
+.btn-edit2 {
+  background-color: #293e5e;
+  color: #fff;
+}
+
+.btn-edit2:hover {
+  background-color: #204b8b;
+  color: #fff;
+}
+
+.btn-edit3 {
+  background-color: #a82626;
+  color: #fff;
+}
+
+.btn-edit3:hover {
+  background-color: #801919;
+  color: #fff;
+}
+
+.btn-edit4 {
+  background-color: #293e5e;
+  color: #fff;
+}
+
+.btn-edit4:hover {
+  background-color: #204b8b;
+  color: #fff;
+}
+
+.btn-edit5 {
+  background-color: #34b168;
+  color: #fff;
+}
+
+.btn-edit5:hover {
+  background-color: #1b6b3c;
+  color: #fff;
+}
+
+.btn-edit6 {
+  background-color: #3059a3;
+  color: #fff;
+}
+
+.btn-edit6:hover {
+  background-color: #1f3866;
+  color: #fff;
+}

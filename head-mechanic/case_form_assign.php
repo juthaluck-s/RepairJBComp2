@@ -100,7 +100,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="bg-dark">
+                                                    <tr class="bg-edit">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -162,7 +162,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                 <h4>รายการชื่อช่างทั้งหมด</h4>
                                                 <table class="table table-bordered table-striped">
                                                     <thead>
-                                                        <tr class="bg-gray">
+                                                        <tr class="bg-edit2">
                                                             <th width='1%'>
                                                                 <center>เลือก</center>
                                                             </th>
@@ -180,29 +180,29 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                     if ($result->rowCount() > 0) {
                                                         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                                     ?>
-                                                    <tr>
-                                                        <td style="text-align: center; vertical-align: middle;">
-                                                            <input type="radio" name="mec_id" required
-                                                                value="<?= htmlspecialchars($row['mec_id']); ?>">
+                                                            <tr>
+                                                                <td style="text-align: center; vertical-align: middle;">
+                                                                    <input type="radio" name="mec_id" required
+                                                                        value="<?= htmlspecialchars($row['mec_id']); ?>">
 
-                                                        </td>
-                                                        <td>
-                                                            <?= htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>
-                                                            เบอร์โทร : <?= htmlspecialchars($row['mec_tel']); ?> <br>
-                                                            Email : <?= htmlspecialchars($row['mec_email']); ?><br>
-                                                            แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
-                                                            ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
-                                                        </td>
+                                                                </td>
+                                                                <td>
+                                                                    <?= htmlspecialchars($row['mec_title_name']) . htmlspecialchars($row['mec_firstname']) . ' ' . htmlspecialchars($row['mec_lastname']); ?><br>
+                                                                    เบอร์โทร : <?= htmlspecialchars($row['mec_tel']); ?> <br>
+                                                                    Email : <?= htmlspecialchars($row['mec_email']); ?><br>
+                                                                    แผนก : <?= htmlspecialchars($row['department_name']); ?><br>
+                                                                    ตำแหน่ง : <?= htmlspecialchars($row['position_name']); ?>
+                                                                </td>
 
-                                                        <td align="center">
-                                                            <?= htmlspecialchars($row['mec_doing']) ?>
-                                                        </td>
+                                                                <td align="center">
+                                                                    <?= htmlspecialchars($row['mec_doing']) ?>
+                                                                </td>
 
-                                                        <td align="center">
-                                                            <?= htmlspecialchars($row['mec_close']) ?>
-                                                        </td>
+                                                                <td align="center">
+                                                                    <?= htmlspecialchars($row['mec_close']) ?>
+                                                                </td>
 
-                                                    </tr>
+                                                            </tr>
                                                     <?php
                                                         }
                                                     } else {

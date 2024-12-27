@@ -76,7 +76,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                             <table id="example3" class="table table-bordered table-striped table-sm">
 
                                                 <thead>
-                                                    <tr class="bg-dark">
+                                                    <tr class="bg-edit">
                                                         <th width="5%" class="text-center">No.</th>
                                                         <th width="10%" class="text-center">รูปภาพ</th>
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
@@ -146,16 +146,16 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                         <table width="20%" border="1" align="center" cellpadding="0"
                                                             cellspacing="0" class="table table-bordered table-hover">
                                                             <?php foreach ($rsAssessment as $rsAsm) { ?>
-                                                            <tr>
-                                                                <td height="30" align="center">
-                                                                    <input type="radio" name="assessment_id"
-                                                                        value="<?= $rsAsm['assessment_id']; ?>"
-                                                                        required />
-                                                                </td>
-                                                                <td height="30">
-                                                                    <?= $rsAsm['assessment_name']; ?>
-                                                                </td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td height="30" align="center">
+                                                                        <input type="radio" name="assessment_id"
+                                                                            value="<?= $rsAsm['assessment_id']; ?>"
+                                                                            required />
+                                                                    </td>
+                                                                    <td height="30">
+                                                                        <?= $rsAsm['assessment_name']; ?>
+                                                                    </td>
+                                                                </tr>
                                                             <?php } ?>
                                                         </table>
 
@@ -164,7 +164,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <button type="submit" class="btn btn-primary" name="submit"
+                                                    <button type="submit" class="btn-edit6 btn" name="submit"
                                                         value="as">ส่งผลประเมิน</button>
                                                 </div>
                                             </div>

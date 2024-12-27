@@ -18,7 +18,7 @@ $rslevel = $querylevel->fetchAll();
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>จัดการสิทธิ์การใช้งาน
-                        <a href="level.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
+                        <a href="level.php?act=add" class="btn-edit4 btn-lg">เพิ่มข้อมูล</a>
                     </h1>
                 </div>
             </div>
@@ -35,7 +35,7 @@ $rslevel = $querylevel->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">สิทธิ์การใช้งาน</th>
                                         <th width="5%" class="text-center">แก้ไข</th>
@@ -46,19 +46,19 @@ $rslevel = $querylevel->fetchAll();
                                     <?php
                                     $i = 1; //start number
                                     foreach ($rslevel as $rowlev) { ?>
-                                        <tr>
-                                            <td align="center"> <?php echo $i++ ?> </td>
-                                            <td><?= $rowlev['level_name']; ?></td>
-                                            <td align="center">
-                                                <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=edit"
-                                                    class="btn btn-warning btn-sm">แก้ไข</a>
-                                            </td>
-                                            <td align="center">
-                                                <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=delete"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td align="center"> <?php echo $i++ ?> </td>
+                                        <td><?= $rowlev['level_name']; ?></td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=edit"
+                                                class="btn-edit1 btn-sm">แก้ไข</a>
+                                        </td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="level.php?id=<?= $rowlev['level_id']; ?>&act=delete"
+                                                class="btn-edit3 btn-sm"
+                                                onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
+                                        </td>
+                                    </tr>
                                     <?php } ?>
 
                                 </tbody>

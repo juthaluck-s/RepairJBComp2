@@ -115,7 +115,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                 <h4>รายงานภาพรวมงานแจ้งซ่อม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
-                                        <tr class="bg-dark">
+                                        <tr class="bg-edit">
                                             <th width="70%" class="text-center">รายการ</th>
                                             <th width="10%" class="text-center">จำนวน</th>
                                             <th width="10%" class="text-center">หน่วย</th>
@@ -128,7 +128,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                             <td align="center">
                                                 <?= htmlspecialchars($rowAllCases['totalAllCases']) ?>
                                             <td align="center">งาน</td>
-                                            <td align="center"><a href="case.php?act=all" class="btn btn-info btn-xs"
+                                            <td align="center"><a href="case.php?act=all" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a></td>
                                         </tr>
                                         <tr>
@@ -136,7 +136,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                             <td align="center">
                                                 <?= htmlspecialchars($rowAssignedCases['totalAssignedCases']) ?>
                                             <td align="center">งาน</td>
-                                            <td align="center"><a href="case.php?act=doing" class="btn btn-info btn-xs"
+                                            <td align="center"><a href="case.php?act=doing" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a></td>
                                         </tr>
                                         <tr>
@@ -145,8 +145,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowSuccessCases['totalSuccessCases']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="case.php?act=success" class="btn btn-info btn-xs"
-                                                    target="_blank">
+                                                <a href="case.php?act=success" class="btn-edit6 btn-sm" target="_blank">
                                                     view
                                                 </a>
                                             </td>
@@ -156,7 +155,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                 <h4>รายงานการประเมินผลงานแจ้งซ่อม</h4>
                                 <table class="table table-bordered table-striped">
                                     <thead>
-                                        <tr class="bg-gray">
+                                        <tr class="bg-edit2">
                                             <th width="70%" class="text-center">รายการ</th>
                                             <th width="10%" class="text-center">จำนวน</th>
                                             <th width="10%" class="text-center">หน่วย</th>
@@ -171,7 +170,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase['totalAssessmentCase']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asmclose" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asmclose" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>
@@ -181,7 +180,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase_1['totalAssessmentCase_1']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asm1" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asm1" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>
@@ -191,7 +190,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase_2['totalAssessmentCase_2']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asm2" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asm2" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>
@@ -201,7 +200,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase_3['totalAssessmentCase_3']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asm3" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asm3" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>
@@ -211,7 +210,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase_4['totalAssessmentCase_4']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asm4" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asm4" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>
@@ -221,7 +220,7 @@ $assessmentData = $stmtAssessmentData->fetchAll(PDO::FETCH_ASSOC);
                                                 <?= htmlspecialchars($rowCountAssessmentCase_5['totalAssessmentCase_5']) ?>
                                             <td align="center">งาน</td>
                                             <td align="center">
-                                                <a href="report.php?act=asm5" class="btn btn-info btn-xs"
+                                                <a href="report.php?act=asm5" class="btn-edit6 btn-sm"
                                                     target="_blank">view</a>
                                             </td>
                                         </tr>

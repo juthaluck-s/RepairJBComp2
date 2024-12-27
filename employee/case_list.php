@@ -65,7 +65,7 @@ $rsCaseList = $queryCaseList->fetchAll();
 
 
                                     <thead>
-                                        <tr class="bg-dark">
+                                        <tr class="bg-edit">
                                             <th width="5%" class="text-center">No.</th>
 
                                             <th width="5%" class="text-center">รูปภาพ</th>
@@ -102,7 +102,8 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                 </td>
 
 
-                                                <td align="center"><?= htmlspecialchars($row['status_name']); ?></td>
+                                                <td align="center" style=" vertical-align: middle;">
+                                                    <?= htmlspecialchars($row['status_name']); ?></td>
 
                                                 <td>
                                                     <?php if ($row['ref_status_id'] != 1): ?>
@@ -118,15 +119,15 @@ $rsCaseList = $queryCaseList->fetchAll();
                                                     <?php endif; ?>
                                                 </td>
 
-                                                <td align="center">
+                                                <td align="center" style=" vertical-align: middle;">
                                                     <?php if ($row['ref_status_id'] == 3): ?>
                                                         <!-- ถ้าสถานะเป็น 3 จะแสดงปุ่ม "ประเมิน" -->
                                                         <a href="case.php?id=<?= $row['case_id']; ?>&act=assessment&no=<?= $i - 1; ?>"
-                                                            class="btn btn-info btn-sm">ประเมิน</a>
+                                                            class="btn-edit6  btn-sm">ประเมิน</a>
                                                     <?php elseif ($row['ref_status_id'] == 4): ?>
                                                         <!-- ถ้าสถานะเป็น 4 จะแสดงปุ่ม "Open" -->
                                                         <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
-                                                            class="btn btn-success btn-sm">Open</a>
+                                                            class="btn-edit5 btn-sm">Open</a>
                                                     <?php else: ?>
                                                         <!-- ถ้าสถานะเป็น 1 หรือ 2 จะแสดงเครื่องหมาย "-" -->
                                                         -

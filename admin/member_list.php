@@ -21,7 +21,7 @@ $rsMember = $queryMember->fetchAll();
                 <div class="col-sm-6">
                     <h1>จัดการข้อมูลพนักงาน
 
-                        <a href="member.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
+                        <a href="member.php?act=add" class="btn-edit4 btn-lg">เพิ่มข้อมูล</a>
 
 
                     </h1>
@@ -42,8 +42,7 @@ $rsMember = $queryMember->fetchAll();
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
 
-
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="10%" class="text-center">รหัสพนักงาน</th>
                                         <th width="8%" class="text-center">สิทธิ์ใช้งาน</th>
@@ -83,12 +82,16 @@ $rsMember = $queryMember->fetchAll();
                                             <td align="center"><?= $row['position_name']; ?></td>
                                             <td align="center"><?= $row['username']; ?></td>
 
-                                            <td align="center"><a href="member.php?m_id=<?= $row['m_id']; ?>&act=editPwd"
-                                                    class="btn btn-info btn-sm">แก้รหัส</a></td>
-                                            <td align="center"><a href="member.php?m_id=<?= $row['m_id']; ?>&act=edit"
-                                                    class="btn btn-warning btn-sm">แก้ไข</a></td>
-                                            <td align="center"><a href="member.php?m_id=<?= $row['m_id']; ?>&act=delete"
-                                                    class="btn btn-danger btn-sm"
+                                            <td align="center" style=" vertical-align: middle;"><a
+                                                    href="member.php?m_id=<?= $row['m_id']; ?>&act=editPwd"
+                                                    class="btn-edit1 btn-sm">แก้รหัส</a>
+                                            </td>
+                                            <td align="center" style=" vertical-align: middle;"><a
+                                                    href=" member.php?m_id=<?= $row['m_id']; ?>&act=edit"
+                                                    class="btn-edit2 btn-sm">แก้ไข</a></td>
+                                            <td align="center" style=" vertical-align: middle;"><a
+                                                    href="member.php?m_id=<?= $row['m_id']; ?>&act=delete"
+                                                    class="btn-edit3 btn-sm"
                                                     onclick="return confirm('คุณต้องการลบข้อมูลหรือไม่');">ลบ</a>
                                             </td>
                                         </tr>

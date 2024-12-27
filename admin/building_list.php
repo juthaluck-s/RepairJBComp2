@@ -18,7 +18,7 @@ $rsbuilding = $querybuilding->fetchAll();
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>จัดการข้อมูลตึก/อาคาร
-                        <a href="building.php?act=add" class="btn btn-primary">เพิ่มข้อมูล</a>
+                        <a href="building.php?act=add" class="btn-edit4 btn-lg">เพิ่มข้อมูล</a>
                     </h1>
                 </div>
             </div>
@@ -35,7 +35,7 @@ $rsbuilding = $querybuilding->fetchAll();
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped table-sm">
                                 <thead>
-                                    <tr class="bg-dark">
+                                    <tr class="bg-edit">
                                         <th width="5%" class="text-center">No.</th>
                                         <th width="85%" class="text-center">ตึก/อาคาร</th>
                                         <th width="5%" class="text-center">แก้ไข</th>
@@ -46,19 +46,19 @@ $rsbuilding = $querybuilding->fetchAll();
                                     <?php
                                     $i = 1; //start number
                                     foreach ($rsbuilding as $row) { ?>
-                                        <tr>
-                                            <td align="center"> <?php echo $i++ ?> </td>
-                                            <td><?= $row['building_name']; ?></td>
-                                            <td align="center">
-                                                <a href="building.php?id=<?= $row['building_id']; ?>&act=edit"
-                                                    class="btn btn-warning btn-sm">แก้ไข</a>
-                                            </td>
-                                            <td align="center">
-                                                <a href="building.php?id=<?= $row['building_id']; ?>&act=delete"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td align="center"> <?php echo $i++ ?> </td>
+                                        <td><?= $row['building_name']; ?></td>
+                                        <td align="center" style=" vertical-align: middle;">
+                                            <a href="building.php?id=<?= $row['building_id']; ?>&act=edit"
+                                                class="btn-edit1 btn-sm">แก้ไข</a>
+                                        </td>
+                                        <td align="center">
+                                            <a href="building.php?id=<?= $row['building_id']; ?>&act=delete"
+                                                class="btn-edit3  btn-sm"
+                                                onclick="return confirm('ยืนยันการลบข้อมูล??');">ลบ</a>
+                                        </td>
+                                    </tr>
                                     <?php } ?>
 
                                 </tbody>
