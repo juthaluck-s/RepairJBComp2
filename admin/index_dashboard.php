@@ -34,7 +34,7 @@ drilldown: "Chrome"
     $report_data[] = '
 {
 name:' . '"' . $rs['datesave'] . '"' . ',' //label
-        . 'y:' . $rs['totalCaseday'] . //ตัวเลขยอดขาย
+        . 'y:' . $rs['totalCaseday'] .
         ','
         . 'drilldown:' . '"' . $rs['datesave'] . '"' . ',' //label ด้านล่าง
         . '}';
@@ -91,17 +91,17 @@ $report_data_year = implode(",", $report_data_year);
 ?>
 
 <style>
-.highcharts-root {
-    font-family: "Sarabun", serif !important;
-}
+    .highcharts-root {
+        font-family: "Sarabun", serif !important;
+    }
 
-.highcharts-title {
-    font-family: "Sarabun", serif !important;
-}
+    .highcharts-title {
+        font-family: "Sarabun", serif !important;
+    }
 
-.highcharts-drilldown-axis-label {
-    font-family: "Sarabun", serif !important;
-}
+    .highcharts-drilldown-axis-label {
+        font-family: "Sarabun", serif !important;
+    }
 </style>
 
 
@@ -142,14 +142,14 @@ $report_data_year = implode(",", $report_data_year);
                                         <div class="icon">
                                             <i class="nav-icon fas fa-screwdriver-wrench"></i>
                                         </div>
-                                        <!-- <a href="#" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a> -->
+                                        <a href="case.php" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
                                 <!-- ./col -->
                                 <div class="col-lg-6 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-warning">
+                                    <div class="small-box bg-success">
                                         <div class="inner">
                                             <h3><?= $rowM['totalMember']; ?></h3>
 
@@ -158,8 +158,8 @@ $report_data_year = implode(",", $report_data_year);
                                         <div class="icon">
                                             <i class="ion ion-person-stalker"></i>
                                         </div>
-                                        <!-- <a href="member.php" class="small-box-footer">More info <i
-                                                class="fas fa-arrow-circle-right"></i></a> -->
+                                        <a href="member.php" class="small-box-footer">More info <i
+                                                class="fas fa-arrow-circle-right"></i></a>
                                     </div>
                                 </div>
 
@@ -173,56 +173,56 @@ $report_data_year = implode(",", $report_data_year);
                                         <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
-                                    // Create the chart
-                                    Highcharts.chart('container', {
-                                        chart: {
-                                            type: 'line'
-                                        },
-                                        title: {
-                                            // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                            text: 'จำนวนการแจ้งซ่อมรายวัน'
-                                        },
-                                        subtitle: {
-                                            text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
-                                        },
-                                        accessibility: {
-                                            announceNewData: {
-                                                enabled: true
-                                            }
-                                        },
-                                        xAxis: {
-                                            type: 'category'
-                                        },
-                                        yAxis: {
+                                        // Create the chart
+                                        Highcharts.chart('container', {
+                                            chart: {
+                                                type: 'line'
+                                            },
                                             title: {
-                                                // text: 'จำนวนการประเมินเว็บไซต์'
-                                                text: 'จำนวนการแจ้งซ่อม'
-                                            }
-                                        },
-                                        legend: {
-                                            enabled: false
-                                        },
-                                        plotOptions: {
-                                            series: {
-                                                borderWidth: 0,
-                                                dataLabels: {
-                                                    enabled: true,
-                                                    format: '{point.y:.0f} ครั้ง'
+                                                // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
+                                                text: 'จำนวนการแจ้งซ่อมรายวัน'
+                                            },
+                                            subtitle: {
+                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                            },
+                                            accessibility: {
+                                                announceNewData: {
+                                                    enabled: true
                                                 }
-                                            }
-                                        },
-                                        tooltip: {
-                                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                                            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
-                                        },
-                                        series: [{
-                                            // name: "จำนวนการประเมินเว็บไซต์",
-                                            name: "จำนวนการแจ้งซ่อม",
-                                            colorByPoint: true,
-                                            //เอาข้อมูลมา echo ตรงนี้
-                                            data: [<?= $report_data; ?>]
-                                        }]
-                                    });
+                                            },
+                                            xAxis: {
+                                                type: 'category'
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    // text: 'จำนวนการประเมินเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
+                                                }
+                                            },
+                                            legend: {
+                                                enabled: false
+                                            },
+                                            plotOptions: {
+                                                series: {
+                                                    borderWidth: 0,
+                                                    dataLabels: {
+                                                        enabled: true,
+                                                        format: '{point.y:.0f} ครั้ง'
+                                                    }
+                                                }
+                                            },
+                                            tooltip: {
+                                                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
+                                            },
+                                            series: [{
+                                                // name: "จำนวนการประเมินเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
+                                                colorByPoint: true,
+                                                //เอาข้อมูลมา echo ตรงนี้
+                                                data: [<?= $report_data; ?>]
+                                            }]
+                                        });
                                     </script>
                                 </div>
 
@@ -232,56 +232,56 @@ $report_data_year = implode(",", $report_data_year);
                                         <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
-                                    // Create the chart
-                                    Highcharts.chart('container2', {
-                                        chart: {
-                                            type: 'column'
-                                        },
-                                        title: {
-                                            // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                            text: 'จำนวนการแจ้งซ่อมรายเดือน'
-                                        },
-                                        subtitle: {
-                                            text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
-                                        },
-                                        accessibility: {
-                                            announceNewData: {
-                                                enabled: true
-                                            }
-                                        },
-                                        xAxis: {
-                                            type: 'category'
-                                        },
-                                        yAxis: {
+                                        // Create the chart
+                                        Highcharts.chart('container2', {
+                                            chart: {
+                                                type: 'column'
+                                            },
                                             title: {
-                                                // text: 'จำนวนการประเมินเว็บไซต์'
-                                                text: 'จำนวนการแจ้งซ่อม'
-                                            }
-                                        },
-                                        legend: {
-                                            enabled: false
-                                        },
-                                        plotOptions: {
-                                            series: {
-                                                borderWidth: 0,
-                                                dataLabels: {
-                                                    enabled: true,
-                                                    format: '{point.y:.0f} ครั้ง'
+                                                // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
+                                                text: 'จำนวนการแจ้งซ่อมรายเดือน'
+                                            },
+                                            subtitle: {
+                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                            },
+                                            accessibility: {
+                                                announceNewData: {
+                                                    enabled: true
                                                 }
-                                            }
-                                        },
-                                        tooltip: {
-                                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                                            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
-                                        },
-                                        series: [{
-                                            // name: "จำนวนการประเมินเว็บไซต์",
-                                            name: "จำนวนการแจ้งซ่อม",
-                                            colorByPoint: true,
-                                            //เอาข้อมูลมา echo ตรงนี้
-                                            data: [<?= $report_data_month; ?>]
-                                        }]
-                                    });
+                                            },
+                                            xAxis: {
+                                                type: 'category'
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    // text: 'จำนวนการประเมินเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
+                                                }
+                                            },
+                                            legend: {
+                                                enabled: false
+                                            },
+                                            plotOptions: {
+                                                series: {
+                                                    borderWidth: 0,
+                                                    dataLabels: {
+                                                        enabled: true,
+                                                        format: '{point.y:.0f} ครั้ง'
+                                                    }
+                                                }
+                                            },
+                                            tooltip: {
+                                                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
+                                            },
+                                            series: [{
+                                                // name: "จำนวนการประเมินเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
+                                                colorByPoint: true,
+                                                //เอาข้อมูลมา echo ตรงนี้
+                                                data: [<?= $report_data_month; ?>]
+                                            }]
+                                        });
                                     </script>
                                 </div>
 
@@ -291,56 +291,56 @@ $report_data_year = implode(",", $report_data_year);
                                         <p class="highcharts-description"></p>
                                     </figure>
                                     <script>
-                                    // Create the chart
-                                    Highcharts.chart('container3', {
-                                        chart: {
-                                            type: 'column'
-                                        },
-                                        title: {
-                                            // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
-                                            text: 'จำนวนการแจ้งซ่อมรายปี'
-                                        },
-                                        subtitle: {
-                                            text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
-                                        },
-                                        accessibility: {
-                                            announceNewData: {
-                                                enabled: true
-                                            }
-                                        },
-                                        xAxis: {
-                                            type: 'category'
-                                        },
-                                        yAxis: {
+                                        // Create the chart
+                                        Highcharts.chart('container3', {
+                                            chart: {
+                                                type: 'column'
+                                            },
                                             title: {
-                                                // text: 'จำนวนการประเมินเว็บไซต์'
-                                                text: 'จำนวนการแจ้งซ่อม'
-                                            }
-                                        },
-                                        legend: {
-                                            enabled: false
-                                        },
-                                        plotOptions: {
-                                            series: {
-                                                borderWidth: 0,
-                                                dataLabels: {
-                                                    enabled: true,
-                                                    format: '{point.y:.0f} ครั้ง'
+                                                // text: 'จำนวนการทำแบบประเมินแยกตามวัน'
+                                                text: 'จำนวนการแจ้งซ่อมรายปี'
+                                            },
+                                            subtitle: {
+                                                text: 'รวมทั้งสิ้น <?= $rowCase['totalCase']; ?> ครั้ง '
+                                            },
+                                            accessibility: {
+                                                announceNewData: {
+                                                    enabled: true
                                                 }
-                                            }
-                                        },
-                                        tooltip: {
-                                            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                                            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
-                                        },
-                                        series: [{
-                                            // name: "จำนวนการประเมินเว็บไซต์",
-                                            name: "จำนวนการแจ้งซ่อม",
-                                            colorByPoint: true,
-                                            //เอาข้อมูลมา echo ตรงนี้
-                                            data: [<?= $report_data_year; ?>]
-                                        }]
-                                    });
+                                            },
+                                            xAxis: {
+                                                type: 'category'
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    // text: 'จำนวนการประเมินเว็บไซต์'
+                                                    text: 'จำนวนการแจ้งซ่อม'
+                                                }
+                                            },
+                                            legend: {
+                                                enabled: false
+                                            },
+                                            plotOptions: {
+                                                series: {
+                                                    borderWidth: 0,
+                                                    dataLabels: {
+                                                        enabled: true,
+                                                        format: '{point.y:.0f} ครั้ง'
+                                                    }
+                                                }
+                                            },
+                                            tooltip: {
+                                                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f} ครั้ง</b> of total<br/>'
+                                            },
+                                            series: [{
+                                                // name: "จำนวนการประเมินเว็บไซต์",
+                                                name: "จำนวนการแจ้งซ่อม",
+                                                colorByPoint: true,
+                                                //เอาข้อมูลมา echo ตรงนี้
+                                                data: [<?= $report_data_year; ?>]
+                                            }]
+                                        });
                                     </script>
                                 </div>
 

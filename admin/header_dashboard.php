@@ -72,33 +72,33 @@ require_once '../config/condb.php';
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <style>
-        .highcharts-figure,
-        .highcharts-data-table table {
-            min-width: 310px;
-            max-width: 100%;
-            margin: 1em auto;
-        }
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 310px;
+        max-width: 100%;
+        margin: 1em auto;
+    }
 
-        #container {
-            /* ปรับให้กราฟมีความสูงได้ */
-            height: 380px;
-        }
+    #container {
+        /* ปรับให้กราฟมีความสูงได้ */
+        height: 380px;
+    }
 
-        #container2 {
-            height: 380px;
-        }
+    #container2 {
+        height: 380px;
+    }
 
-        #container3 {
-            height: 380px;
-        }
+    #container3 {
+        height: 380px;
+    }
 
-        .highcharts-drilldown-data-label text {
-            text-decoration: none !important;
-        }
+    .highcharts-drilldown-data-label text {
+        text-decoration: none !important;
+    }
 
-        .highcharts-drilldown-axis-label {
-            text-decoration: none !important;
-        }
+    .highcharts-drilldown-axis-label {
+        text-decoration: none !important;
+    }
     </style>
 
 
