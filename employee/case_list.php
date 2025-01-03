@@ -86,57 +86,57 @@ $rsCaseList = $queryCaseList->fetchAll();
 
                                         <?php foreach ($rsCaseList as $row) { ?>
 
-                                            <tr>
-                                                <td align="center"> <?php echo $i++ ?></td>
+                                        <tr>
+                                            <td align="center"> <?php echo $i++ ?></td>
 
-                                                <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
-                                                </td>
-                                                <td align="center"><?= $row['equipment_name']; ?></td>
-                                                <td>
-                                                    <b> <?= nl2br(wordwrap($row['case_detail'], 250, "\n", true)) ?>
-                                                    </b><br>
-                                                    สถานที่ : <?= $row['building_name'] ?> ชั้น
-                                                    <?= $row['case_floor'] ?>
-                                                    ห้อง
-                                                    <?= $row['case_room'] ?>
-                                                </td>
-
-
-                                                <td align="center" style=" vertical-align: middle;">
-                                                    <?= htmlspecialchars($row['status_name']); ?></td>
-
-                                                <td>
-                                                    <?php if ($row['ref_status_id'] != 1): ?>
-                                                        <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
-                                                        <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['mec_title_name'] . ' ' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
-                                                        <?php else: ?>
-                                                            ข้อมูลช่างไม่สมบูรณ์
-                                                        <?php endif; ?>
-                                                    <?php else: ?>
-                                                        <div class="text-center">-</div>
-                                                        <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
-                                                    <?php endif; ?>
-                                                </td>
-
-                                                <td align="center" style=" vertical-align: middle;">
-                                                    <?php if ($row['ref_status_id'] == 3): ?>
-                                                        <!-- ถ้าสถานะเป็น 3 จะแสดงปุ่ม "ประเมิน" -->
-                                                        <a href="case.php?id=<?= $row['case_id']; ?>&act=assessment&no=<?= $i - 1; ?>"
-                                                            class="btn-edit6  btn-sm">ประเมิน</a>
-                                                    <?php elseif ($row['ref_status_id'] == 4): ?>
-                                                        <!-- ถ้าสถานะเป็น 4 จะแสดงปุ่ม "Open" -->
-                                                        <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
-                                                            class="btn-edit5 btn-sm">Open</a>
-                                                    <?php else: ?>
-                                                        <!-- ถ้าสถานะเป็น 1 หรือ 2 จะแสดงเครื่องหมาย "-" -->
-                                                        -
-                                                    <?php endif; ?>
-                                                </td>
+                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
+                                            </td>
+                                            <td align="center"><?= $row['equipment_name']; ?></td>
+                                            <td>
+                                                <b> <?= nl2br(wordwrap($row['case_detail'], 250, "\n", true)) ?>
+                                                </b><br>
+                                                สถานที่ : <?= $row['building_name'] ?> ชั้น
+                                                <?= $row['case_floor'] ?>
+                                                ห้อง
+                                                <?= $row['case_room'] ?>
+                                            </td>
 
 
+                                            <td align="center" style=" vertical-align: middle;">
+                                                <?= htmlspecialchars($row['status_name']); ?></td>
 
-                                            </tr>
+                                            <td>
+                                                <?php if ($row['ref_status_id'] != 1): ?>
+                                                <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+                                                <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+                                                <?= $row['mec_title_name'] . '' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
+                                                <?php else: ?>
+                                                ข้อมูลช่างไม่สมบูรณ์
+                                                <?php endif; ?>
+                                                <?php else: ?>
+                                                <div class="text-center">-</div>
+                                                <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+                                                <?php endif; ?>
+                                            </td>
+
+                                            <td align="center" style=" vertical-align: middle;">
+                                                <?php if ($row['ref_status_id'] == 3): ?>
+                                                <!-- ถ้าสถานะเป็น 3 จะแสดงปุ่ม "ประเมิน" -->
+                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=assessment&no=<?= $i - 1; ?>"
+                                                    class="btn-edit6  btn-sm">ประเมิน</a>
+                                                <?php elseif ($row['ref_status_id'] == 4): ?>
+                                                <!-- ถ้าสถานะเป็น 4 จะแสดงปุ่ม "Open" -->
+                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
+                                                    class="btn-edit5 btn-sm">Open</a>
+                                                <?php else: ?>
+                                                <!-- ถ้าสถานะเป็น 1 หรือ 2 จะแสดงเครื่องหมาย "-" -->
+                                                -
+                                                <?php endif; ?>
+                                            </td>
+
+
+
+                                        </tr>
                                         <?php } ?>
                                     </tbody>
 

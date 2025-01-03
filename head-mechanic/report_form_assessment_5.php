@@ -79,7 +79,7 @@ $rsCaseAsm5 = $queryCaseAsm5->fetchAll();
                                                                 width="70px"></td>
                                                         <td align="center"><?= $row['equipment_name']; ?></td>
                                                         <td>
-                                                            <?= $row['case_detail'] . '<br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                            <?= $row['case_detail'] . '<br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . '' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
                                                         </td>
                                                         <td align="center" style=" vertical-align: middle;">

@@ -94,7 +94,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                                 width="70px"></td>
                                                         <td align="center"><?= $row['equipment_name']; ?></td>
                                                         <td>
-                                                            <?= '<b>' . $row['case_detail'] . '</b><br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . ' ' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                            <?= '<b>' . $row['case_detail'] . '</b><br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . '' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
                                                         </td>
                                                         <td align="center">
@@ -104,7 +104,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                             <?php if ($row['ref_status_id'] != 1): ?>
                                                             <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
                                                             <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['head_mechanic_title_name'] . ' ' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . '<br>เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>Email: ' . $row['head_mechanic_email']; ?>
+                                                            <?= $row['head_mechanic_title_name'] . '' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . '<br>เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>Email: ' . $row['head_mechanic_email']; ?>
                                                             <?php else: ?>
                                                             ข้อมูลช่างไม่สมบูรณ์
                                                             <?php endif; ?>
@@ -117,7 +117,7 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                             <?php if ($row['ref_status_id'] != 1): ?>
                                                             <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
                                                             <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['mec_title_name'] . ' ' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
+                                                            <?= $row['mec_title_name'] . '' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
                                                             <?php else: ?>
                                                             ข้อมูลช่างไม่สมบูรณ์
                                                             <?php endif; ?>

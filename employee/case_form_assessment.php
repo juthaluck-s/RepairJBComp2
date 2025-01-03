@@ -103,7 +103,7 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                                 สถานที่ : <?= $rsCase_open['building_name']; ?> ชั้น
                                                                 <?= $rsCase_open['case_floor']; ?> ห้อง
                                                                 <?= $rsCase_open['case_room']; ?><br>
-                                                                <?= $rsCase_open['title_name'] . ' ' . $rsCase_open['firstname'] . ' ' . $rsCase_open['lastname']; ?><br>
+                                                                <?= $rsCase_open['title_name'] . '' . $rsCase_open['firstname'] . ' ' . $rsCase_open['lastname']; ?><br>
                                                                 แผนก : <?= $rsCase_open['department_name']; ?><br>
                                                                 ตำแหน่ง : <?= $rsCase_open['position_name']; ?><br>
                                                                 เบอร์โทร : <?= $rsCase_open['m_tel']; ?><br>
@@ -114,9 +114,9 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                                     <?= $rsCase_open['status_name']; ?></font>
 
                                                                 <br>หัวหน้าช่าง :
-                                                                <?= $rsCase_open['head_mechanic_title_name'] . ' ' . $rsCase_open['head_mechanic_firstname'] . ' ' . $rsCase_open['head_mechanic_lastname']; ?>
+                                                                <?= $rsCase_open['head_mechanic_title_name'] . '' . $rsCase_open['head_mechanic_firstname'] . ' ' . $rsCase_open['head_mechanic_lastname']; ?>
                                                                 <br>ช่างที่รับผิดชอบ :
-                                                                <?= $rsCase_open['mec_title_name'] . ' ' . $rsCase_open['mec_firstname'] . ' ' . $rsCase_open['mec_lastname']; ?>
+                                                                <?= $rsCase_open['mec_title_name'] . '' . $rsCase_open['mec_firstname'] . ' ' . $rsCase_open['mec_lastname']; ?>
                                                                 <br>หมายเหตุ/อธิบายการแก้ปัญหา :
 
 
@@ -146,16 +146,16 @@ $rsAssessment = $stmtAssessment->fetchAll(PDO::FETCH_ASSOC);
                                                         <table width="20%" border="1" align="center" cellpadding="0"
                                                             cellspacing="0" class="table table-bordered table-hover">
                                                             <?php foreach ($rsAssessment as $rsAsm) { ?>
-                                                                <tr>
-                                                                    <td height="30" align="center">
-                                                                        <input type="radio" name="assessment_id"
-                                                                            value="<?= $rsAsm['assessment_id']; ?>"
-                                                                            required />
-                                                                    </td>
-                                                                    <td height="30">
-                                                                        <?= $rsAsm['assessment_name']; ?>
-                                                                    </td>
-                                                                </tr>
+                                                            <tr>
+                                                                <td height="30" align="center">
+                                                                    <input type="radio" name="assessment_id"
+                                                                        value="<?= $rsAsm['assessment_id']; ?>"
+                                                                        required />
+                                                                </td>
+                                                                <td height="30">
+                                                                    <?= $rsAsm['assessment_name']; ?>
+                                                                </td>
+                                                            </tr>
                                                             <?php } ?>
                                                         </table>
 
