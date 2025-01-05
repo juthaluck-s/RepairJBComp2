@@ -31,7 +31,7 @@ try {
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
-        <img src="../assets/dist/img/Logo Jb Comp3(BG).png" alt="JBCompLogo" class="brand-image img-circle ">
+        <img src="../assets/dist/img/JB Comp_white3.png" alt="JBCompLogo" class="brand-image img-circle ">
         <span class="brand-text font-weight-light">Repair JB Comp</span>
     </a>
 

@@ -31,7 +31,7 @@ try {
 <aside class="main-sidebar sidebar-dark-info elevation-4">
     <!-- Brand Logo -->
     <a href="case.php" class="brand-link">
-        <img src="../assets/dist/img/Logo Jb Comp3(BG).png" alt="JBCompLogo" class="brand-image img-circle ">
+        <img src="../assets/dist/img/JB Comp_white3.png" alt="JBCompLogo" class="brand-image img-circle ">
         <span class="brand-text font-weight-light">Repair JB Comp</span>
     </a>
 
@@ -51,34 +51,34 @@ try {
                 </a>
                 <a href="#" class="d-block m-level">สิทธิ์ใช้งาน :
                     <?php if ($ref_level_id): ?>
-                        <?php if ($ref_level_id == '1'): ?>
-                            <button class="btn btn-danger btn-custom-small">Admin</button>
-                        <?php elseif ($ref_level_id == '2'): ?>
-                            <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
-                        <?php elseif ($ref_level_id == '3'): ?>
-                            <button class="btn btn-info btn-custom-small">Mechanic</button>
-                        <?php elseif ($ref_level_id == '4'): ?>
-                            <button class="btn btn-success btn-custom-small">Employee</button>
-                        <?php endif; ?>
+                    <?php if ($ref_level_id == '1'): ?>
+                    <button class="btn btn-danger btn-custom-small">Admin</button>
+                    <?php elseif ($ref_level_id == '2'): ?>
+                    <button class="btn btn-warning btn-custom-small">Head Mechanic</button>
+                    <?php elseif ($ref_level_id == '3'): ?>
+                    <button class="btn btn-info btn-custom-small">Mechanic</button>
+                    <?php elseif ($ref_level_id == '4'): ?>
+                    <button class="btn btn-success btn-custom-small">Employee</button>
+                    <?php endif; ?>
                     <?php else: ?>
-                        <button class="btn btn-secondary btn-custom-small">Unknown</button>
+                    <button class="btn btn-secondary btn-custom-small">Unknown</button>
                     <?php endif; ?>
                 </a>
 
 
             </div>
             <style>
-                .m-level {
-                    margin-top: 2px;
-                    font-size: 13px;
-                }
+            .m-level {
+                margin-top: 2px;
+                font-size: 13px;
+            }
 
-                .btn-custom-small {
-                    padding: 0px 3px;
-                    /* ปรับขนาด padding ให้เล็ก */
-                    font-size: 11px;
-                    /* ปรับขนาดตัวอักษร */
-                }
+            .btn-custom-small {
+                padding: 0px 3px;
+                /* ปรับขนาด padding ให้เล็ก */
+                font-size: 11px;
+                /* ปรับขนาดตัวอักษร */
+            }
             </style>
         </div>
 
