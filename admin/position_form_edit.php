@@ -57,7 +57,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                         <div class="col-sm-4">
                                             <input type="hidden" name="position_id"
                                                 value="<?php echo $row['position_id']; ?>">
-                                            <button position="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
+                                            <button type="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
                                             <a href="position.php" class="btn btn-danger">ยกเลิก</a>
                                         </div>
                                     </div>
