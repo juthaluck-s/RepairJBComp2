@@ -47,7 +47,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                     <div class="form-group row">
                                         <label class="col-sm-2">สิทธิ์การใช้งาน</label>
                                         <div class="col-sm-4">
-                                            <input level="text" name="level_name" class="form-control" required
+                                            <input type="text" name="level_name" class="form-control" required
                                                 placeholder="ชื่อตำแหน่ง" value="<?php echo $row['level_name']; ?>">
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                         <div class="col-sm-4">
                                             <input type="hidden" name="level_id"
                                                 value="<?php echo $row['level_id']; ?>">
-                                            <button level="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
+                                            <button type="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
                                             <a href="level.php" class="btn btn-danger">ยกเลิก</a>
                                         </div>
                                     </div>

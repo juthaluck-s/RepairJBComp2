@@ -47,7 +47,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                     <div class="form-group row">
                                         <label class="col-sm-2">ชื่ออุปกรณ์</label>
                                         <div class="col-sm-4">
-                                            <input equipment="text" name="equipment_name" class="form-control" required
+                                            <input type="text" name="equipment_name" class="form-control" required
                                                 placeholder="ชื่ออุปกรณ์" value="<?php echo $row['equipment_name']; ?>">
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                         <div class="col-sm-4">
                                             <input type="hidden" name="equipment_id"
                                                 value="<?php echo $row['equipment_id']; ?>">
-                                            <button equipment="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
+                                            <button type="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
                                             <a href="equipment.php" class="btn btn-danger">ยกเลิก</a>
                                         </div>
                                     </div>

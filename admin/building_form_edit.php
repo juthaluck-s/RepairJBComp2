@@ -47,7 +47,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                     <div class="form-group row">
                                         <label class="col-sm-2">ชื่อตึก/อาคาร</label>
                                         <div class="col-sm-4">
-                                            <input building="text" name="building_name" class="form-control" required
+                                            <input type="text" name="building_name" class="form-control" required
                                                 placeholder="ชื่อตำแหน่ง" value="<?php echo $row['building_name']; ?>">
                                         </div>
                                     </div>

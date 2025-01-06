@@ -25,15 +25,15 @@
                                       <div class="form-group row">
                                           <label class="col-sm-2">ชื่อแผนก</label>
                                           <div class="col-sm-4">
-                                              <input department="text" name="department_name" class="form-control"
-                                                  required placeholder="ชื่อแผนก">
+                                              <input type="text" name="department_name" class="form-control" required
+                                                  placeholder="ชื่อแผนก">
                                           </div>
                                       </div>
 
                                       <div class="form-group row">
                                           <label class="col-sm-2"></label>
                                           <div class="col-sm-4">
-                                              <button department="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
+                                              <button type="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
                                               <a href="department.php" class="btn btn-danger">ยกเลิก</a>
                                           </div>
                                       </div>

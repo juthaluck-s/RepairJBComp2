@@ -25,15 +25,15 @@
                                       <div class="form-group row">
                                           <label class="col-sm-2">ชื่ออุปกรณ์</label>
                                           <div class="col-sm-4">
-                                              <input equipment="text" name="equipment_name" class="form-control"
-                                                  required placeholder="ชื่ออุปกรณ์">
+                                              <input type="text" name="equipment_name" class="form-control" required
+                                                  placeholder="ชื่ออุปกรณ์">
                                           </div>
                                       </div>
 
                                       <div class="form-group row">
                                           <label class="col-sm-2"></label>
                                           <div class="col-sm-4">
-                                              <button equipment="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
+                                              <button type="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
                                               <a href="equipment.php" class="btn btn-danger">ยกเลิก</a>
                                           </div>
                                       </div>

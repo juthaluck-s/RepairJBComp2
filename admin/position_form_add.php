@@ -25,7 +25,7 @@
                                       <div class="form-group row">
                                           <label class="col-sm-2">ชื่อตำแหน่ง</label>
                                           <div class="col-sm-4">
-                                              <input position="text" name="position_name" class="form-control" required
+                                              <input type="text" name="position_name" class="form-control" required
                                                   placeholder="ชื่อตำแหน่ง">
                                           </div>
                                       </div>
@@ -33,7 +33,7 @@
                                       <div class="form-group row">
                                           <label class="col-sm-2"></label>
                                           <div class="col-sm-4">
-                                              <button position="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
+                                              <button type="submit" class="btn btn-primary"> เพิ่มข้อมูล </button>
                                               <a href="position.php" class="btn btn-danger">ยกเลิก</a>
                                           </div>
                                       </div>
