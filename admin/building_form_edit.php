@@ -39,34 +39,34 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        <div class="card card-primary">
-                            <!-- form start -->
-                            <form action="" method="post">
-                                <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ชื่อตึก/อาคาร</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="building_name" class="form-control" required
-                                                placeholder="ชื่อตำแหน่ง" value="<?php echo $row['building_name']; ?>">
-                                        </div>
+                        <!-- form start -->
+                        <form action="" method="post">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ชื่อตึก/อาคาร</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="building_name" class="form-control" required
+                                            placeholder="ชื่อตำแหน่ง" value="<?php echo $row['building_name']; ?>">
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <input type="hidden" name="building_id"
-                                                value="<?php echo $row['building_id']; ?>">
-                                            <button building="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
-                                            <a href="building.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <input type="hidden" name="building_id"
+                                            value="<?php echo $row['building_id']; ?>">
+                                        <button building="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
+                                        <a href="building.php" class="btn btn-danger">ยกเลิก</a>
                                     </div>
+                                </div>
 
-                                </div> <!-- /.card-body -->
+                            </div> <!-- /.card-body -->
 
-                            </form>
+                        </form>
 
-                            <?php
+                        <?php
 
                             // echo '<pre>';
                             // print_r($_POST);
@@ -74,15 +74,15 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
 
                             ?>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col-->
+</div>
+<!-- ./row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

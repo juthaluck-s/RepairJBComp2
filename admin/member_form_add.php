@@ -35,149 +35,149 @@ $rsLevel = $queryLevel->fetchAll();
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        <div class="card card-primary">
-
-                            <!-- form start -->
-                            <form action="" method="post">
-                                <div class="card-body">
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">รหัสพนักงาน</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="member_id" class="form-control" required
-                                                placeholder="รหัสพนักงาน">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">สิทธิ์การใช้งาน</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_level_id" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <?php foreach ($rsLevel as $rowlev): ?>
-                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
-                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-
-                                            </select>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Username</label>
-                                        <div class="col-sm-4">
-                                            <input type="username" name="username" class="form-control" required
-                                                placeholder="Username">
-                                        </div>
-                                    </div>
+                        <!-- form start -->
+                        <form action="" method="post">
+                            <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Password</label>
-                                        <div class="col-sm-4">
-                                            <input type="password" name="password" class="form-control" required
-                                                placeholder="Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">คำนำหน้า</label>
-                                        <div class="col-sm-2">
-                                            <select name="title_name" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ชื่อ</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="firstname" class="form-control" required
-                                                placeholder="ชื่อ">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">นามสกุล</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="lastname" class="form-control" required
-                                                placeholder="นามสกุล">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">แผนก</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_department_id" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <?php foreach ($rsDepartment as $rowdpm): ?>
-                                                    <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>">
-                                                        <?= htmlspecialchars($rowdpm['department_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ตำแหน่ง</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_position_id" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <?php foreach ($rsPosition as $rowpst): ?>
-                                                    <option value="<?= htmlspecialchars($rowpst['position_id']); ?>">
-                                                        <?= htmlspecialchars($rowpst['position_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">เบอร์โทร</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="m_tel" class="form-control" required
-                                                placeholder="เบอร์โทร">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Email</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="m_email" class="form-control" required
-                                                placeholder="Email">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
-                                            <a href="member.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">รหัสพนักงาน</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="member_id" class="form-control" required
+                                            placeholder="รหัสพนักงาน">
                                     </div>
                                 </div>
-                            </form>
-                            <!-- <?php
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">สิทธิ์การใช้งาน</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_level_id" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <?php foreach ($rsLevel as $rowlev): ?>
+                                            <option value="<?= htmlspecialchars($rowlev['level_id']); ?>">
+                                                <?= htmlspecialchars($rowlev['level_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Username</label>
+                                    <div class="col-sm-4">
+                                        <input type="username" name="username" class="form-control" required
+                                            placeholder="Username">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Password</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" name="password" class="form-control" required
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">คำนำหน้า</label>
+                                    <div class="col-sm-2">
+                                        <select name="title_name" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <option value="นาย">นาย</option>
+                                            <option value="นาง">นาง</option>
+                                            <option value="นางสาว">นางสาว</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ชื่อ</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="firstname" class="form-control" required
+                                            placeholder="ชื่อ">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">นามสกุล</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="lastname" class="form-control" required
+                                            placeholder="นามสกุล">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">แผนก</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_department_id" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <?php foreach ($rsDepartment as $rowdpm): ?>
+                                            <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>">
+                                                <?= htmlspecialchars($rowdpm['department_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ตำแหน่ง</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_position_id" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <?php foreach ($rsPosition as $rowpst): ?>
+                                            <option value="<?= htmlspecialchars($rowpst['position_id']); ?>">
+                                                <?= htmlspecialchars($rowpst['position_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">เบอร์โทร</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="m_tel" class="form-control" required
+                                            placeholder="เบอร์โทร">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Email</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="m_email" class="form-control" required
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+                                        <a href="member.php" class="btn btn-danger">ยกเลิก</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- <?php
                                     echo '<pre></pre>';
                                     print_r($_POST);
                                     ?> -->
 
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col-->
+</div>
+<!-- ./row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

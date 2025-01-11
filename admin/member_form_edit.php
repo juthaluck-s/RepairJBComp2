@@ -45,148 +45,147 @@ $rsLevel = $queryLevel->fetchAll();
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        <div class="card card-primary">
-
-                            <!-- form start -->
-                            <form action="" method="post">
-                                <div class="card-body">
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">รหัสพนักงาน</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="member_id" class="form-control"
-                                                value="<?php echo $rowMemdetail['member_id']; ?>" readonly>
-                                        </div>
-                                    </div>
 
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">สิทธิ์การใช้งาน</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_level_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsLevel as $rowlev): ?>
-                                                    <option value="<?= htmlspecialchars($rowlev['level_id']); ?>"
-                                                        <?= $rowlev['level_id'] == $rowMemdetail['ref_level_id'] ? 'selected' : ''; ?>>
-                                                        <?= htmlspecialchars($rowlev['level_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                        <!-- form start -->
+                        <form action="" method="post">
+                            <div class="card-body">
 
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Username</label>
-                                        <div class="col-sm-4">
-                                            <input type="username" name="username" class="form-control"
-                                                value="<?php echo $rowMemdetail['username']; ?>" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">คำนำหน้า</label>
-                                        <div class="col-sm-2">
-                                            <select name="title_name" class="form-control" required>
-                                                <option value="<?php echo $rowMemdetail['title_name']; ?>">
-                                                    <?php echo $rowMemdetail['title_name']; ?> </option>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <option value="นาย">นาย</option>
-                                                <option value="นาง">นาง</option>
-                                                <option value="นางสาว">นางสาว</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ชื่อ</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="firstname" class="form-control" required
-                                                placeholder="ชื่อ" value="<?php echo $rowMemdetail['firstname']; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">นามสกุล</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="lastname" class="form-control" required
-                                                placeholder="นามสกุล" value="<?php echo $rowMemdetail['lastname']; ?>">
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">แผนก</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_department_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsDepartment as $rowdpm): ?>
-                                                    <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>"
-                                                        <?= $rowdpm['department_id'] == $rowMemdetail['ref_department_id'] ? 'selected' : ''; ?>>
-                                                        <?= htmlspecialchars($rowdpm['department_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ตำแหน่ง</label>
-                                        <div class="col-sm-2">
-                                            <select name="ref_position_id" class="form-control" required>
-                                                <option disabled>กรุณาเลือกใหม่</option>
-                                                <?php foreach ($rsPosition as $rowpst): ?>
-                                                    <option value="<?= htmlspecialchars($rowpst['position_id']); ?>"
-                                                        <?= $rowpst['position_id'] == $rowMemdetail['ref_position_id'] ? 'selected' : ''; ?>>
-                                                        <?= htmlspecialchars($rowpst['position_name']); ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">เบอร์โทร</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="m_tel" class="form-control" required
-                                                placeholder="เบอร์โทร" value="<?php echo $rowMemdetail['m_tel']; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Email</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="m_email" class="form-control" required
-                                                placeholder="Email" value="<?php echo $rowMemdetail['m_email']; ?>">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <input type="hidden" name="m_id"
-                                                value="<?php echo $rowMemdetail['m_id']; ?>">
-                                            <button type="submit" class="btn btn-success">บันทึก</button>
-                                            <a href="member.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-2">รหัสพนักงาน</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="member_id" class="form-control"
+                                            value="<?php echo $rowMemdetail['member_id']; ?>" readonly>
                                     </div>
                                 </div>
-                            </form>
 
-                        </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">สิทธิ์การใช้งาน</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_level_id" class="form-control" required>
+                                            <option disabled>กรุณาเลือกใหม่</option>
+                                            <?php foreach ($rsLevel as $rowlev): ?>
+                                            <option value="<?= htmlspecialchars($rowlev['level_id']); ?>"
+                                                <?= $rowlev['level_id'] == $rowMemdetail['ref_level_id'] ? 'selected' : ''; ?>>
+                                                <?= htmlspecialchars($rowlev['level_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Username</label>
+                                    <div class="col-sm-4">
+                                        <input type="username" name="username" class="form-control"
+                                            value="<?php echo $rowMemdetail['username']; ?>" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">คำนำหน้า</label>
+                                    <div class="col-sm-2">
+                                        <select name="title_name" class="form-control" required>
+                                            <option value="<?php echo $rowMemdetail['title_name']; ?>">
+                                                <?php echo $rowMemdetail['title_name']; ?> </option>
+                                            <option disabled>กรุณาเลือกใหม่</option>
+                                            <option value="นาย">นาย</option>
+                                            <option value="นาง">นาง</option>
+                                            <option value="นางสาว">นางสาว</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ชื่อ</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="firstname" class="form-control" required
+                                            placeholder="ชื่อ" value="<?php echo $rowMemdetail['firstname']; ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">นามสกุล</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="lastname" class="form-control" required
+                                            placeholder="นามสกุล" value="<?php echo $rowMemdetail['lastname']; ?>">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">แผนก</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_department_id" class="form-control" required>
+                                            <option disabled>กรุณาเลือกใหม่</option>
+                                            <?php foreach ($rsDepartment as $rowdpm): ?>
+                                            <option value="<?= htmlspecialchars($rowdpm['department_id']); ?>"
+                                                <?= $rowdpm['department_id'] == $rowMemdetail['ref_department_id'] ? 'selected' : ''; ?>>
+                                                <?= htmlspecialchars($rowdpm['department_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ตำแหน่ง</label>
+                                    <div class="col-sm-2">
+                                        <select name="ref_position_id" class="form-control" required>
+                                            <option disabled>กรุณาเลือกใหม่</option>
+                                            <?php foreach ($rsPosition as $rowpst): ?>
+                                            <option value="<?= htmlspecialchars($rowpst['position_id']); ?>"
+                                                <?= $rowpst['position_id'] == $rowMemdetail['ref_position_id'] ? 'selected' : ''; ?>>
+                                                <?= htmlspecialchars($rowpst['position_name']); ?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">เบอร์โทร</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="m_tel" class="form-control" required
+                                            placeholder="เบอร์โทร" value="<?php echo $rowMemdetail['m_tel']; ?>">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Email</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="m_email" class="form-control" required
+                                            placeholder="Email" value="<?php echo $rowMemdetail['m_email']; ?>">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <input type="hidden" name="m_id" value="<?php echo $rowMemdetail['m_id']; ?>">
+                                        <button type="submit" class="btn btn-success">บันทึก</button>
+                                        <a href="member.php" class="btn btn-danger">ยกเลิก</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col-->
+</div>
+<!-- ./row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

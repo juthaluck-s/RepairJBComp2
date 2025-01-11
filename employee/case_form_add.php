@@ -33,102 +33,102 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        <div class="card card-primary">
 
-                            <!-- form start -->
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">รหัสพนักงาน : </label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="ref_m_id" class="form-control"
-                                                value="<?php echo $memberData['member_id'];
-                                                                                                            $_SESSION['staff_id']; ?>" readonly>
-                                        </div>
+                        <!-- form start -->
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">รหัสพนักงาน : </label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="ref_m_id" class="form-control"
+                                            value="<?php echo $memberData['member_id'];
+                                                    $_SESSION['staff_id']; ?>" readonly>
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ตึก/อาคาร</label>
-                                        <div class="col-sm-3">
-                                            <select name="ref_building_id" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <?php foreach ($rsBuildingCase as $row) { ?>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ตึก/อาคาร</label>
+                                    <div class="col-sm-3">
+                                        <select name="ref_building_id" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <?php foreach ($rsBuildingCase as $row) { ?>
                                                 <option value="<?php echo $row['building_id']; ?>">
                                                     <?php echo $row['building_name']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                            <?php } ?>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ชั้น</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" name="case_floor" class="form-control" required
-                                                placeholder="ชั้น">
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ชั้น</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="case_floor" class="form-control" required
+                                            placeholder="ชั้น">
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ห้อง</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" name="case_room" class="form-control" required
-                                                placeholder="ห้อง">
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ห้อง</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" name="case_room" class="form-control" required
+                                            placeholder="ห้อง">
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">อุปกรณ์</label>
-                                        <div class="col-sm-3">
-                                            <select name="ref_equipment_id" class="form-control" required>
-                                                <option value="">กรุณาเลือก</option>
-                                                <?php foreach ($rsEquipmentCase as $row) { ?>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">อุปกรณ์</label>
+                                    <div class="col-sm-3">
+                                        <select name="ref_equipment_id" class="form-control" required>
+                                            <option value="">กรุณาเลือก</option>
+                                            <?php foreach ($rsEquipmentCase as $row) { ?>
                                                 <option value="<?php echo $row['equipment_id']; ?>">
                                                     <?php echo $row['equipment_name']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                            <?php } ?>
+                                        </select>
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">รายละเอียด</label>
-                                        <div class="col-sm-10">
-                                            <textarea name="case_detail" id="summernote"></textarea>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">รายละเอียด</label>
+                                    <div class="col-sm-10">
+                                        <textarea name="case_detail" id="summernote"></textarea>
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ภาพประกอบ</label>
-                                        <div class="col-sm-4">
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" name="case_img" class="custom-file-input"
-                                                        id="exampleInputFile" accept="image/*">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose
-                                                        file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ภาพประกอบ</label>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="case_img" class="custom-file-input"
+                                                    id="exampleInputFile" accept="image/*">
+                                                <label class="custom-file-label" for="exampleInputFile">Choose
+                                                    file</label>
+                                            </div>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
-                                            <a href="case.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+                                        <a href="case.php" class="btn btn-danger">ยกเลิก</a>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+</div>
+</section>
 </div>
 
 <?php

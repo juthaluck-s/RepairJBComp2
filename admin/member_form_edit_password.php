@@ -34,67 +34,67 @@ if (isset($_GET['m_id']) && $_GET['act'] == 'editPwd') {
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        <div class="card card-primary">
 
-                            <!-- form start -->
-                            <form action="" method="post">
-                                <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Username</label>
-                                        <div class="col-sm-4">
-                                            <input type="username" name="username" class="form-control"
-                                                value="<?php echo $row['username']; ?>" disabled>
-                                        </div>
-                                    </div>
+                        <!-- form start -->
+                        <form action="" method="post">
+                            <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">ชื่อ-สกุล</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="firstname" class="form-control" required
-                                                placeholder="ชื่อ"
-                                                value="<?php echo $row['title_name'] . $row['firstname'] . ' ' . $row['lastname']; ?>"
-                                                disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">New Password</label>
-                                        <div class="col-sm-4">
-                                            <input type="password" name="NewPassword" class="form-control" required
-                                                placeholder="New Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">Confirm Password</label>
-                                        <div class="col-sm-4">
-                                            <input type="password" name="ConfirmPassword" class="form-control" required
-                                                placeholder="Confirm Password">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <input type="hidden" name="m_id" value="<?php echo $row['m_id']; ?>">
-                                            <button type="submit" class="btn btn-primary">แก้ไขรหัสผ่าน</button>
-                                            <a href="member.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
-
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Username</label>
+                                    <div class="col-sm-4">
+                                        <input type="username" name="username" class="form-control"
+                                            value="<?php echo $row['username']; ?>" disabled>
                                     </div>
                                 </div>
-                            </form>
 
-                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2">ชื่อ-สกุล</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" name="firstname" class="form-control" required
+                                            placeholder="ชื่อ"
+                                            value="<?php echo $row['title_name'] . $row['firstname'] . ' ' . $row['lastname']; ?>"
+                                            disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">New Password</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" name="NewPassword" class="form-control" required
+                                            placeholder="New Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">Confirm Password</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" name="ConfirmPassword" class="form-control" required
+                                            placeholder="Confirm Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <input type="hidden" name="m_id" value="<?php echo $row['m_id']; ?>">
+                                        <button type="submit" class="btn btn-primary">แก้ไขรหัสผ่าน</button>
+                                        <a href="member.php" class="btn btn-danger">ยกเลิก</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col-->
+</div>
+<!-- ./row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 

@@ -71,8 +71,8 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                         <th width="10%" class="text-center">อุปกรณ์</th>
                                                         <th class="text-center">รายละเอียด</th>
                                                         <th width="8%" class="text-center">สถานะ</th>
-                                                        <th width="10%" class="text-center">ผู้ที่มอบหมายงาน</th>
-                                                        <th width="10%" class="text-center">ช่างที่รับผิดชอบ</th>
+                                                        <th width="12%" class="text-center">ผู้ที่มอบหมายงาน</th>
+                                                        <th width="12%" class="text-center">ช่างที่รับผิดชอบ</th>
                                                         <th width="8%" class="text-center">ดูงาน</th>
 
                                                     </tr>
@@ -87,50 +87,50 @@ $rowAllCases = $stmtCountAllCases->fetch(PDO::FETCH_ASSOC);
                                                     <?php $i = 1; // เริ่มต้นลำดับที่ 1 
                                                     ?>
                                                     <?php foreach ($rsCaseList as $row) { ?>
-                                                    <tr>
-                                                        <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
+                                                        <tr>
+                                                            <td align="center"> <?php echo $i++; // แสดงลำดับปัจจุบัน และเพิ่มค่าในบรรทัดเดียว 
                                                                                 ?></td>
-                                                        <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
-                                                                width="70px"></td>
-                                                        <td align="center"><?= $row['equipment_name']; ?></td>
-                                                        <td>
-                                                            <?= '<b>' . $row['case_detail'] . '</b><br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . '' . $row['firstname'] . ' ' . $row['lastname'] .
+                                                            <td><img src="../assets/case_img/<?= $row['case_img']; ?>"
+                                                                    width="70px"></td>
+                                                            <td align="center"><?= $row['equipment_name']; ?></td>
+                                                            <td>
+                                                                <?= '<b>' . $row['case_detail'] . '</b><br>สถานที่ : ' . $row['building_name'] . ' ชั้น ' . $row['case_floor'] . ' ห้อง ' . $row['case_room'] . '<br>' . $row['title_name'] . '' . $row['firstname'] . ' ' . $row['lastname'] .
                                                                     '<br>แผนก :  ' . $row['department_name'] . '<br>ตำแหน่ง : ' . $row['position_name'] . '<br>เบอร์โทร :  ' . $row['m_tel'] . '<br>Email : ' . $row['m_email'] . '<br>ว/ด/ป ' . date('d/m/Y H:i:s', strtotime($row['dateSave'])) ?>
-                                                        </td>
-                                                        <td align="center">
-                                                            <?= htmlspecialchars($row['status_name']); ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php if ($row['ref_status_id'] != 1): ?>
-                                                            <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
-                                                            <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['head_mechanic_title_name'] . '' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . '<br>เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>Email: ' . $row['head_mechanic_email']; ?>
-                                                            <?php else: ?>
-                                                            ข้อมูลช่างไม่สมบูรณ์
-                                                            <?php endif; ?>
-                                                            <?php else: ?>
-                                                            <div class="text-center">-</div>
-                                                            <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
-                                                            <?php endif; ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php if ($row['ref_status_id'] != 1): ?>
-                                                            <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
-                                                            <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
-                                                            <?= $row['mec_title_name'] . '' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
-                                                            <?php else: ?>
-                                                            ข้อมูลช่างไม่สมบูรณ์
-                                                            <?php endif; ?>
-                                                            <?php else: ?>
-                                                            <div class="text-center">-</div>
-                                                            <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
-                                                            <?php endif; ?>
-                                                        </td>
-                                                        <td align="center" style=" vertical-align: middle;">
-                                                            <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
-                                                                class="btn-edit5 btn-sm">Open</a>
-                                                        </td>
-                                                    </tr>
+                                                            </td>
+                                                            <td align="center">
+                                                                <?= htmlspecialchars($row['status_name']); ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php if ($row['ref_status_id'] != 1): ?>
+                                                                    <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+                                                                    <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+                                                                        <?= $row['head_mechanic_title_name'] . '' . $row['head_mechanic_firstname'] . ' ' . $row['head_mechanic_lastname'] . '<br>เบอร์โทร: ' . $row['head_mechanic_tel'] . '<br>Email: ' . $row['head_mechanic_email']; ?>
+                                                                    <?php else: ?>
+                                                                        ข้อมูลช่างไม่สมบูรณ์
+                                                                    <?php endif; ?>
+                                                                <?php else: ?>
+                                                                    <div class="text-center">-</div>
+                                                                    <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php if ($row['ref_status_id'] != 1): ?>
+                                                                    <!-- ตรวจสอบว่าสถานะไม่ใช่ 1 -->
+                                                                    <?php if (!empty($row['title_name']) && !empty($row['firstname']) && !empty($row['lastname'])): ?>
+                                                                        <?= $row['mec_title_name'] . '' . $row['mec_firstname'] . ' ' . $row['mec_lastname'] . '<br>เบอร์โทร: ' . $row['mec_tel'] . '<br>Email: ' . $row['mec_email']; ?>
+                                                                    <?php else: ?>
+                                                                        ข้อมูลช่างไม่สมบูรณ์
+                                                                    <?php endif; ?>
+                                                                <?php else: ?>
+                                                                    <div class="text-center">-</div>
+                                                                    <!-- หากสถานะเป็น 1 ให้แสดง "-" -->
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td align="center" style=" vertical-align: middle;">
+                                                                <a href="case.php?id=<?= $row['case_id']; ?>&act=view&no=<?= $i - 1; ?>"
+                                                                    class="btn-edit5 btn-sm">Open</a>
+                                                            </td>
+                                                        </tr>
                                                     <?php } ?>
 
                                                 </tbody>
