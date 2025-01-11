@@ -80,7 +80,7 @@ $rsCaseList = $queryCaseList->fetchAll();
                                         <td align="center"> <?php echo $i++ ?></td>
                                         <td><img src="../assets/case_img/<?= $row['case_img']; ?>" width="70px">
                                         </td>
-                                        <td><?= $row['equipment_name']; ?></td>
+                                        <td align="center"><?= $row['equipment_name']; ?></td>
 
 
 
