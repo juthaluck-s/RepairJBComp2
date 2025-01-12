@@ -5,7 +5,7 @@
           <div class="container-fluid">
               <div class="row mb-2">
                   <div class="col-sm-6">
-                      <h1>เพิ่มชื่อตำแหน่ง </h1>
+                      <h1>เพิ่มชื่อสถานะ </h1>
                   </div>
               </div>
           </div><!-- /.container-fluid -->
@@ -23,10 +23,10 @@
                               <div class="card-body">
 
                                   <div class="form-group row">
-                                      <label class="col-sm-2">ชื่อตำแหน่ง</label>
+                                      <label class="col-sm-2">ชื่อสถานะ</label>
                                       <div class="col-sm-4">
                                           <input type="text" name="status_name" class="form-control" required
-                                              placeholder="ชื่อตำแหน่ง">
+                                              placeholder="ชื่อสถานะ">
                                       </div>
                                   </div>
 
@@ -42,10 +42,10 @@
 
                           </form>
                           <?php
-                                // echo '<pre>';
-                                // print_r($_POST);
-                                // exit;
-                                ?>
+                            // echo '<pre>';
+                            // print_r($_POST);
+                            // exit;
+                            ?>
 
                       </div>
                   </div>

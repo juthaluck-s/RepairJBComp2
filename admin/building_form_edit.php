@@ -48,7 +48,7 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
                                     <label class="col-sm-2">ชื่อตึก/อาคาร</label>
                                     <div class="col-sm-4">
                                         <input type="text" name="building_name" class="form-control" required
-                                            placeholder="ชื่อตำแหน่ง" value="<?php echo $row['building_name']; ?>">
+                                            placeholder="ชื่อตึก/อาคาร" value="<?php echo $row['building_name']; ?>">
                                     </div>
                                 </div>
 
@@ -68,11 +68,11 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
 
                         <?php
 
-                            // echo '<pre>';
-                            // print_r($_POST);
-                            // exit;
+                        // echo '<pre>';
+                        // print_r($_POST);
+                        // exit;
 
-                            ?>
+                        ?>
 
                     </div>
                 </div>

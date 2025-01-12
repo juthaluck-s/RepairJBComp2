@@ -26,7 +26,7 @@
                                       <label class="col-sm-2">ชื่อตึก/อาคาร</label>
                                       <div class="col-sm-4">
                                           <input type="text" name="building_name" class="form-control" required
-                                              placeholder="ชื่อตำแหน่ง">
+                                              placeholder="ชื่อตึก/อาคาร">
                                       </div>
                                   </div>
 
@@ -42,10 +42,10 @@
 
                           </form>
                           <?php
-                                // echo '<pre>';
-                                // print_r($_POST);
-                                // exit;
-                                ?>
+                            // echo '<pre>';
+                            // print_r($_POST);
+                            // exit;
+                            ?>
 
                       </div>
                   </div>

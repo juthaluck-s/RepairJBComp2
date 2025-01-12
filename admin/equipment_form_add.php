@@ -5,7 +5,7 @@
           <div class="container-fluid">
               <div class="row mb-2">
                   <div class="col-sm-6">
-                      <h1>แก้ไขชื่ออุปกรณ์ </h1>
+                      <h1>เพิ่มชื่ออุปกรณ์ </h1>
                   </div>
               </div>
           </div><!-- /.container-fluid -->
@@ -42,10 +42,10 @@
 
                           </form>
                           <?php
-                                // echo '<pre>';
-                                // print_r($_POST);
-                                // exit;
-                                ?>
+                            // echo '<pre>';
+                            // print_r($_POST);
+                            // exit;
+                            ?>
 
                       </div>
                   </div>

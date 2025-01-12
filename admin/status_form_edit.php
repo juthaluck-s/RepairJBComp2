@@ -39,50 +39,49 @@ if (isset($_GET['id']) && $_GET['act'] == 'edit') {
             <div class="col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-body">
-                        
-                            <!-- form start -->
-                            <form action="" method="post">
-                                <div class="card-body">
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2">สถานะ</label>
-                                        <div class="col-sm-4">
-                                            <input status="text" name="status_name" class="form-control" required
-                                                placeholder="สถานะ" value="<?php echo $row['status_name']; ?>">
-                                        </div>
+                        <!-- form start -->
+                        <form action="" method="post">
+                            <div class="card-body">
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2">สถานะ</label>
+                                    <div class="col-sm-4">
+                                        <input status="text" name="status_name" class="form-control" required
+                                            placeholder="ชื่อสถานะ" value="<?php echo $row['status_name']; ?>">
                                     </div>
+                                </div>
 
-                                    <div class="form-group row">
-                                        <label class="col-sm-2"></label>
-                                        <div class="col-sm-4">
-                                            <input type="hidden" name="status_id"
-                                                value="<?php echo $row['status_id']; ?>">
-                                            <button type="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
-                                            <a href="status.php" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2"></label>
+                                    <div class="col-sm-4">
+                                        <input type="hidden" name="status_id" value="<?php echo $row['status_id']; ?>">
+                                        <button type="submit" class="btn btn-primary"> ปรับปรุงข้อมูล </button>
+                                        <a href="status.php" class="btn btn-danger">ยกเลิก</a>
                                     </div>
+                                </div>
 
-                                </div> <!-- /.card-body -->
+                            </div> <!-- /.card-body -->
 
-                            </form>
+                        </form>
 
-                            <?php
+                        <?php
 
-                            // echo '<pre>';
-                            // print_r($_POST);
-                            // exit;
+                        // echo '<pre>';
+                        // print_r($_POST);
+                        // exit;
 
-                            ?>
+                        ?>
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /.col-->
         </div>
-        <!-- ./row -->
-    </section>
-    <!-- /.content -->
+        <!-- /.col-->
+</div>
+<!-- ./row -->
+</section>
+<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
