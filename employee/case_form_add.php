@@ -40,11 +40,10 @@ $rsEquipmentCase = $queryEquipmentCase->fetchAll();
                             <div class="card-body">
 
                                 <div class="form-group row">
-                                    <label class="col-sm-2">รหัสพนักงาน : </label>
+                                    <label class="col-sm-2">รหัสพนักงาน</label>
                                     <div class="col-sm-4">
-                                        <input type="text" name="ref_m_id" class="form-control"
-                                            value="<?php echo $memberData['member_id'];
-                                                    $_SESSION['staff_id']; ?>" readonly>
+                                        <input type="text" name="ref_m_id" class="form-control" value="<?php echo $memberData['member_id'];
+                                                                                                        $_SESSION['staff_id']; ?>" readonly>
                                     </div>
                                 </div>
 

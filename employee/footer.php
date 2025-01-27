@@ -50,6 +50,51 @@ $(function() {
 <!-- Page specific script -->
 
 <script>
+$('#summernote').summernote({
+    height: 200, // ความสูงของ textarea
+    placeholder: 'กรุณากรอกรายละเอียด',
+    tabsize: 2,
+    toolbar: [
+        // แสดงทุกเครื่องมือ ยกเว้นเครื่องมือที่เกี่ยวข้องกับรูปภาพ/วิดีโอ
+        ['style', ['style']],
+        ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript',
+            'clear'
+        ]],
+        ['fontname', ['fontname']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        ['table', ['table']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+    ],
+    callbacks: {
+        onImageUpload: function(files) {
+            // ปิดการอัปโหลดรูปภาพ
+            alert('การแนบไฟล์รูปภาพไม่ได้รับอนุญาต');
+        },
+        onMediaDelete: function(target) {
+            // ปิดการลบวิดีโอหรือสื่ออื่น
+            alert('ไม่สามารถลบสื่อได้');
+            target.remove();
+        },
+        onKeydown: function(e) {
+            // ปิดการแทรกลิงก์ (ผ่าน Ctrl+K)
+            if (e.ctrlKey && e.key === 'k') {
+                e.preventDefault();
+                alert('ไม่อนุญาตให้แทรกลิงก์');
+            }
+        },
+        onPaste: function(e) {
+            // ปิดการวางไฟล์รูปภาพ/วิดีโอใน textarea
+            const clipboardData = e.originalEvent.clipboardData || window.clipboardData;
+            if (clipboardData && clipboardData.files.length > 0) {
+                e.preventDefault();
+                alert('ไม่อนุญาตให้วางไฟล์');
+            }
+        }
+    }
+});
 $(function() {
     $("#example1").DataTable({
         "responsive": true,
