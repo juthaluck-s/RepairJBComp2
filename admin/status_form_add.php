@@ -134,7 +134,8 @@
                              setTimeout(function() {
                               swal({
                                   title: "เกิดข้อผิดพลาด",
-                                  type: "error"
+                                  text: "' . addslashes($e->getMessage()) . '",
+                        icon: "error"
                               }, function() {
                                   window.location = "status.php"; //หน้าที่ต้องการให้กระโดดไป
                               });

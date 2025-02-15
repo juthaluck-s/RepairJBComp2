@@ -118,7 +118,7 @@
                               setTimeout(function() {
                                 swal({
                                     title: "เพิ่มข้อมูลสำเร็จ",
-                                    department: "success"
+                                    type: "success"
                                 }, function() {
                                     window.location = "department.php"; //หน้าที่ต้องการให้กระโดดไป
                                 });
@@ -134,7 +134,7 @@
                              setTimeout(function() {
                               swal({
                                   title: "เกิดข้อผิดพลาด",
-                                  department: "error"
+                                  type: "error"
                               }, function() {
                                   window.location = "department.php"; //หน้าที่ต้องการให้กระโดดไป
                               });

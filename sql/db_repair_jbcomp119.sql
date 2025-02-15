@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2025 at 08:05 AM
+-- Generation Time: Feb 15, 2025 at 07:11 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -78,7 +78,7 @@ INSERT INTO `tbl_building` (`building_id`, `building_name`) VALUES
 CREATE TABLE `tbl_case` (
   `case_id` int(11) NOT NULL,
   `ref_equipment_id` int(11) NOT NULL,
-  `case_detail` varchar(250) NOT NULL,
+  `case_detail` text NOT NULL,
   `case_floor` varchar(20) NOT NULL,
   `case_room` varchar(50) NOT NULL,
   `case_img` varchar(100) NOT NULL,
@@ -134,7 +134,10 @@ INSERT INTO `tbl_case` (`case_id`, `ref_equipment_id`, `case_detail`, `case_floo
 (35, 1, '<p>คอมพิวเตอร์มีอาการแบบในภาพ</p>', '2', '225', '109124789820241226_025409.jpg', 1, 10, 0, 2, '2024-12-26 01:54:09', 0, 0, '', NULL),
 (36, 3, '<p>หลอดไฟขาด หลอดไฟเสีย</p>', '5', '858', '41578326520241226_025606.jpg', 1, 10, 0, 8, '2024-12-26 01:56:06', 0, 0, '', NULL),
 (37, 21, '<p>แบตเตอรี่เสื่อม</p>', '5', '158', '205795982220241226_025920.jpg', 2, 10, 0, 1, '2024-12-26 01:59:20', 5, 8, '', NULL),
-(38, 1, '<p>จอฟ้า เปิดไม่ติด</p>', '5', '555', '159230308220250102_075845.png', 1, 10, 0, 5, '2025-01-02 06:58:45', 0, 0, '', NULL);
+(38, 1, '<p>จอฟ้า เปิดไม่ติด</p>', '5', '555', '159230308220250102_075845.png', 1, 10, 0, 5, '2025-01-02 06:58:45', 0, 0, '', NULL),
+(39, 1, '<p>จอคอมเป็นเส้น</p>', '4', '444', '193158031820250213_055511.jpg', 2, 10, 0, 4, '2025-02-13 04:55:11', 4, 8, '', NULL),
+(40, 22, 'ไมโครเวฟไฟตัด', '0', '802', '166969769520250213_055727.jpg', 2, 9, 0, 8, '2025-02-13 04:57:27', 4, 7, '', NULL),
+(41, 20, '<p>แอร์มีน้ำหยด เสียงดังแปลกๆ</p>', '8', '587', '126267937220250213_055803.jpg', 2, 9, 0, 5, '2025-02-13 04:58:03', 4, 6, '', NULL);
 
 --
 -- Triggers `tbl_case`
@@ -312,9 +315,9 @@ CREATE TABLE `tbl_mechanic` (
 --
 
 INSERT INTO `tbl_mechanic` (`mec_id`, `mec_title_name`, `mec_firstname`, `mec_lastname`, `mec_tel`, `mec_email`, `mec_doing`, `mec_close`, `mec_all_job`) VALUES
-(6, 'นาย', 'ภาณุพล', 'อุดมวงศ์', '0952154781', 'mec01@test.com', 3, 3, 6),
-(7, 'นาย', 'ชวิศ', 'เหล่าพงษ์', '0647884517', 'mec02@test.com', 4, 1, 5),
-(8, 'นาย', 'ธเนษฐ', 'พงศ์พิไล', '0823451877', 'mec03@test.com', 3, 5, 9);
+(6, 'นาย', 'ภาณุพล', 'อุดมวงศ์', '0952154781', 'mec01@test.com', 3, 3, 7),
+(7, 'นาย', 'ชวิศ', 'เหล่าพงษ์', '0647884517', 'mec02@test.com', 5, 1, 6),
+(8, 'นาย', 'ธเนษฐ', 'พงศ์พิไล', '0823451877', 'mec03@test.com', 4, 5, 10);
 
 -- --------------------------------------------------------
 
@@ -481,7 +484,7 @@ CREATE TABLE `tbl_status` (
 
 INSERT INTO `tbl_status` (`status_id`, `status_name`, `status_count`) VALUES
 (1, 'รอดำเนินการ', 17),
-(2, 'กำลังซ่อม', 9),
+(2, 'กำลังซ่อม', 12),
 (3, 'รอประเมินผล', 2),
 (4, 'ปิดงาน', 9);
 
@@ -571,13 +574,13 @@ ALTER TABLE `tbl_assessment`
 -- AUTO_INCREMENT for table `tbl_building`
 --
 ALTER TABLE `tbl_building`
-  MODIFY `building_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `building_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_case`
 --
 ALTER TABLE `tbl_case`
-  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `case_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_department`
@@ -589,7 +592,7 @@ ALTER TABLE `tbl_department`
 -- AUTO_INCREMENT for table `tbl_equipment`
 --
 ALTER TABLE `tbl_equipment`
-  MODIFY `equipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `equipment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_head_mechanic`
@@ -620,6 +623,12 @@ ALTER TABLE `tbl_member`
 --
 ALTER TABLE `tbl_position`
   MODIFY `position_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tbl_status`
+--
+ALTER TABLE `tbl_status`
+  MODIFY `status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

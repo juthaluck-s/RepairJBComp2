@@ -4,9 +4,10 @@ FROM tbl_member AS m
 INNER JOIN tbl_department AS dpm ON m.ref_department_id = dpm.department_id
 INNER JOIN tbl_position AS pst ON m.ref_position_id = pst.position_id
 INNER JOIN tbl_level AS lev ON m.ref_level_id = lev.level_id
-");
+ORDER BY m.dateCreate ASC");  // เพิ่ม ORDER BY member_id DESC
 $queryMember->execute();
 $rsMember = $queryMember->fetchAll();
+
 
 
 ?>
